@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysRoleMenuMapper">
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysRoleMenu">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ROLE_MENU t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="menuId != null and menuId != ''">
+				AND t.MENU_ID = #{menuId}
+			</if>
+			<if test="roleId != null and roleId != ''">
+				AND t.ROLE_ID = #{roleId}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysRoleMenu">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ROLE_MENU t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="menuId != null and menuId != ''">
+				AND t.MENU_ID = #{menuId}
+			</if>
+			<if test="roleId != null and roleId != ''">
+				AND t.ROLE_ID = #{roleId}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysRoleMenu">
+	insert into A_SYS_ROLE_MENU
+	(
+		ID,
+		MENU_ID,
+		ROLE_ID,
+		REMARK
+	)
+	values
+	(
+		#{id},
+		#{menuId},
+		#{roleId},
+		#{remark}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_ROLE_MENU
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="menuId != null">
+				MENU_ID = #{menuId},
+			</if>
+			<if test="roleId != null">
+				ROLE_ID = #{roleId},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ROLE_MENU WHERE ID=#{id}
+	</delete>
+	<delete id="deleteByRoleId" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ROLE_MENU WHERE ROLE_ID=#{roleId}
+	</delete>
+	<delete id="deleteByMenuId" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ROLE_MENU WHERE MENU_ID=#{menuId}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysRoleMenu">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ROLE_MENU t
+		WHERE t.ID=#{id}
+	</select>
+	<sql id="column">
+		t.ID id,
+		t.MENU_ID menuId,
+		t.ROLE_ID roleId,
+		t.REMARK remark
+	</sql>
+</mapper>
+
+

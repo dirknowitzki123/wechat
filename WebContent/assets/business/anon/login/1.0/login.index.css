@@ -1,0 +1,152 @@
+@charset "UTF-8";
+body,div,p,span,i,input{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "微软雅黑";
+    font-size: 13px;
+    color: #333;
+    width: 100%;
+    height: 100%;
+    background: url("images/bg.png");
+    background-size: cover;
+}
+a{
+    text-decoration: none;
+}
+.clear{
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.login-box .login-logo{
+    width: 100%;
+    padding-top: 1.8%;
+    padding-left: 70px;
+    background: transparent;
+}
+.login-box .login-logo .logo-img{
+    width: 9.2%;
+    min-width: 85px;
+    height: 35px;
+}
+.login-box .login-logo .logo-img img{
+    width: 100%;
+}
+.login-box .login-right{
+    width: 40%;
+    float: right;
+}
+.login-box .get-class{
+	margin-top: 5%;
+}
+.login-box .login-text{
+    width: 400px;
+}
+.login-box .login-r-top{
+    width: 100%;
+    height: 233px;
+}
+.login-box .login-r-top img{
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+.login-box .login-bottom{
+    background: #fff;
+    padding: 17px 0 2px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -o-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+.login-box .login-row{
+    width: 340px;
+    margin: 18px auto 0;
+}
+.login-box .fun-item-box{
+    margin-top: 30px;
+}
+.login-box .row-one{
+    width: 100%;
+    border: 1px solid #A0A0A0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    padding: 6px 0;
+    margin: 0px;
+    float: left;
+}
+.login-box .row-one p{
+	margin: 0px;
+}
+.login-box .row-one .fa{
+    color: #C9CACA;
+    font-size: 20px;
+    font-weight: bold;
+}
+.login-box .login-item-icon{
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    margin-top: 2px;
+    float: left;
+}
+.login-box  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+.login-box .row-one input{
+    border :0px;
+    border-left:1px solid #A0A0A0;
+    height: 22px;
+    padding: 4px 6px 4px 10px;
+    outline: none;
+    background-color: #fff !import;
+    margin-bottom: 0px;
+    float: left;
+}
+.login-box .code-img{
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+.login-box .long-inout{
+    width: 275px;
+}
+.login-box .row-code{
+    width: 220px;
+}
+.login-box .short-inout{
+    width: 158px;
+}
+.login-box .fun-item-box{
+    text-align: center;
+}
+.login-box .submit-btn{
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    background: #DC062B;
+    border: 0px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+.login-box .submit-btn:hover{
+    background: #ff1439;
+}
+.login-box .err-msg {
+	color: red;
+	margin-left: 5px;
+}

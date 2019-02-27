@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.dto.mapper.ASysUserDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.USER_NAME userName,
+		t.LOGIN_NAME loginName,
+		t.PASSWORD password,
+		t.ORG_CODE orgCode,
+		t.ORG_NAME orgName,
+		t.ROLE_CODE roleCode,
+		t.ROLE_NAME roleName,
+		t.STATUS status,
+		t.SEX sex,
+		t.BIRHDAY birhday,
+		t.CARD_NO cardNo,
+		t.POLITICAL_STATUS politicalStatus,
+		t.USER_LEVEL userLevel,
+		t.WORK_YEARS workYears,
+		t.EDUCATION education,
+		t.MOBILE mobile,
+		t.EMAIL email,
+		t.HOME_ADDR homeAddr,
+		t.HOME_TEL homeTel,
+		t.OFFICE_TEL officeTel,
+		t.INST_USER_NO instUserNo,
+		t.INST_USER_NAME instUserName,
+		t.INST_DATE instDate,
+		t.INST_ORG_CODE instOrgCode,
+		t.INST_ORG_NAME instOrgName,
+		t.UPDT_USER_NO updtUserNo,
+		t.UPDT_USER_NAME updtUserName,
+		t.UPDT_DATE updtDate,
+		t.UPDT_ORG_CODE updtOrgCode,
+		t.UPDT_ORG_NAME updtOrgName,
+		t.REMARK remark,
+		t.CREDIT_YEAR creditYear,
+		t.LOGIN_ERR_NUM loginErrNum,
+		t.LAST_LOGIN_IP lastLoginIp,
+		t.LAST_LOGIN_DATE lastLoginDate
+	</sql>
+	
+	<!-- 获取机构下的用户 -->
+	<select id="getSubUserLst" parameterType="java.util.Map" resultType="com.by.system.model.ASysUser">
+		SELECT 
+			<include refid="column"></include>
+		FROM a_sys_user t 
+		LEFT JOIN a_sys_user_org o ON t.id = o.USER_ID
+		LEFT JOIN a_sys_role_user f ON t.id = f.user_id
+		LEFT JOIN a_sys_role r ON f.role_id = r.id
+		WHERE 
+			t.status = #{stat}
+		<if test="roleCode != null and roleCode != '' ">
+			AND r.role_code = #{roleCode}
+		</if>
+		AND o.ORG_ID in
+		<foreach collection="orgIds" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+	<!-- 获取销售信息 t1销售    t6上一级的区域经理(可能多个) t3机构-->
+	<select id="getSaler" parameterType="java.util.Map" resultType="java.util.HashMap">
+		SELECT
+			DISTINCT
+			t1.LOGIN_NAME staffNo,
+			t1.USER_NAME staffName,
+			t1.MOBILE moblNo,
+			t6.LOGIN_NAME areaMgerNo,
+			t6.USER_NAME areaMgerName,
+			t6.LOGIN_NAME areaStaffNo,
+			t3.ORG_CODE orgNo,
+			t3.ORG_NAME orgName,
+			t3.PROV_NO provNo,
+			t3.CITY_NO cityNo,
+			t3.AREA_NO cntyNo,
+			'' areaNo,
+			'' areaName
+		FROM (SELECT * FROM a_sys_user WHERE LOGIN_NAME = #{loginName}) t1 
+		LEFT JOIN a_sys_user_org t2 
+			ON t1.ID = t2.USER_ID
+			AND t2.IS_MAIN_ORG = '13900001'
+		LEFT JOIN a_sys_org t3 
+			ON t2.ORG_ID = t3.ID
+		LEFT JOIN a_sys_user_org t4
+			ON t3.PARENT_ID = t4.ORG_ID
+		LEFT JOIN a_sys_role_user t5
+			ON t4.USER_ID = t5.USER_ID
+			AND t5.ROLE_ID = #{areaManagerRoleId}
+		LEFT JOIN a_sys_user t6
+			ON t5.USER_ID = t6.ID
+	</select>
+</mapper>
+
+

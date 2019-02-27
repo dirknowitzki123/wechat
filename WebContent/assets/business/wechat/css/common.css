@@ -1,0 +1,103 @@
+body,div,a,h1,h2,h3,h4,i,span,p{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "微软雅黑";
+    background: #fff;
+    font-size: 14px;
+}
+ul{
+    list-style: none;
+}
+a, a:hover, a:active, a:focus{
+    text-decoration: none;
+}
+img{
+    border: 0px;
+}
+.clear{
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.float-left{
+    float: left;
+    width: 100%;
+}
+
+/* head */
+.header{
+	height: 70px;
+	line-height: 70px;
+	font-size: 20px;
+	color: #2D2D2D;
+	position: relative;
+	border-bottom: 1px solid #EFEFEF;
+	padding-top: 16px;
+}
+.blue-bg{
+	background: #3586FF;
+	color: #fff;
+}
+.header > a{
+	position: absolute;
+	left: 22px;
+	font-size: 38px;
+	color: #88C6FF;
+}
+.blue-bg > a{
+	color: #fff;
+}
+.header .title{
+	text-align: center;
+	font-weight: 100;
+}
+/* button */
+.btn{
+	display: block;
+	width: 100%;
+	height: 46px;
+	text-align: center;
+	line-height: 46px;
+	font-size: 18px;
+	color: #fff;
+	background: #88C6FF;
+	border: 0px;
+	outline: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0px 2px 5px #C2E2FF;
+    -webkit-box-shadow: 0px 2px 5px #C2E2FF;
+    box-shadow: 0px 2px 5px #C2E2FF;
+    margin-top: 40px;
+}
+.btn:hover{
+	background: #74BBFD;
+	cursor: pointer;
+}
+
+/* point */
+.point{
+	position: absolute;
+	background: #fff;
+	padding: 1px 10px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	z-index: 9999;
+}
+.point.success{
+	color: #74BBFD;
+	border: 1px solid #74BBFD;
+}
+.point.fail{
+	color: #ff0000;
+	border: 1px solid #ff0000;
+}
+.point.warning{
+	color: #EFBA03;
+	border: 1px solid #EFBA03;
+}

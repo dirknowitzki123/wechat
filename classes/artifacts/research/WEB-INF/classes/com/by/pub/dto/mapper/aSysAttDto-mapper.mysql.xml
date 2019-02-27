@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.pub.dto.mapper.ASysAttDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.BUSI_NO busiNo,
+		t.BUSI_TYP busiTyp,
+		t.NEW_ATT newAtt,
+		t.OLD_ATT oldAtt,
+		t.ATT_TYP attTyp,
+		t.ATT_FILE attFile,
+		t.ATT_SIZE attSize,
+		t.PH_PATH phPath,
+		t.IN_PATH inPath,
+		t.IS_IN_ATT isInAtt,
+		t.SORT sort,
+		t.REMARK remark,
+		t.INST_USER_NO instUserNo,
+		t.INST_USER_NAME instUserName,
+		t.INST_USER_ORG instUserOrg,
+		t.INST_DATE instDate,
+		t.UPDT_USER_NO updtUserNo,
+		t.UPDT_USER_NAME updtUserName,
+		t.UPDT_USER_ORG updtUserOrg,
+		t.UPDT_DATE updtDate
+	</sql>
+	<select id="getListPubASysAtts" parameterType="java.util.Map" resultType="com.by.pub.model.ASysAtt">
+		SELECT  
+			<include refid="column"/>
+		FROM A_SYS_ATT t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="busiNo != null and busiNo != ''">
+				AND t.BUSI_NO = #{busiNo}
+			</if>
+			<if test="busiTyp != null and busiTyp != ''">
+				AND t.BUSI_TYP = #{busiTyp}
+			</if>
+			<if test="newAtt != null and newAtt != ''">
+				AND t.NEW_ATT = #{newAtt}
+			</if>
+			<if test="oldAtt != null and oldAtt != ''">
+				AND t.OLD_ATT = #{oldAtt}
+			</if>
+			<if test="attTyp != null and attTyp != ''">
+				AND t.ATT_TYP = #{attTyp}
+			</if>
+			<if test="attFile != null and attFile != ''">
+				AND t.ATT_FILE = #{attFile}
+			</if>
+			<if test="attSize != null and attSize != ''">
+				AND t.ATT_SIZE = #{attSize}
+			</if>
+			<if test="phPath != null and phPath != ''">
+				AND t.PH_PATH = #{phPath}
+			</if>
+			<if test="inPath != null and inPath != ''">
+				AND t.IN_PATH = #{inPath}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="instUserName != null and instUserName != ''">
+				AND t.INST_USER_NAME = #{instUserName}
+			</if>
+			<if test="instUserOrg != null and instUserOrg != ''">
+				AND t.INST_USER_ORG = #{instUserOrg}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="updtUserNo != null and updtUserNo != ''">
+				AND t.UPDT_USER_NO = #{updtUserNo}
+			</if>
+			<if test="updtUserName != null and updtUserName != ''">
+				AND t.UPDT_USER_NAME = #{updtUserName}
+			</if>
+			<if test="updtUserOrg != null and updtUserOrg != ''">
+				AND t.UPDT_USER_ORG = #{updtUserOrg}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+		ORDER BY t.IS_IN_ATT ASC, t.SORT ASC
+	</select>
+	
+	<delete id="deleteByBusiNoAttTyp" parameterType="java.util.Map">
+		DELETE FROM A_SYS_ATT WHERE ATT_TYP = #{attTyp} and BUSI_NO = #{busiNo}
+	</delete>
+	
+	<select id="getListByInstDateDesc" parameterType="java.util.Map" resultType="com.by.pub.model.ASysAtt">
+		SELECT  
+			<include refid="column"/>
+		FROM A_SYS_ATT t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="busiNo != null and busiNo != ''">
+				AND t.BUSI_NO = #{busiNo}
+			</if>
+			<if test="busiTyp != null and busiTyp != ''">
+				AND t.BUSI_TYP = #{busiTyp}
+			</if>
+			<if test="newAtt != null and newAtt != ''">
+				AND t.NEW_ATT = #{newAtt}
+			</if>
+			<if test="oldAtt != null and oldAtt != ''">
+				AND t.OLD_ATT = #{oldAtt}
+			</if>
+			<if test="attTyp != null and attTyp != ''">
+				AND t.ATT_TYP = #{attTyp}
+			</if>
+			<if test="attFile != null and attFile != ''">
+				AND t.ATT_FILE = #{attFile}
+			</if>
+			<if test="attSize != null and attSize != ''">
+				AND t.ATT_SIZE = #{attSize}
+			</if>
+			<if test="phPath != null and phPath != ''">
+				AND t.PH_PATH = #{phPath}
+			</if>
+			<if test="inPath != null and inPath != ''">
+				AND t.IN_PATH = #{inPath}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="instUserName != null and instUserName != ''">
+				AND t.INST_USER_NAME = #{instUserName}
+			</if>
+			<if test="instUserOrg != null and instUserOrg != ''">
+				AND t.INST_USER_ORG = #{instUserOrg}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="updtUserNo != null and updtUserNo != ''">
+				AND t.UPDT_USER_NO = #{updtUserNo}
+			</if>
+			<if test="updtUserName != null and updtUserName != ''">
+				AND t.UPDT_USER_NAME = #{updtUserName}
+			</if>
+			<if test="updtUserOrg != null and updtUserOrg != ''">
+				AND t.UPDT_USER_ORG = #{updtUserOrg}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+		ORDER BY t.INST_DATE DESC
+	</select>
+</mapper>
+
+

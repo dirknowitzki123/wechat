@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.bussiness.wechat.mapper.TCustLoginInfoMapper">
+	<sql id="column">
+		t.ID id,
+		t.CUST_NO custNo,
+		t.CUST_PWD custPwd,
+		t.OPEN_ID openId,
+		t.TYPE type,
+		t.STATUS status,
+		t.IMEI imei,
+		t.AGRE_FLAG agreFlag,
+		t.AGRE_MEMO agreMemo,
+		t.CREATE_DATE createDate,
+		t.MODIFY_DATE modifyDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.TCustLoginInfo">
+		SELECT
+			<include refid="column"/>
+		FROM T_CUST_LOGIN_INFO t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="custNo != null and custNo != ''">
+				AND t.CUST_NO = #{custNo}
+			</if>
+			<if test="custPwd != null and custPwd != ''">
+				AND t.CUST_PWD = #{custPwd}
+			</if>
+			<if test="openId != null and openId != ''">
+				AND t.OPEN_ID = #{openId}
+			</if>
+			<if test="type != null and type != ''">
+				AND t.TYPE = #{type}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="imei != null and imei != ''">
+				AND t.IMEI = #{imei}
+			</if>
+			<if test="agreFlag != null and agreFlag != ''">
+				AND t.AGRE_FLAG = #{agreFlag}
+			</if>
+			<if test="agreMemo != null and agreMemo != ''">
+				AND t.AGRE_MEMO = #{agreMemo}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.TCustLoginInfo">
+		SELECT
+			<include refid="column"/>
+		FROM T_CUST_LOGIN_INFO t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="custNo != null and custNo != ''">
+				AND t.CUST_NO = #{custNo}
+			</if>
+			<if test="custPwd != null and custPwd != ''">
+				AND t.CUST_PWD = #{custPwd}
+			</if>
+			<if test="openId != null and openId != ''">
+				AND t.OPEN_ID = #{openId}
+			</if>
+			<if test="type != null and type != ''">
+				AND t.TYPE = #{type}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="imei != null and imei != ''">
+				AND t.IMEI = #{imei}
+			</if>
+			<if test="agreFlag != null and agreFlag != ''">
+				AND t.AGRE_FLAG = #{agreFlag}
+			</if>
+			<if test="agreMemo != null and agreMemo != ''">
+				AND t.AGRE_MEMO = #{agreMemo}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.bussiness.wechat.model.TCustLoginInfo">
+	insert into T_CUST_LOGIN_INFO
+	(
+		ID,
+		CUST_NO,
+		CUST_PWD,
+		OPEN_ID,
+		TYPE,
+		STATUS,
+		IMEI,
+		AGRE_FLAG,
+		AGRE_MEMO,
+		CREATE_DATE,
+		MODIFY_DATE
+	)
+	values
+	(
+		#{id},
+		#{custNo},
+		#{custPwd},
+		#{openId},
+		#{type},
+		#{status},
+		#{imei},
+		#{agreFlag},
+		#{agreMemo},
+		#{createDate},
+		#{modifyDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE T_CUST_LOGIN_INFO
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="custNo != null">
+				CUST_NO = #{custNo},
+			</if>
+			<if test="custPwd != null">
+				CUST_PWD = #{custPwd},
+			</if>
+			<if test="openId != null">
+				OPEN_ID = #{openId},
+			</if>
+			<if test="type != null">
+				TYPE = #{type},
+			</if>
+			<if test="status != null">
+				STATUS = #{status},
+			</if>
+			<if test="imei != null">
+				IMEI = #{imei},
+			</if>
+			<if test="agreFlag != null">
+				AGRE_FLAG = #{agreFlag},
+			</if>
+			<if test="agreMemo != null">
+				AGRE_MEMO = #{agreMemo},
+			</if>
+			<if test="createDate != null">
+				CREATE_DATE = #{createDate},
+			</if>
+			<if test="modifyDate != null">
+				MODIFY_DATE = #{modifyDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM T_CUST_LOGIN_INFO WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.bussiness.wechat.model.TCustLoginInfo">
+		SELECT
+			<include refid="column"/>
+		FROM T_CUST_LOGIN_INFO t
+		WHERE ID=#{id}
+	</select>
+</mapper>
+
+

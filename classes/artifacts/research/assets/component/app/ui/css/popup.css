@@ -1,0 +1,110 @@
+/** popup 弹出页 | @author hemf(bee) 2504637134@qq.com | @version 2.0 */
+@CHARSET "UTF-8";
+
+.section-popup-open {
+	position: inherit;
+}
+.section-popup-open > .section-container,
+.section-popup-open > .section-popup-container > .popup-body > .section-container {
+	height: 100%;
+	overflow: hidden !important;
+}
+.section-popup-open > .sections-wrapper,
+.section-popup-open > .section-popup-container > .popup-body > .sections-wrapper {
+	position: absolute!important;
+	top: 0;
+	right: 0;
+	width: 100%;
+	overflow: auto!important;
+}
+.section-popup {
+	overflow: auto;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	padding: 15px 15px!important;
+}
+.section-popup.auto {
+	/* transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s; */
+}
+.section-popup.animate {
+	overflow: hidden!important;
+}
+.section-popup > .section-popup-mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 90;
+}
+.section-popup.animate > .section-popup-container {
+	overflow: hidden;
+}
+.section-popup-dir-right {
+	top: 0;
+	right: 0;
+}
+.section-popup-dir-right > .section-popup-container {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	right: 0;
+	z-index: 91;
+	overflow: auto;
+}
+.section-popup-dir-right .section-popup-toggle {
+	height: 180px;
+	width: 20px;
+	border-right: 20px solid #DfDDDD;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	margin-top: -90px;
+	cursor: pointer;
+	color: #888;
+	z-index: 90;
+}
+.section-popup-dir-right .section-popup-toggle:hover {
+	color: #333;
+	border-right-color: #DCDDDD;
+}
+.section-popup-dir-right .section-popup-toggle > p {
+	width: 20px;
+	text-align: center;
+	vertical-align: middle;
+}
+.section-popup-dir-right .section-popup-toggle > p > i {
+	font-size: 17px;
+	display: block;
+}
+.section-popup-container > .popup-body {
+	margin-left: 25px;
+	margin-right: 0px;
+	background-color: #fff;
+	border-left: 1px solid #ddd;
+	/* padding: 15px 15px; */
+	position: relative;
+	z-index: 90;
+	
+}
+.section-popup-container > .popup-body > .section-container > .page-header {
+	margin: 0 0 15px 0;
+    font-size: 16px;
+    line-height: 25px;
+}
+.sections .section.section-popup > .section-close.close {
+	position: relative;
+	top: 5px;
+	z-index: 91;
+}
+.sections .section.section-popup  .section-container {
+	padding: 15px 15px !important;	
+}

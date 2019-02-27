@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysUserMapper">
+	<sql id="column">
+		t.ID id,
+		t.USER_NAME userName,
+		t.LOGIN_NAME loginName,
+		t.PASSWORD password,
+		t.ORG_CODE orgCode,
+		t.ORG_NAME orgName,
+		t.ROLE_CODE roleCode,
+		t.ROLE_NAME roleName,
+		t.STATUS status,
+		t.SEX sex,
+		t.BIRHDAY birhday,
+		t.CARD_NO cardNo,
+		t.POLITICAL_STATUS politicalStatus,
+		t.USER_LEVEL userLevel,
+		t.WORK_YEARS workYears,
+		t.EDUCATION education,
+		t.MOBILE mobile,
+		t.EMAIL email,
+		t.HOME_ADDR homeAddr,
+		t.HOME_TEL homeTel,
+		t.OFFICE_TEL officeTel,
+		t.INST_USER_NO instUserNo,
+		t.INST_USER_NAME instUserName,
+		t.INST_DATE instDate,
+		t.INST_ORG_CODE instOrgCode,
+		t.INST_ORG_NAME instOrgName,
+		t.UPDT_USER_NO updtUserNo,
+		t.UPDT_USER_NAME updtUserName,
+		t.UPDT_DATE updtDate,
+		t.UPDT_ORG_CODE updtOrgCode,
+		t.UPDT_ORG_NAME updtOrgName,
+		t.REMARK remark,
+		t.CREDIT_YEAR creditYear,
+		t.LOGIN_ERR_NUM loginErrNum,
+		t.LAST_LOGIN_IP lastLoginIp,
+		t.LAST_LOGIN_DATE lastLoginDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="userName != null and userName != ''">
+				AND t.USER_NAME = #{userName}
+			</if>
+			<if test="loginName != null and loginName != ''">
+				AND t.LOGIN_NAME = #{loginName}
+			</if>
+			<if test="password != null and password != ''">
+				AND t.PASSWORD = #{password}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND t.ORG_CODE = #{orgCode}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND t.ORG_NAME = #{orgName}
+			</if>
+			<if test="roleCode != null and roleCode != ''">
+				AND t.ROLE_CODE = #{roleCode}
+			</if>
+			<if test="roleName != null and roleName != ''">
+				AND t.ROLE_NAME = #{roleName}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="sex != null and sex != ''">
+				AND t.SEX = #{sex}
+			</if>
+			<if test="birhday != null and birhday != ''">
+				AND t.BIRHDAY = #{birhday}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				AND t.CARD_NO = #{cardNo}
+			</if>
+			<if test="politicalStatus != null and politicalStatus != ''">
+				AND t.POLITICAL_STATUS = #{politicalStatus}
+			</if>
+			<if test="userLevel != null and userLevel != ''">
+				AND t.USER_LEVEL = #{userLevel}
+			</if>
+			<if test="workYears != null and workYears != ''">
+				AND t.WORK_YEARS = #{workYears}
+			</if>
+			<if test="education != null and education != ''">
+				AND t.EDUCATION = #{education}
+			</if>
+			<if test="mobile != null and mobile != ''">
+				AND t.MOBILE = #{mobile}
+			</if>
+			<if test="email != null and email != ''">
+				AND t.EMAIL = #{email}
+			</if>
+			<if test="homeAddr != null and homeAddr != ''">
+				AND t.HOME_ADDR = #{homeAddr}
+			</if>
+			<if test="homeTel != null and homeTel != ''">
+				AND t.HOME_TEL = #{homeTel}
+			</if>
+			<if test="officeTel != null and officeTel != ''">
+				AND t.OFFICE_TEL = #{officeTel}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="instUserName != null and instUserName != ''">
+				AND t.INST_USER_NAME = #{instUserName}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instOrgCode != null and instOrgCode != ''">
+				AND t.INST_ORG_CODE = #{instOrgCode}
+			</if>
+			<if test="instOrgName != null and instOrgName != ''">
+				AND t.INST_ORG_NAME = #{instOrgName}
+			</if>
+			<if test="updtUserNo != null and updtUserNo != ''">
+				AND t.UPDT_USER_NO = #{updtUserNo}
+			</if>
+			<if test="updtUserName != null and updtUserName != ''">
+				AND t.UPDT_USER_NAME = #{updtUserName}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+			<if test="updtOrgCode != null and updtOrgCode != ''">
+				AND t.UPDT_ORG_CODE = #{updtOrgCode}
+			</if>
+			<if test="updtOrgName != null and updtOrgName != ''">
+				AND t.UPDT_ORG_NAME = #{updtOrgName}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="creditYear != null and creditYear != ''">
+				AND t.CREDIT_YEAR = #{creditYear}
+			</if>
+			<if test="loginErrNum != null and loginErrNum != ''">
+				AND t.LOGIN_ERR_NUM = #{loginErrNum}
+			</if>
+			<if test="lastLoginIp != null and lastLoginIp != ''">
+				AND t.LAST_LOGIN_IP = #{lastLoginIp}
+			</if>
+			<if test="lastLoginDate != null and lastLoginDate != ''">
+				AND t.LAST_LOGIN_DATE = #{lastLoginDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="userName != null and userName != ''">
+				AND t.USER_NAME LIKE CONCAT('%',#{userName},'%')
+			</if>
+			<if test="loginName != null and loginName != ''">
+				AND t.LOGIN_NAME = #{loginName}
+			</if>
+			<if test="password != null and password != ''">
+				AND t.PASSWORD = #{password}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND t.ORG_CODE = #{orgCode}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND t.ORG_NAME = #{orgName}
+			</if>
+			<if test="roleCode != null and roleCode != ''">
+				AND t.ROLE_CODE = #{roleCode}
+			</if>
+			<if test="roleName != null and roleName != ''">
+				AND t.ROLE_NAME = #{roleName}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="sex != null and sex != ''">
+				AND t.SEX = #{sex}
+			</if>
+			<if test="birhday != null and birhday != ''">
+				AND t.BIRHDAY = #{birhday}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				AND t.CARD_NO = #{cardNo}
+			</if>
+			<if test="politicalStatus != null and politicalStatus != ''">
+				AND t.POLITICAL_STATUS = #{politicalStatus}
+			</if>
+			<if test="userLevel != null and userLevel != ''">
+				AND t.USER_LEVEL = #{userLevel}
+			</if>
+			<if test="workYears != null and workYears != ''">
+				AND t.WORK_YEARS = #{workYears}
+			</if>
+			<if test="education != null and education != ''">
+				AND t.EDUCATION = #{education}
+			</if>
+			<if test="mobile != null and mobile != ''">
+				AND t.MOBILE = #{mobile}
+			</if>
+			<if test="email != null and email != ''">
+				AND t.EMAIL = #{email}
+			</if>
+			<if test="homeAddr != null and homeAddr != ''">
+				AND t.HOME_ADDR = #{homeAddr}
+			</if>
+			<if test="homeTel != null and homeTel != ''">
+				AND t.HOME_TEL = #{homeTel}
+			</if>
+			<if test="officeTel != null and officeTel != ''">
+				AND t.OFFICE_TEL = #{officeTel}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="instUserName != null and instUserName != ''">
+				AND t.INST_USER_NAME = #{instUserName}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instOrgCode != null and instOrgCode != ''">
+				AND t.INST_ORG_CODE = #{instOrgCode}
+			</if>
+			<if test="instOrgName != null and instOrgName != ''">
+				AND t.INST_ORG_NAME = #{instOrgName}
+			</if>
+			<if test="updtUserNo != null and updtUserNo != ''">
+				AND t.UPDT_USER_NO = #{updtUserNo}
+			</if>
+			<if test="updtUserName != null and updtUserName != ''">
+				AND t.UPDT_USER_NAME = #{updtUserName}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+			<if test="updtOrgCode != null and updtOrgCode != ''">
+				AND t.UPDT_ORG_CODE = #{updtOrgCode}
+			</if>
+			<if test="updtOrgName != null and updtOrgName != ''">
+				AND t.UPDT_ORG_NAME = #{updtOrgName}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="creditYear != null and creditYear != ''">
+				AND t.CREDIT_YEAR = #{creditYear}
+			</if>
+			<if test="loginErrNum != null and loginErrNum != ''">
+				AND t.LOGIN_ERR_NUM = #{loginErrNum}
+			</if>
+			<if test="lastLoginIp != null and lastLoginIp != ''">
+				AND t.LAST_LOGIN_IP = #{lastLoginIp}
+			</if>
+			<if test="lastLoginDate != null and lastLoginDate != ''">
+				AND t.LAST_LOGIN_DATE = #{lastLoginDate}
+			</if>
+		</trim>
+	</select>
+	<!--  add by yangtj -->
+	<select id="getUserList" parameterType="java.util.Map" resultType="com.by.system.model.ASysUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER t
+		<if test="orgCode != null and orgCode != ''">
+				, a_sys_org o, a_sys_user_org uo
+		</if>
+		<if test="roleCode != null and roleCode != ''">
+				, a_sys_role r, a_sys_role_user ru
+		</if>
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			
+			<if test="userName != null and userName != ''">
+				AND t.USER_NAME like '%${userName}%'
+			</if>
+			<if test="loginName != null and loginName != ''">
+				AND t.LOGIN_NAME = #{loginName}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND o.id = uo.org_id and uo.user_id = t.id
+				and o.ORG_CODE = #{orgCode}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND t.ORG_NAME = #{orgName}
+			</if>
+			<if test="roleCode != null and roleCode != ''">
+				AND t.id = ru.user_id and ru.role_id = r.id
+				and r.ROLE_CODE = #{roleCode}
+			</if>
+			<if test="roleName != null and roleName != ''">
+				AND t.ROLE_NAME = #{roleName}
+			</if>
+		</trim>
+	</select>
+	
+	
+	<insert id="insert" parameterType="com.by.system.model.ASysUser">
+	insert into A_SYS_USER
+	(
+		ID,
+		USER_NAME,
+		LOGIN_NAME,
+		PASSWORD,
+		ORG_CODE,
+		ORG_NAME,
+		ROLE_CODE,
+		ROLE_NAME,
+		STATUS,
+		SEX,
+		BIRHDAY,
+		CARD_NO,
+		POLITICAL_STATUS,
+		USER_LEVEL,
+		WORK_YEARS,
+		EDUCATION,
+		MOBILE,
+		EMAIL,
+		HOME_ADDR,
+		HOME_TEL,
+		OFFICE_TEL,
+		INST_USER_NO,
+		INST_USER_NAME,
+		INST_DATE,
+		INST_ORG_CODE,
+		INST_ORG_NAME,
+		UPDT_USER_NO,
+		UPDT_USER_NAME,
+		UPDT_DATE,
+		UPDT_ORG_CODE,
+		UPDT_ORG_NAME,
+		REMARK,
+		CREDIT_YEAR,
+		LOGIN_ERR_NUM,
+		LAST_LOGIN_IP,
+		LAST_LOGIN_DATE
+	)
+	values
+	(
+		#{id},
+		#{userName},
+		#{loginName},
+		#{password},
+		#{orgCode},
+		#{orgName},
+		#{roleCode},
+		#{roleName},
+		#{status},
+		#{sex},
+		#{birhday},
+		#{cardNo},
+		#{politicalStatus},
+		#{userLevel},
+		#{workYears},
+		#{education},
+		#{mobile},
+		#{email},
+		#{homeAddr},
+		#{homeTel},
+		#{officeTel},
+		#{instUserNo},
+		#{instUserName},
+		#{instDate},
+		#{instOrgCode},
+		#{instOrgName},
+		#{updtUserNo},
+		#{updtUserName},
+		#{updtDate},
+		#{updtOrgCode},
+		#{updtOrgName},
+		#{remark},
+		#{creditYear},
+		#{loginErrNum},
+		#{lastLoginIp},
+		#{lastLoginDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_USER
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="userName != null">
+				USER_NAME = #{userName},
+			</if>
+			<if test="loginName != null">
+				LOGIN_NAME = #{loginName},
+			</if>
+			<if test="password != null">
+				PASSWORD = #{password},
+			</if>
+			<if test="orgCode != null">
+				ORG_CODE = #{orgCode},
+			</if>
+			<if test="orgName != null">
+				ORG_NAME = #{orgName},
+			</if>
+			<if test="roleCode != null">
+				ROLE_CODE = #{roleCode},
+			</if>
+			<if test="roleName != null">
+				ROLE_NAME = #{roleName},
+			</if>
+			<if test="status != null">
+				STATUS = #{status},
+			</if>
+			<if test="sex != null">
+				SEX = #{sex},
+			</if>
+			<if test="birhday != null">
+				BIRHDAY = #{birhday},
+			</if>
+			<if test="cardNo != null">
+				CARD_NO = #{cardNo},
+			</if>
+			<if test="politicalStatus != null">
+				POLITICAL_STATUS = #{politicalStatus},
+			</if>
+			<if test="userLevel != null">
+				USER_LEVEL = #{userLevel},
+			</if>
+			<if test="workYears != null">
+				WORK_YEARS = #{workYears},
+			</if>
+			<if test="education != null">
+				EDUCATION = #{education},
+			</if>
+			<if test="mobile != null">
+				MOBILE = #{mobile},
+			</if>
+			<if test="email != null">
+				EMAIL = #{email},
+			</if>
+			<if test="homeAddr != null">
+				HOME_ADDR = #{homeAddr},
+			</if>
+			<if test="homeTel != null">
+				HOME_TEL = #{homeTel},
+			</if>
+			<if test="officeTel != null">
+				OFFICE_TEL = #{officeTel},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="instUserName != null">
+				INST_USER_NAME = #{instUserName},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instOrgCode != null">
+				INST_ORG_CODE = #{instOrgCode},
+			</if>
+			<if test="instOrgName != null">
+				INST_ORG_NAME = #{instOrgName},
+			</if>
+			<if test="updtUserNo != null">
+				UPDT_USER_NO = #{updtUserNo},
+			</if>
+			<if test="updtUserName != null">
+				UPDT_USER_NAME = #{updtUserName},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+			<if test="updtOrgCode != null">
+				UPDT_ORG_CODE = #{updtOrgCode},
+			</if>
+			<if test="updtOrgName != null">
+				UPDT_ORG_NAME = #{updtOrgName},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+			<if test="creditYear != null">
+				CREDIT_YEAR = #{creditYear},
+			</if>
+			<if test="loginErrNum != null">
+				LOGIN_ERR_NUM = #{loginErrNum},
+			</if>
+			<if test="lastLoginIp != null">
+				LAST_LOGIN_IP = #{lastLoginIp},
+			</if>
+			<if test="lastLoginDate != null">
+				LAST_LOGIN_DATE = #{lastLoginDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_USER WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER t
+		WHERE t.ID=#{id}
+	</select>
+	<select id="getOrgs" parameterType="java.util.Map" resultType="com.by.system.model.ASysOrg">
+		SELECT
+			t2.ID id,
+			t2.ORG_CODE orgCode,
+			t2.ORG_NAME orgName,
+			t2.PARENT_ID parentId,
+			t2.ORG_ORDER orgOrder,
+			t2.ORG_LEVEL orgLevel,
+			t2.ORG_TYPE orgType,
+			t2.ORG_PATH orgPath,
+			t2.ORG_ADDR orgAddr,
+			t2.ORG_PHONE orgPhone,
+			t2.REMARK remark,
+			t2.STATUS status,
+			t2.INST_DATE instDate,
+			t2.INST_USER_NO instUserNo,
+			t2.UPDT_DATE updtDate
+		FROM A_SYS_USER_ORG t1
+		LEFT JOIN A_SYS_ORG t2 
+		ON t1.ORG_ID=t2.ID
+		AND t1.USER_ID=#{userId}
+	</select>
+	<select id="getRoles" parameterType="java.util.Map" resultType="com.by.system.model.ASysRole">
+		SELECT
+			t2.ID id,
+			t2.ROLE_CODE roleCode,
+			t2.ROLE_NAME roleName,
+			t2.IS_USE isUse,
+			t2.REMARK remark,
+			t2.INST_DATE instDate,
+			t2.INST_USER_NO instUserNo,
+			t2.UPDT_DATE updtDate
+		FROM A_SYS_ROLE_USER t1
+		LEFT JOIN A_SYS_ROLE t2 
+		ON t1.ROLE_ID=t2.ID
+		AND t1.USER_ID=#{userId}
+	</select>
+</mapper>
+
+

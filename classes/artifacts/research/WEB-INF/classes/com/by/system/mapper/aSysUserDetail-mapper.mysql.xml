@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//www.mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysUserDetailMapper">
+	<sql id="column">
+		t.ID id,
+		t.USER_NAME userName,
+		t.ID_TYPE idType,
+		t.ID_NO idNo,
+		t.COLLEGE college,
+		t.LEADER_COMMENT leaderComment,
+		t.LEVEL_NO levelNo,
+		t.LEVEL_NAME levelName,
+		t.POSITION_NO positionNo,
+		t.POSITION_NAME positionName,
+		t.TITLE_NO titleNo,
+		t.TITLE_NAME titleName,
+		t.WORK_AREA workArea,
+		t.NATI_PLAC natiPlac,
+		t.NOW_ADDRE nowAddre,
+		t.HOME_REGI_TYPE homeRegiType,
+		t.ARRI_WORK_DATE arriWorkDate,
+		t.FINA_OBTA_TIMES finaObtaTimes,
+		t.WEIXIN_ADDR weixinAddr,
+		t.PROF_INFO profInfo,
+		t.BANK_CARD_NO bankCardNo,
+		t.OPEN_ACCT_INFO openAcctInfo,
+		t.PRV_COMP_NAME prvCompName,
+		t.SOSE_INFO soseInfo,
+		t.EMPL_CHNL emplChnl
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysUserDetail">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_DETAIL t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="userName != null and userName != ''">
+				AND t.USER_NAME = #{userName}
+			</if>
+			<if test="idType != null and idType != ''">
+				AND t.ID_TYPE = #{idType}
+			</if>
+			<if test="idNo != null and idNo != ''">
+				AND t.ID_NO = #{idNo}
+			</if>
+			<if test="college != null and college != ''">
+				AND t.COLLEGE = #{college}
+			</if>
+			<if test="leaderComment != null and leaderComment != ''">
+				AND t.LEADER_COMMENT = #{leaderComment}
+			</if>
+			<if test="levelNo != null and levelNo != ''">
+				AND t.LEVEL_NO = #{levelNo}
+			</if>
+			<if test="levelName != null and levelName != ''">
+				AND t.LEVEL_NAME = #{levelName}
+			</if>
+			<if test="positionNo != null and positionNo != ''">
+				AND t.POSITION_NO = #{positionNo}
+			</if>
+			<if test="positionName != null and positionName != ''">
+				AND t.POSITION_NAME = #{positionName}
+			</if>
+			<if test="titleNo != null and titleNo != ''">
+				AND t.TITLE_NO = #{titleNo}
+			</if>
+			<if test="titleName != null and titleName != ''">
+				AND t.TITLE_NAME = #{titleName}
+			</if>
+			<if test="workArea != null and workArea != ''">
+				AND t.WORK_AREA = #{workArea}
+			</if>
+			<if test="natiPlac != null and natiPlac != ''">
+				AND t.NATI_PLAC = #{natiPlac}
+			</if>
+			<if test="nowAddre != null and nowAddre != ''">
+				AND t.NOW_ADDRE = #{nowAddre}
+			</if>
+			<if test="homeRegiType != null and homeRegiType != ''">
+				AND t.HOME_REGI_TYPE = #{homeRegiType}
+			</if>
+			<if test="arriWorkDate != null and arriWorkDate != ''">
+				AND t.ARRI_WORK_DATE = #{arriWorkDate}
+			</if>
+			<if test="finaObtaTimes != null and finaObtaTimes != ''">
+				AND t.FINA_OBTA_TIMES = #{finaObtaTimes}
+			</if>
+			<if test="weixinAddr != null and weixinAddr != ''">
+				AND t.WEIXIN_ADDR = #{weixinAddr}
+			</if>
+			<if test="profInfo != null and profInfo != ''">
+				AND t.PROF_INFO = #{profInfo}
+			</if>
+			<if test="bankCardNo != null and bankCardNo != ''">
+				AND t.BANK_CARD_NO = #{bankCardNo}
+			</if>
+			<if test="openAcctInfo != null and openAcctInfo != ''">
+				AND t.OPEN_ACCT_INFO = #{openAcctInfo}
+			</if>
+			<if test="prvCompName != null and prvCompName != ''">
+				AND t.PRV_COMP_NAME = #{prvCompName}
+			</if>
+			<if test="soseInfo != null and soseInfo != ''">
+				AND t.SOSE_INFO = #{soseInfo}
+			</if>
+			<if test="emplChnl != null and emplChnl != ''">
+				AND t.EMPL_CHNL = #{emplChnl}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysUserDetail">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_DETAIL t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="userName != null and userName != ''">
+				AND t.USER_NAME = #{userName}
+			</if>
+			<if test="idType != null and idType != ''">
+				AND t.ID_TYPE = #{idType}
+			</if>
+			<if test="idNo != null and idNo != ''">
+				AND t.ID_NO = #{idNo}
+			</if>
+			<if test="college != null and college != ''">
+				AND t.COLLEGE = #{college}
+			</if>
+			<if test="leaderComment != null and leaderComment != ''">
+				AND t.LEADER_COMMENT = #{leaderComment}
+			</if>
+			<if test="levelNo != null and levelNo != ''">
+				AND t.LEVEL_NO = #{levelNo}
+			</if>
+			<if test="levelName != null and levelName != ''">
+				AND t.LEVEL_NAME = #{levelName}
+			</if>
+			<if test="positionNo != null and positionNo != ''">
+				AND t.POSITION_NO = #{positionNo}
+			</if>
+			<if test="positionName != null and positionName != ''">
+				AND t.POSITION_NAME = #{positionName}
+			</if>
+			<if test="titleNo != null and titleNo != ''">
+				AND t.TITLE_NO = #{titleNo}
+			</if>
+			<if test="titleName != null and titleName != ''">
+				AND t.TITLE_NAME = #{titleName}
+			</if>
+			<if test="workArea != null and workArea != ''">
+				AND t.WORK_AREA = #{workArea}
+			</if>
+			<if test="natiPlac != null and natiPlac != ''">
+				AND t.NATI_PLAC = #{natiPlac}
+			</if>
+			<if test="nowAddre != null and nowAddre != ''">
+				AND t.NOW_ADDRE = #{nowAddre}
+			</if>
+			<if test="homeRegiType != null and homeRegiType != ''">
+				AND t.HOME_REGI_TYPE = #{homeRegiType}
+			</if>
+			<if test="arriWorkDate != null and arriWorkDate != ''">
+				AND t.ARRI_WORK_DATE = #{arriWorkDate}
+			</if>
+			<if test="finaObtaTimes != null and finaObtaTimes != ''">
+				AND t.FINA_OBTA_TIMES = #{finaObtaTimes}
+			</if>
+			<if test="weixinAddr != null and weixinAddr != ''">
+				AND t.WEIXIN_ADDR = #{weixinAddr}
+			</if>
+			<if test="profInfo != null and profInfo != ''">
+				AND t.PROF_INFO = #{profInfo}
+			</if>
+			<if test="bankCardNo != null and bankCardNo != ''">
+				AND t.BANK_CARD_NO = #{bankCardNo}
+			</if>
+			<if test="openAcctInfo != null and openAcctInfo != ''">
+				AND t.OPEN_ACCT_INFO = #{openAcctInfo}
+			</if>
+			<if test="prvCompName != null and prvCompName != ''">
+				AND t.PRV_COMP_NAME = #{prvCompName}
+			</if>
+			<if test="soseInfo != null and soseInfo != ''">
+				AND t.SOSE_INFO = #{soseInfo}
+			</if>
+			<if test="emplChnl != null and emplChnl != ''">
+				AND t.EMPL_CHNL = #{emplChnl}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysUserDetail">
+	insert into A_SYS_USER_DETAIL
+	(
+		ID,
+		USER_NAME,
+		ID_TYPE,
+		ID_NO,
+		COLLEGE,
+		LEADER_COMMENT,
+		LEVEL_NO,
+		LEVEL_NAME,
+		POSITION_NO,
+		POSITION_NAME,
+		TITLE_NO,
+		TITLE_NAME,
+		WORK_AREA,
+		NATI_PLAC,
+		NOW_ADDRE,
+		HOME_REGI_TYPE,
+		ARRI_WORK_DATE,
+		FINA_OBTA_TIMES,
+		WEIXIN_ADDR,
+		PROF_INFO,
+		BANK_CARD_NO,
+		OPEN_ACCT_INFO,
+		PRV_COMP_NAME,
+		SOSE_INFO,
+		EMPL_CHNL
+	)
+	values
+	(
+		#{id},
+		#{userName},
+		#{idType},
+		#{idNo},
+		#{college},
+		#{leaderComment},
+		#{levelNo},
+		#{levelName},
+		#{positionNo},
+		#{positionName},
+		#{titleNo},
+		#{titleName},
+		#{workArea},
+		#{natiPlac},
+		#{nowAddre},
+		#{homeRegiType},
+		#{arriWorkDate},
+		#{finaObtaTimes},
+		#{weixinAddr},
+		#{profInfo},
+		#{bankCardNo},
+		#{openAcctInfo},
+		#{prvCompName},
+		#{soseInfo},
+		#{emplChnl}
+		
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_USER_DETAIL t
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="userName != null">
+				t.USER_NAME = #{userName},
+			</if>
+			<if test="idType != null">
+				t.ID_TYPE = #{idType},
+			</if>
+			<if test="idNo != null">
+				t.ID_NO = #{idNo},
+			</if>
+			<if test="college != null">
+				t.COLLEGE = #{college},
+			</if>
+			<if test="leaderComment != null">
+				t.LEADER_COMMENT = #{leaderComment},
+			</if>
+			<if test="levelNo != null">
+				t.LEVEL_NO = #{levelNo},
+			</if>
+			<if test="levelName != null">
+				t.LEVEL_NAME = #{levelName},
+			</if>
+			<if test="positionNo != null">
+				t.POSITION_NO = #{positionNo},
+			</if>
+			<if test="positionName != null">
+				t.POSITION_NAME = #{positionName},
+			</if>
+			<if test="titleNo != null">
+				t.TITLE_NO = #{titleNo},
+			</if>
+			<if test="titleName != null">
+				t.TITLE_NAME = #{titleName},
+			</if>
+			<if test="workArea != null">
+				t.WORK_AREA = #{workArea},
+			</if>
+			<if test="natiPlac != null">
+				t.NATI_PLAC = #{natiPlac},
+			</if>
+			<if test="nowAddre != null">
+				t.NOW_ADDRE = #{nowAddre},
+			</if>
+			<if test="homeRegiType != null">
+				t.HOME_REGI_TYPE = #{homeRegiType},
+			</if>
+			<if test="arriWorkDate != null">
+				t.ARRI_WORK_DATE = #{arriWorkDate},
+			</if>
+			<if test="finaObtaTimes != null">
+				t.FINA_OBTA_TIMES = #{finaObtaTimes},
+			</if>
+			<if test="weixinAddr != null">
+				t.WEIXIN_ADDR = #{weixinAddr},
+			</if>
+			<if test="profInfo != null">
+				t.PROF_INFO = #{profInfo},
+			</if>
+			<if test="bankCardNo != null">
+				t.BANK_CARD_NO = #{bankCardNo},
+			</if>
+			<if test="openAcctInfo != null">
+				t.OPEN_ACCT_INFO = #{openAcctInfo},
+			</if>
+			<if test="prvCompName != null">
+				t.PRV_COMP_NAME = #{prvCompName},
+			</if>
+			<if test="soseInfo != null">
+				t.SOSE_INFO = #{soseInfo},
+			</if>
+			<if test="emplChnl != null">
+				t.EMPL_CHNL = #{emplChnl},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_USER_DETAIL WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysUserDetail">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_DETAIL t
+		WHERE t.ID=#{id}
+	</select>
+</mapper>
+
+

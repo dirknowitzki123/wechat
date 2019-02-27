@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysOrgMapper">
+	<sql id="column">
+		t.ID id,
+		t.ORG_CODE orgCode,
+		t.ORG_NAME orgName,
+		t.PARENT_ID parentId,
+		t.ORG_ORDER orgOrder,
+		t.ORG_LEVEL orgLevel,
+		t.ORG_TYPE orgType,
+		t.ORG_PATH orgPath,
+		t.PROV_NO provNo,
+		t.PROV_NAME provName,
+		t.CITY_NO cityNo,
+		t.CITY_NAME cityName,
+		t.AREA_NO areaNo,
+		t.AREA_NAME areaName,
+		t.ORG_ADDR orgAddr,
+		t.ORG_PHONE orgPhone,
+		t.REMARK remark,
+		t.STATUS status,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysOrg">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ORG t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND t.ORG_CODE = #{orgCode}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND t.ORG_NAME = #{orgName}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				AND t.PARENT_ID = #{parentId}
+			</if>
+			<if test="orgOrder != null and orgOrder != ''">
+				AND t.ORG_ORDER = #{orgOrder}
+			</if>
+			<if test="orgLevel != null and orgLevel != ''">
+				AND t.ORG_LEVEL = #{orgLevel}
+			</if>
+			<if test="orgType != null and orgType != ''">
+				AND t.ORG_TYPE = #{orgType}
+			</if>
+			<if test="orgPath != null and orgPath != ''">
+				AND t.ORG_PATH = #{orgPath}
+			</if>
+			<if test="orgAddr != null and orgAddr != ''">
+				AND t.ORG_ADDR = #{orgAddr}
+			</if>
+			<if test="orgPhone != null and orgPhone != ''">
+				AND t.ORG_PHONE = #{orgPhone}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysOrg">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ORG t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND t.ORG_CODE = #{orgCode}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND t.ORG_NAME = #{orgName}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				AND t.PARENT_ID = #{parentId}
+			</if>
+			<if test="orgOrder != null and orgOrder != ''">
+				AND t.ORG_ORDER = #{orgOrder}
+			</if>
+			<if test="orgLevel != null and orgLevel != ''">
+				AND t.ORG_LEVEL = #{orgLevel}
+			</if>
+			<if test="orgType != null and orgType != ''">
+				AND t.ORG_TYPE = #{orgType}
+			</if>
+			<if test="orgPath != null and orgPath != ''">
+				AND t.ORG_PATH = #{orgPath}
+			</if>
+			<if test="orgAddr != null and orgAddr != ''">
+				AND t.ORG_ADDR = #{orgAddr}
+			</if>
+			<if test="orgPhone != null and orgPhone != ''">
+				AND t.ORG_PHONE = #{orgPhone}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+		ORDER BY t.PARENT_ID,t.ORG_ORDER
+	</select>
+	
+	<insert id="insert" parameterType="com.by.system.model.ASysOrg">
+	insert into A_SYS_ORG
+	(
+		ID,
+		ORG_CODE,
+		ORG_NAME,
+		PARENT_ID,
+		ORG_ORDER,
+		ORG_LEVEL,
+		ORG_TYPE,
+		ORG_PATH,
+		PROV_NO,
+		PROV_NAME,
+		CITY_NO,
+		CITY_NAME,
+		AREA_NO,
+		AREA_NAME,
+		ORG_ADDR,
+		ORG_PHONE,
+		REMARK,
+		STATUS,
+		INST_DATE,
+		INST_USER_NO,
+		UPDT_DATE
+	)
+	values
+	(
+		#{id},
+		#{orgCode},
+		#{orgName},
+		#{parentId},
+		#{orgOrder},
+		#{orgLevel},
+		#{orgType},
+		#{orgPath},
+		#{provNo},
+		#{provName},
+		#{cityNo},
+		#{cityName},
+		#{areaNo},
+		#{areaName},
+		#{orgAddr},
+		#{orgPhone},
+		#{remark},
+		#{status},
+		#{instDate},
+		#{instUserNo},
+		#{updtDate}
+	)
+	</insert>
+	
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_ORG
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="orgCode != null">
+				ORG_CODE = #{orgCode},
+			</if>
+			<if test="orgName != null">
+				ORG_NAME = #{orgName},
+			</if>
+			<if test="parentId != null">
+				PARENT_ID = #{parentId},
+			</if>
+			<if test="orgOrder != null">
+				ORG_ORDER = #{orgOrder},
+			</if>
+			<if test="orgLevel != null">
+				ORG_LEVEL = #{orgLevel},
+			</if>
+			<if test="orgType != null">
+				ORG_TYPE = #{orgType},
+			</if>
+			<if test="orgPath != null">
+				ORG_PATH = #{orgPath},
+			</if>
+			<if test="provNo != null">
+				PROV_NO = #{provNo},
+			</if>
+			<if test="provName != null">
+				PROV_NAME = #{provName},
+			</if>
+			<if test="cityNo != null">
+				CITY_NO = #{cityNo},
+			</if>
+			<if test="cityName != null">
+				CITY_NAME = #{cityName},
+			</if>
+			<if test="areaNo != null">
+				AREA_NO = #{areaNo},
+			</if>
+			<if test="areaName != null">
+				AREA_NAME = #{areaName},
+			</if>
+			<if test="orgAddr != null">
+				ORG_ADDR = #{orgAddr},
+			</if>
+			<if test="orgPhone != null">
+				ORG_PHONE = #{orgPhone},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+			<if test="status != null">
+				STATUS = #{status},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ORG WHERE ID=#{id}
+	</delete>
+	
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysOrg">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ORG t
+		WHERE t.ID=#{id}
+	</select>
+	
+	<select id="getListBo" parameterType="java.util.Map" resultType="com.by.system.dto.ASysOrgDTO">
+		SELECT
+			<include refid="columnBo"/>
+		FROM A_SYS_ORG t 
+		LEFT  JOIN a_sys_org t2 on t.PARENT_ID = t2.ID 
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND t.ORG_CODE = #{orgCode}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND t.ORG_NAME = #{orgName}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				AND t.PARENT_ID = #{parentId}
+			</if>
+			<if test="orgOrder != null and orgOrder != ''">
+				AND t.ORG_ORDER = #{orgOrder}
+			</if>
+			<if test="orgLevel != null and orgLevel != ''">
+				AND t.ORG_LEVEL = #{orgLevel}
+			</if>
+			<if test="orgType != null and orgType != ''">
+				AND t.ORG_TYPE = #{orgType}
+			</if>
+			<if test="orgPath != null and orgPath != ''">
+				AND t.ORG_PATH = #{orgPath}
+			</if>
+			<if test="orgAddr != null and orgAddr != ''">
+				AND t.ORG_ADDR = #{orgAddr}
+			</if>
+			<if test="orgPhone != null and orgPhone != ''">
+				AND t.ORG_PHONE = #{orgPhone}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	
+	<sql id="columnBo">
+		t.ID id,
+		t.ORG_CODE orgCode,
+		t.ORG_NAME orgName,
+		t.PARENT_ID parentId,
+		t.ORG_ORDER orgOrder,
+		t.ORG_LEVEL orgLevel,
+		t.ORG_TYPE orgType,
+		t.ORG_PATH orgPath,
+		t.ORG_ADDR orgAddr,
+		t.ORG_PHONE orgPhone,
+		t.REMARK remark,
+		t.STATUS status,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate,
+		t2.ORG_NAME  parentOgrName
+	</sql>
+</mapper>
+
+

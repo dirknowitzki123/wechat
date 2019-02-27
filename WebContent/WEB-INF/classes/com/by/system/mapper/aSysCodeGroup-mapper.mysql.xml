@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysCodeGroupMapper">
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysCodeGroup">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_CODE_GROUP t
+		WHERE
+			t.VAL_CODE IS NOT NULL
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="groupCode != null and groupCode != ''">
+				AND t.GROUP_CODE = #{groupCode}
+			</if>
+			<if test="typeCode != null and typeCode != ''">
+				AND t.TYPE_CODE = #{typeCode}
+			</if>
+			<if test="valCode != null and valCode != ''">
+				AND t.VAL_CODE = #{valCode}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysCodeGroup">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_CODE_GROUP t
+		WHERE
+			t.VAL_CODE IS NOT NULL
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="groupCode != null and groupCode != ''">
+				AND t.GROUP_CODE = #{groupCode}
+			</if>
+			<if test="typeCode != null and typeCode != ''">
+				AND t.TYPE_CODE = #{typeCode}
+			</if>
+			<if test="valCode != null and valCode != ''">
+				AND t.VAL_CODE = #{valCode}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+	</select>
+	<select id="getGroupDistinct" parameterType="java.util.Map" resultType="com.by.system.model.ASysCodeGroup">
+		SELECT
+			DISTINCT t.GROUP_CODE groupCode,t.REMARK remark,t.TYPE_CODE typeCode
+		FROM A_SYS_CODE_GROUP t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="groupCode != null and groupCode != ''">
+				AND t.GROUP_CODE = #{groupCode}
+			</if>
+			<if test="typeCode != null and typeCode != ''">
+				AND t.TYPE_CODE = #{typeCode}
+			</if>
+			<if test="valCode != null and valCode != ''">
+				AND t.VAL_CODE = #{valCode}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+		ORDER BY t.GROUP_CODE
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysCodeGroup">
+	insert into A_SYS_CODE_GROUP
+	(
+		ID,
+		GROUP_CODE,
+		TYPE_CODE,
+		VAL_CODE,
+		REMARK,
+		INST_DATE,
+		INST_USER_NO,
+		UPDT_DATE
+	)
+	values
+	(
+		#{id},
+		#{groupCode},
+		#{typeCode},
+		#{valCode},
+		#{remark},
+		#{instDate},
+		#{instUserNo},
+		#{updtDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_CODE_GROUP
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="groupCode != null">
+				GROUP_CODE = #{groupCode},
+			</if>
+			<if test="typeCode != null">
+				TYPE_CODE = #{typeCode},
+			</if>
+			<if test="valCode != null">
+				VAL_CODE = #{valCode},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_CODE_GROUP WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysCodeGroup">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_CODE_GROUP t
+		WHERE
+			t.VAL_CODE IS NOT NULL 
+		AND t.ID=#{id}
+	</select>
+	<sql id="column">
+		t.ID id,
+		t.GROUP_CODE groupCode,
+		t.TYPE_CODE typeCode,
+		t.VAL_CODE valCode,
+		t.REMARK remark,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate
+	</sql>
+	
+	<!-- 查询码表组中的码值  -->	
+	<select id="getGrpExistCodeLst" parameterType="map" resultType="com.by.system.model.ASysCodeInfo">
+		SELECT
+			<include refid="com.by.system.mapper.ASysCodeInfoMapper.column" />
+		FROM
+			a_sys_code_group s
+		JOIN a_sys_code_info t ON s.VAL_CODE = t.VAL_CODE 
+		<if test="typeCode != null and typeCode != '' ">
+			AND s.TYPE_CODE = t.TYPE_CODE
+		</if>
+		WHERE
+			s.group_code = #{groupCode}
+		<if test="typeCode != null and typeCode != '' ">
+			AND s.TYPE_CODE = #{typeCode}
+		</if>
+		<if test="valCode != null and valCode != '' ">
+			AND t.VAL_CODE = #{valCode}
+		</if>
+		<if test="valName !=null and valName != ''">
+			AND t.VAL_NAME like CONCAT('%',#{valName},'%') 
+		</if>
+	</select>
+	
+	<!--查询码表组中没有被关联的码值  -->
+	<select id="getGrpNotExistCodeLst" parameterType="map" resultType="com.by.system.model.ASysCodeInfo">
+		SELECT
+			<include refid="com.by.system.mapper.ASysCodeInfoMapper.column" />
+		FROM
+			a_sys_code_info t
+		WHERE
+			NOT EXISTS (
+				SELECT
+					*
+				FROM
+					a_sys_code_group g
+				WHERE
+					g.VAL_CODE = t.VAL_CODE
+				AND g.TYPE_CODE = t.TYPE_CODE
+				AND g.GROUP_CODE = #{groupCode}
+			)
+		AND t.TYPE_CODE = #{typeCode}
+		<if test="valCode != null and valCode != '' ">
+			AND t.VAL_CODE = #{valCode}
+		</if>
+		<if test="valName !=null and valName != ''">
+			AND t.VAL_NAME like CONCAT('%',#{valName},'%') 
+		</if>
+	</select>
+	
+	<update id="updateByTypeCodeWithGroupCode"  parameterType="map" >
+		UPDATE A_SYS_CODE_GROUP
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="id != null">
+				ID = #{id},
+			</if>
+			<if test="valCode != null">
+				VAL_CODE = #{valCode},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+		</trim>
+		WHERE 
+			TYPE_CODE = #{typeCode}
+		AND 
+			GROUP_CODE = #{groupCode}
+	</update>
+	
+	<!--删除码组基本信息那条记录,VAL_CODE为空就是那条基本信息的记录  -->
+	<delete id="deleteGrpBasicInfo" parameterType="map">
+		DELETE FROM 
+			A_SYS_CODE_GROUP 
+		WHERE 
+			TYPE_CODE = #{typeCode}
+		AND 
+			GROUP_CODE = #{groupCode}
+		AND
+			VAL_CODE IS NULL
+	</delete>
+	
+	<!--获取码表组基本信息，val_code为空则是基本信息那条记录  -->
+	<select id="getGrpBasicInfo" parameterType="java.util.Map" resultType="com.by.system.model.ASysCodeGroup">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_CODE_GROUP t
+		<where>
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="groupCode != null and groupCode != ''">
+				AND t.GROUP_CODE = #{groupCode}
+			</if>
+			<if test="typeCode != null and typeCode != ''">
+				AND t.TYPE_CODE = #{typeCode}
+			</if>
+			<if test="valCode != null and valCode != ''">
+				AND t.VAL_CODE = #{valCode}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</where>
+	</select>
+	
+</mapper>
+
+

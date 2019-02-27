@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysRoleUserMapper">
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysRoleUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ROLE_USER t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="roleId != null and roleId != ''">
+				AND t.ROLE_ID = #{roleId}
+			</if>
+			<if test="userId != null and userId != ''">
+				AND t.USER_ID = #{userId}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysRoleUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ROLE_USER t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="roleId != null and roleId != ''">
+				AND t.ROLE_ID = #{roleId}
+			</if>
+			<if test="userId != null and userId != ''">
+				AND t.USER_ID = #{userId}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysRoleUser">
+	insert into A_SYS_ROLE_USER
+	(
+		ID,
+		ROLE_ID,
+		USER_ID,
+		REMARK
+	)
+	values
+	(
+		#{id},
+		#{roleId},
+		#{userId},
+		#{remark}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_ROLE_USER
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="roleId != null">
+				ROLE_ID = #{roleId},
+			</if>
+			<if test="userId != null">
+				USER_ID = #{userId},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ROLE_USER WHERE ID=#{id}
+	</delete>
+	<delete id="deleteByUserId" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ROLE_USER WHERE USER_ID=#{userId}
+	</delete>
+	<delete id="deleteByRoleId" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ROLE_USER WHERE ROLE_ID=#{roleId}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysRoleUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ROLE_USER t
+		WHERE t.ID=#{id}
+	</select>
+	<sql id="column">
+		t.ID id,
+		t.ROLE_ID roleId,
+		t.USER_ID userId,
+		t.REMARK remark
+	</sql>
+</mapper>
+
+

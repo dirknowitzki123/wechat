@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.manage.wechat.dto.mapper.TCustBaseInfoDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.CUST_NO custNo,
+		t.PARENT_REFERRAL_CODE parentReferralCode,
+		t.REFERRAL_LEVEL referralLevel,
+		t.REFERRAL_CODE referralCode,
+		t.REFERRAL_PATH referralPath,
+		t.CUST_NAME custName,
+		t.CERT_NO certNo,
+		t.PHONE_NO phoneNo,
+		t.BANK_NO bankNo,
+		t.OPENING_BANK openingBank,
+		t.CREATE_DATE createDate,
+		t.MODIFY_DATE modifyDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.TCustBaseInfo">
+		SELECT
+			<include refid="column"/>
+		FROM T_CUST_BASE_INFO t
+		LEFT JOIN T_CUST_LOGIN_INFO l ON t.CUST_NO = l.CUST_NO
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="custNo != null and custNo != ''">
+				AND t.CUST_NO = #{custNo}
+			</if>
+			<if test="parentReferralCode != null and parentReferralCode != ''">
+				AND t.PARENT_REFERRAL_CODE = #{parentReferralCode}
+			</if>
+			<if test="referralLevel != null and referralLevel != ''">
+				AND t.REFERRAL_LEVEL = #{referralLevel}
+			</if>
+			<if test="referralCode != null and referralCode != ''">
+				AND t.REFERRAL_CODE = #{referralCode}
+			</if>
+			<if test="referralPath != null and referralPath != ''">
+				AND t.REFERRAL_PATH = #{referralPath}
+			</if>
+			<if test="custName != null and custName != ''">
+				AND t.CUST_NAME = #{custName}
+			</if>
+			<if test="certNo != null and certNo != ''">
+				AND t.CERT_NO = #{certNo}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				AND t.PHONE_NO = #{phoneNo}
+			</if>
+			<if test="bankNo != null and bankNo != ''">
+				AND t.BANK_NO = #{bankNo}
+			</if>
+			<if test="openingBank != null and openingBank != ''">
+				AND t.OPENING_BANK = #{openingBank}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="status != null and status != ''">
+				AND l.STATUS != #{status}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.manage.wechat.dto.TCustBaseInfoDto">
+		SELECT
+			<include refid="column"/>,
+			l.STATUS status
+		FROM T_CUST_BASE_INFO t
+		LEFT JOIN T_CUST_LOGIN_INFO l ON t.CUST_NO = l.CUST_NO
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="custNo != null and custNo != ''">
+				AND t.CUST_NO = #{custNo}
+			</if>
+			<if test="parentReferralCode != null and parentReferralCode != ''">
+				AND t.PARENT_REFERRAL_CODE = #{parentReferralCode}
+			</if>
+			<if test="referralLevel != null and referralLevel != ''">
+				AND t.REFERRAL_LEVEL = #{referralLevel}
+			</if>
+			<if test="referralCode != null and referralCode != ''">
+				AND t.REFERRAL_CODE = #{referralCode}
+			</if>
+			<if test="referralPath != null and referralPath != ''">
+				AND t.REFERRAL_PATH = #{referralPath}
+			</if>
+			<if test="custName != null and custName != ''">
+				AND t.CUST_NAME = #{custName}
+			</if>
+			<if test="certNo != null and certNo != ''">
+				AND t.CERT_NO = #{certNo}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				AND t.PHONE_NO = #{phoneNo}
+			</if>
+			<if test="bankNo != null and bankNo != ''">
+				AND t.BANK_NO = #{bankNo}
+			</if>
+			<if test="openingBank != null and openingBank != ''">
+				AND t.OPENING_BANK = #{openingBank}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="status != null and status != ''">
+				AND l.STATUS != #{status}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.bussiness.wechat.model.TCustBaseInfo">
+	insert into T_CUST_BASE_INFO
+	(
+		ID,
+		CUST_NO,
+		PARENT_REFERRAL_CODE,
+		REFERRAL_LEVEL,
+		REFERRAL_CODE,
+		REFERRAL_PATH,
+		CUST_NAME,
+		CERT_NO,
+		PHONE_NO,
+		BANK_NO,
+		OPENING_BANK,
+		CREATE_DATE,
+		MODIFY_DATE
+	)
+	values
+	(
+		#{id},
+		#{custNo},
+		#{parentReferralCode},
+		#{referralLevel},
+		#{referralCode},
+		#{referralPath},
+		#{custName},
+		#{certNo},
+		#{phoneNo},
+		#{bankNo},
+		#{openingBank},
+		#{createDate},
+		#{modifyDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE T_CUST_BASE_INFO
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="custNo != null">
+				CUST_NO = #{custNo},
+			</if>
+			<if test="parentReferralCode != null">
+				PARENT_REFERRAL_CODE = #{parentReferralCode},
+			</if>
+			<if test="referralLevel != null">
+				REFERRAL_LEVEL = #{referralLevel},
+			</if>
+			<if test="referralCode != null">
+				REFERRAL_CODE = #{referralCode},
+			</if>
+			<if test="referralPath != null">
+				REFERRAL_PATH = #{referralPath},
+			</if>
+			<if test="custName != null">
+				CUST_NAME = #{custName},
+			</if>
+			<if test="certNo != null">
+				CERT_NO = #{certNo},
+			</if>
+			<if test="phoneNo != null">
+				PHONE_NO = #{phoneNo},
+			</if>
+			<if test="bankNo != null">
+				BANK_NO = #{bankNo},
+			</if>
+			<if test="openingBank != null">
+				OPENING_BANK = #{openingBank},
+			</if>
+			<if test="createDate != null">
+				CREATE_DATE = #{createDate},
+			</if>
+			<if test="modifyDate != null">
+				MODIFY_DATE = #{modifyDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM T_CUST_BASE_INFO WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.bussiness.wechat.model.TCustBaseInfo">
+		SELECT
+			<include refid="column"/>
+		FROM T_CUST_BASE_INFO t
+		WHERE ID=#{id}
+	</select>
+	
+	<select id="getChildren" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.TCustBaseInfo">
+        SELECT
+			<include refid="column"/>,
+			l.STATUS status
+		FROM T_CUST_BASE_INFO t
+		LEFT JOIN T_CUST_LOGIN_INFO l ON t.CUST_NO = l.CUST_NO
+        WHERE t.REFERRAL_PATH LIKE  '%${referralPath}%'
+          AND l.STATUS != #{status}
+    </select>
+    
+    <select id="getAllList" parameterType="java.util.Map" resultType="com.by.manage.wechat.dto.TCustBaseInfoDto">
+		SELECT
+			<include refid="column"/>,
+			l.STATUS status,
+			l.IMEI imei
+		FROM T_CUST_BASE_INFO t
+		LEFT JOIN T_CUST_LOGIN_INFO l ON t.CUST_NO = l.CUST_NO
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="custNo != null and custNo != ''">
+				AND t.CUST_NO = #{custNo}
+			</if>
+			<if test="parentReferralCode != null and parentReferralCode != ''">
+				AND t.PARENT_REFERRAL_CODE = #{parentReferralCode}
+			</if>
+			<if test="referralLevel != null and referralLevel != ''">
+				AND t.REFERRAL_LEVEL = #{referralLevel}
+			</if>
+			<if test="referralCode != null and referralCode != ''">
+				AND t.REFERRAL_CODE = #{referralCode}
+			</if>
+			<if test="referralPath != null and referralPath != ''">
+				AND t.REFERRAL_PATH = #{referralPath}
+			</if>
+			<if test="custName != null and custName != ''">
+				AND t.CUST_NAME = #{custName}
+			</if>
+			<if test="certNo != null and certNo != ''">
+				AND t.CERT_NO = #{certNo}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				AND t.PHONE_NO = #{phoneNo}
+			</if>
+			<if test="bankNo != null and bankNo != ''">
+				AND t.BANK_NO = #{bankNo}
+			</if>
+			<if test="openingBank != null and openingBank != ''">
+				AND t.OPENING_BANK = #{openingBank}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</trim>
+	</select>
+</mapper>
+
+

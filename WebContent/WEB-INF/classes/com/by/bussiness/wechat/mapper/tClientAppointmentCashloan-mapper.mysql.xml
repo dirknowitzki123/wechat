@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.bussiness.wechat.mapper.TClientAppointmentCashloanMapper">
+	<sql id="column">
+		t.ID id,
+		t.CUST_NAME custName,
+		t.PHONE_NO phoneNo,
+		t.IVING_CITY ivingCity,
+		t.REFERRAL_CODE referralCode,
+		t.IS_STAGED isStaged,
+		t.IS_CREDITES isCredites,
+		t.CREATE_DATE createDate,
+		t.MODIFY_DATE modifyDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.TClientAppointmentCashloan">
+		SELECT
+			<include refid="column"/>
+		FROM T_CLIENT_APPOINTMENT_CASHLOAN t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="custName != null and custName != ''">
+				AND t.CUST_NAME = #{custName}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				AND t.PHONE_NO = #{phoneNo}
+			</if>
+			<if test="ivingCity != null and ivingCity != ''">
+				AND t.IVING_CITY = #{ivingCity}
+			</if>
+			<if test="referralCode != null and referralCode != ''">
+				AND t.REFERRAL_CODE = #{referralCode}
+			</if>
+			<if test="isStaged != null and isStaged != ''">
+				AND t.IS_STAGED = #{isStaged}
+			</if>
+			<if test="isCredites != null and isCredites != ''">
+				AND t.IS_CREDITES = #{isCredites}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.TClientAppointmentCashloan">
+		SELECT
+			<include refid="column"/>
+		FROM T_CLIENT_APPOINTMENT_CASHLOAN t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="custName != null and custName != ''">
+				AND t.CUST_NAME = #{custName}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				AND t.PHONE_NO = #{phoneNo}
+			</if>
+			<if test="ivingCity != null and ivingCity != ''">
+				AND t.IVING_CITY = #{ivingCity}
+			</if>
+			<if test="referralCode != null and referralCode != ''">
+				AND t.REFERRAL_CODE = #{referralCode}
+			</if>
+			<if test="isStaged != null and isStaged != ''">
+				AND t.IS_STAGED = #{isStaged}
+			</if>
+			<if test="isCredites != null and isCredites != ''">
+				AND t.IS_CREDITES = #{isCredites}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.bussiness.wechat.model.TClientAppointmentCashloan">
+	insert into T_CLIENT_APPOINTMENT_CASHLOAN
+	(
+		ID,
+		CUST_NAME,
+		PHONE_NO,
+		IVING_CITY,
+		REFERRAL_CODE,
+		IS_STAGED,
+		IS_CREDITES,
+		CREATE_DATE,
+		MODIFY_DATE
+	)
+	values
+	(
+		#{id},
+		#{custName},
+		#{phoneNo},
+		#{ivingCity},
+		#{referralCode},
+		#{isStaged},
+		#{isCredites},
+		#{createDate},
+		#{modifyDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE T_CLIENT_APPOINTMENT_CASHLOAN
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="custName != null">
+				CUST_NAME = #{custName},
+			</if>
+			<if test="phoneNo != null">
+				PHONE_NO = #{phoneNo},
+			</if>
+			<if test="ivingCity != null">
+				IVING_CITY = #{ivingCity},
+			</if>
+			<if test="referralCode != null">
+				REFERRAL_CODE = #{referralCode},
+			</if>
+			<if test="isStaged != null">
+				IS_STAGED = #{isStaged},
+			</if>
+			<if test="isCredites != null">
+				IS_CREDITES = #{isCredites},
+			</if>
+			<if test="createDate != null">
+				CREATE_DATE = #{createDate},
+			</if>
+			<if test="modifyDate != null">
+				MODIFY_DATE = #{modifyDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM T_CLIENT_APPOINTMENT_CASHLOAN WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.bussiness.wechat.model.TClientAppointmentCashloan">
+		SELECT
+			<include refid="column"/>
+		FROM T_CLIENT_APPOINTMENT_CASHLOAN t
+		WHERE ID=#{id}
+	</select>
+</mapper>
+
+

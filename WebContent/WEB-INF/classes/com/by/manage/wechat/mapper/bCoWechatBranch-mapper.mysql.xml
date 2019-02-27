@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.manage.wechat.mapper.BCoWechatBranchMapper">
+	<sql id="column">
+		t.ID id,
+		t.BRANCH_NAME branchName,
+		t.REFER_CODE referCode,
+		t.PAR_REFER_CODE parReferCode,
+		t.STATUS status,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.manage.wechat.model.BCoWechatBranch">
+		SELECT
+			<include refid="column"/>
+		FROM B_CO_WECHAT_BRANCH t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="branchName != null and branchName != ''">
+				AND t.BRANCH_NAME = #{branchName}
+			</if>
+			<if test="referCode != null and referCode != ''">
+				AND t.REFER_CODE = #{referCode}
+			</if>
+			<if test="parReferCode != null and parReferCode != ''">
+				AND t.PAR_REFER_CODE = #{parReferCode}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.manage.wechat.model.BCoWechatBranch">
+		SELECT
+			<include refid="column"/>
+		FROM B_CO_WECHAT_BRANCH t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="branchName != null and branchName != ''">
+				AND t.BRANCH_NAME = #{branchName}
+			</if>
+			<if test="referCode != null and referCode != ''">
+				AND t.REFER_CODE = #{referCode}
+			</if>
+			<if test="parReferCode != null and parReferCode != ''">
+				AND t.PAR_REFER_CODE = #{parReferCode}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.manage.wechat.model.BCoWechatBranch">
+	insert into B_CO_WECHAT_BRANCH
+	(
+		ID,
+		BRANCH_NAME,
+		REFER_CODE,
+		PAR_REFER_CODE,
+		STATUS,
+		INST_DATE,
+		INST_USER_NO,
+		UPDT_DATE
+	)
+	values
+	(
+		#{id},
+		#{branchName},
+		#{referCode},
+		#{parReferCode},
+		#{status},
+		#{instDate},
+		#{instUserNo},
+		#{updtDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE B_CO_WECHAT_BRANCH
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="branchName != null">
+				BRANCH_NAME = #{branchName},
+			</if>
+			<if test="referCode != null">
+				REFER_CODE = #{referCode},
+			</if>
+			<if test="parReferCode != null">
+				PAR_REFER_CODE = #{parReferCode},
+			</if>
+			<if test="status != null">
+				STATUS = #{status},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM B_CO_WECHAT_BRANCH WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.manage.wechat.model.BCoWechatBranch">
+		SELECT
+			<include refid="column"/>
+		FROM B_CO_WECHAT_BRANCH t
+		WHERE ID=#{id}
+	</select>
+</mapper>
+
+

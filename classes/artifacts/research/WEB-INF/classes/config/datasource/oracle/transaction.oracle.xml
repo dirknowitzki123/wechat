@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd">
+    <bean id="transactionManager2" class="org.springframework.orm.hibernate4.HibernateTransactionManager">  
+        <property name="sessionFactory" ref="sessionFactoryOracle" />  
+    </bean>  
+    <tx:advice id="transactionManagerAdivice2" transaction-manager="transactionManager2">
+        <tx:attributes>
+        	<!--只读-->
+			<tx:method name="get*" isolation="DEFAULT"
+				propagation="SUPPORTS" read-only="true" />
+			<tx:method name="load*" isolation="DEFAULT"
+				propagation="SUPPORTS" read-only="true" />
+			<tx:method name="select*" isolation="DEFAULT"
+				propagation="SUPPORTS" read-only="true" />
+			<tx:method name="query*" isolation="DEFAULT"
+				propagation="SUPPORTS" read-only="true" />
+			<tx:method name="criteria*" isolation="DEFAULT"
+				propagation="SUPPORTS" read-only="true" />
+			<!--其他方法 -->
+			<tx:method name="init*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="insert*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="update*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="edit*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="save*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="add*" isolation="DEFAULT" read-only="false"
+				propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="create*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="reject*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="pass*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="submit*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="cancel*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="publish*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="del*" isolation="DEFAULT" read-only="false"
+				propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="undel*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="remove*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="batchCommit*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="execute*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<!-- 新开事务 -->
+			<tx:method name="invoke*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRES_NEW"
+				rollback-for="Exception" />
+			<tx:method name="make*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRES_NEW"
+				rollback-for="Exception" />
+			<tx:method name="*" isolation="DEFAULT"
+				read-only="false" propagation="REQUIRED"
+				rollback-for="Exception" />
+        </tx:attributes>
+    </tx:advice>
+	<aop:config>
+		<aop:pointcut expression="execution(* com..service.*.*(..))" id="tsServicePc" />
+    	<aop:advisor advice-ref="transactionManagerAdivice2" pointcut-ref="tsServicePc" />
+    </aop:config>
+    
+    <aop:config expose-proxy="true" ></aop:config>
+    <!-- 
+    <tx:annotation-driven transaction-manager="transactionManager"/> -->
+</beans>

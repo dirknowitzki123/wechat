@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.dto.mapper.ASysUserGroupDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.GROUP_NO groupNo,
+		t.GROUP_NAME groupName,
+		t.REMARK remark,
+		t.STAT stat,
+		t.INST_DATE instDate,
+		t.UPDT_DATE updtDate
+	</sql>
+	
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysUserGroup">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_GROUP t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="groupNo != null and groupNo != ''">
+				AND t.GROUP_NO = #{groupNo}
+			</if>
+			<if test="groupName != null and groupName != ''">
+				AND t.GROUP_NAME like CONCAT('%',#{groupName},'%')
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="stat != null and stat != ''">
+				AND t.STAT = #{stat}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	
+</mapper>
+
+

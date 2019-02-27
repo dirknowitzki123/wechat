@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysGroupUserMapper">
+	<sql id="column">
+		t.ID id,
+		t.GROUP_NO groupNo,
+		t.LOGIN_NAME loginName
+	</sql>
+	<sql id="userColumn">
+		a.ID id,
+		a.USER_NAME userName,
+		a.LOGIN_NAME loginName,
+		a.PASSWORD password,
+		a.ORG_CODE orgCode,
+		a.ORG_NAME orgName,
+		a.ROLE_CODE roleCode,
+		a.ROLE_NAME roleName,
+		a.STATUS status,
+		a.SEX sex,
+		a.BIRHDAY birhday,
+		a.CARD_NO cardNo,
+		a.POLITICAL_STATUS politicalStatus,
+		a.USER_LEVEL userLevel,
+		a.WORK_YEARS workYears,
+		a.EDUCATION education,
+		a.MOBILE mobile,
+		a.EMAIL email,
+		a.HOME_ADDR homeAddr,
+		a.HOME_TEL homeTel,
+		a.OFFICE_TEL officeTel,
+		a.INST_USER_NO instUserNo,
+		a.INST_USER_NAME instUserName,
+		a.INST_DATE instDate,
+		a.INST_ORG_CODE instOrgCode,
+		a.INST_ORG_NAME instOrgName,
+		a.UPDT_USER_NO updtUserNo,
+		a.UPDT_USER_NAME updtUserName,
+		a.UPDT_DATE updtDate,
+		a.UPDT_ORG_CODE updtOrgCode,
+		a.UPDT_ORG_NAME updtOrgName,
+		a.REMARK remark,
+		a.CREDIT_YEAR creditYear,
+		a.LOGIN_ERR_NUM loginErrNum,
+		a.LAST_LOGIN_IP lastLoginIp,
+		a.LAST_LOGIN_DATE lastLoginDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysGroupUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_GROUP_USER t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="groupNo != null and groupNo != ''">
+				AND t.GROUP_NO = #{groupNo}
+			</if>
+			<if test="loginName != null and loginName != ''">
+				AND t.LOGIN_NAME = #{loginName}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysGroupUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_GROUP_USER t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="groupNo != null and groupNo != ''">
+				AND t.GROUP_NO = #{groupNo}
+			</if>
+			<if test="loginName != null and loginName != ''">
+				AND t.LOGIN_NAME = #{loginName}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysGroupUser">
+	insert into A_SYS_GROUP_USER
+	(
+		ID,
+		GROUP_NO,
+		LOGIN_NAME
+	)
+	values
+	(
+		#{id},
+		#{groupNo},
+		#{loginName}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_GROUP_USER
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="groupNo != null">
+				GROUP_NO = #{groupNo},
+			</if>
+			<if test="loginName != null">
+				LOGIN_NAME = #{loginName},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_GROUP_USER WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysGroupUser">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_GROUP_USER t
+		WHERE t.ID=#{id}
+	</select>
+	<!-- 查询用户组绑定的用户 -->
+	<select id="getUserList" parameterType="java.util.Map" resultType="com.by.system.model.ASysUser">
+		SELECT
+			<include refid="userColumn"/>
+		FROM A_SYS_GROUP_USER t
+		left join A_SYS_USER a on t.LOGIN_NAME = a.LOGIN_NAME
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="groupNo != null and groupNo != ''">
+				AND t.GROUP_NO = #{groupNo}
+			</if>
+			<if test="loginName != null and loginName != ''">
+				AND t.LOGIN_NAME like CONCAT('%',#{loginName},'%')
+			</if>
+			<if test="userName != null and userName != ''">
+				AND a.USER_NAME like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="status != null and status != ''">
+				AND a.STATUS = #{status}
+			</if>
+		</trim>
+	</select>
+	
+	<!-- 查询用户组未绑定的用户 -->
+	<select id="getNotBindUsers" parameterType="java.util.Map" resultType="com.by.system.model.ASysUser">
+		SELECT
+			<include refid="userColumn"/>
+		FROM
+			A_SYS_USER a
+		WHERE
+			NOT EXISTS (
+				SELECT
+					t.LOGIN_NAME
+				FROM
+					A_SYS_GROUP_USER t
+				WHERE
+					a.LOGIN_NAME = t.LOGIN_NAME and t.GROUP_NO = #{groupNo}
+			)
+		and a.`STATUS` = '13900001'
+		<if test="userName != null and userName != ''">
+			AND a.USER_NAME like CONCAT('%',#{userName},'%')
+		</if>
+	</select>
+	
+	<!-- 移除用户组绑定的用户 -->
+	<delete id="delGroupUser" >
+		DELETE FROM A_SYS_GROUP_USER
+		where GROUP_NO = #{groupNo}
+		<if test="loginNames != null">
+			AND LOGIN_NAME in
+			<foreach collection="loginNames" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</delete>
+</mapper>
+
+

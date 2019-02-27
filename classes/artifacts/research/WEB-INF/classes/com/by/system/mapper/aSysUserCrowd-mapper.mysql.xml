@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysUserCrowdMapper">
+	<sql id="column">
+		t.ID id,
+		t.CROWD_NO crowdNo,
+		t.CROWD_NAME crowdName,
+		t.RULE_ID ruleId,
+		t.CROWD_DESC crowdDesc,
+		t.STAT stat,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysUserCrowd">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_CROWD t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="crowdNo != null and crowdNo != ''">
+				AND t.CROWD_NO = #{crowdNo}
+			</if>
+			<if test="crowdName != null and crowdName != ''">
+				AND t.CROWD_NAME = #{crowdName}
+			</if>
+			<if test="ruleId != null and ruleId != ''">
+				AND t.RULE_ID = #{ruleId}
+			</if>
+			<if test="crowdDesc != null and crowdDesc != ''">
+				AND t.CROWD_DESC = #{crowdDesc}
+			</if>
+			<if test="stat != null and stat != ''">
+				AND t.STAT = #{stat}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysUserCrowd">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_CROWD t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="crowdNo != null and crowdNo != ''">
+				AND t.CROWD_NO = #{crowdNo}
+			</if>
+			<if test="crowdName != null and crowdName != ''">
+				AND t.CROWD_NAME like CONCAT('%',#{crowdName},'%')
+			</if>
+			<if test="ruleId != null and ruleId != ''">
+				AND t.RULE_ID = #{ruleId}
+			</if>
+			<if test="crowdDesc != null and crowdDesc != ''">
+				AND t.CROWD_DESC = #{crowdDesc}
+			</if>
+			<if test="stat != null and stat != ''">
+				AND t.STAT = #{stat}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysUserCrowd">
+	insert into A_SYS_USER_CROWD
+	(
+		ID,
+		CROWD_NO,
+		CROWD_NAME,
+		RULE_ID,
+		CROWD_DESC,
+		STAT,
+		INST_DATE,
+		INST_USER_NO,
+		UPDT_DATE
+	)
+	values
+	(
+		#{id},
+		#{crowdNo},
+		#{crowdName},
+		#{ruleId},
+		#{crowdDesc},
+		#{stat},
+		#{instDate},
+		#{instUserNo},
+		#{updtDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_USER_CROWD
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="crowdNo != null">
+				CROWD_NO = #{crowdNo},
+			</if>
+			<if test="crowdName != null">
+				CROWD_NAME = #{crowdName},
+			</if>
+			<if test="ruleId != null">
+				RULE_ID = #{ruleId},
+			</if>
+			<if test="crowdDesc != null">
+				CROWD_DESC = #{crowdDesc},
+			</if>
+			<if test="stat != null">
+				STAT = #{stat},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_USER_CROWD WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysUserCrowd">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_CROWD t
+		WHERE t.ID=#{id}
+	</select>
+	
+	<select id="selectByProduct" parameterType="java.util.Map" resultType="com.by.system.model.ASysUserCrowd">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_CROWD t 
+		WHERE t.CROWD_NO in (
+			SELECT b.CROWD_NO FROM B_PR_PROD_CROWD b where b.PROD_NO = #{prodNo}
+		)
+		
+		<trim>
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="crowdNo != null and crowdNo != ''">
+				AND t.CROWD_NO = #{crowdNo}
+			</if>
+			<if test="crowdName != null and crowdName != ''">
+				AND t.CROWD_NAME like CONCAT('%',#{crowdName},'%')
+			</if>
+			<if test="ruleId != null and ruleId != ''">
+				AND t.RULE_ID = #{ruleId}
+			</if>
+			<if test="crowdDesc != null and crowdDesc != ''">
+				AND t.CROWD_DESC = #{crowdDesc}
+			</if>
+			<if test="stat != null and stat != ''">
+				AND t.STAT = #{stat}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	
+	<select id="selectNotInProduct" parameterType="java.util.Map" resultType="com.by.system.model.ASysUserCrowd">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_CROWD t 
+		WHERE t.CROWD_NO not in (
+			SELECT b.CROWD_NO FROM B_PR_PROD_CROWD b where b.PROD_NO = #{prodNo}
+		)
+		
+		<trim>
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="crowdNo != null and crowdNo != ''">
+				AND t.CROWD_NO = #{crowdNo}
+			</if>
+			<if test="crowdName != null and crowdName != ''">
+				AND t.CROWD_NAME like CONCAT('%',#{crowdName},'%')
+			</if>
+			<if test="ruleId != null and ruleId != ''">
+				AND t.RULE_ID = #{ruleId}
+			</if>
+			<if test="crowdDesc != null and crowdDesc != ''">
+				AND t.CROWD_DESC = #{crowdDesc}
+			</if>
+			<if test="stat != null and stat != ''">
+				AND t.STAT = #{stat}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+</mapper>
+
+

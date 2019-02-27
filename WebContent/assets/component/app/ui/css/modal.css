@@ -1,0 +1,64 @@
+/** modal 窗口 | @author hemf(bee) 2504637134@qq.com | @version 2.0 */
+@CHARSET "UTF-8";
+.modal.modal-theme-default { 
+	overflow: auto;
+}
+.modal.modal-theme-default > .modal-dialog {
+	
+}
+.modal.modal-theme-default > .modal-dialog.modal-fl {
+	width: 98%;
+}
+.modal.modal-theme-default > .modal-dialog > .modal-content {
+	border-radius: 2px;
+}
+.modal.modal-theme-default > .modal-dialog > .modal-content > .modal-header {
+	
+}
+.modal.modal-theme-default > .modal-dialog > .modal-content > .modal-body {
+	padding: 15px 20px;
+} 
+
+.modal.modal-theme-default > .modal-dialog > .modal-content > .modal-body > .section-container {
+	
+}
+.modal.modal-theme-default > .modal-dialog > .modal-content > .modal-body > .section-container > div:first-child {
+	
+}
+.modal.modal-theme-default > .modal-dialog > .modal-content > .modal-body > .section-container > .container-fluid > .page-header {
+	margin: 0 0 15px 0;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.section-modal .section-modal {
+	position: relative;
+	z-index: 1060;
+}
+
+.section-modal .modal.modal-theme-default {
+	padding-left: 0 !important;
+}
+.section-modal .section-modal .modal.modal-theme-default {
+	padding-left: 15px!important;
+}
+.section-modal .row {
+	margin: auto -15px;
+}
+.section-modal .row .row {
+	margin: 0 auto;
+}
+/* .section-modal .row .col-xs-12, .section-modal .row .col-xs-11, 
+.section-modal .row .col-xs-10, .section-modal .row .col-xs-9, 
+.section-modal .row .col-xs-8, .section-modal .row .col-xs-7, 
+.section-modal .row .col-xs-6, .section-modal .row .col-xs-5, 
+.section-modal .row .col-xs-4, .section-modal .row .col-xs-3, 
+.section-modal .row .col-xs-2, .section-modal .row .col-xs-1 {
+	margin: auto -15px;
+	color: red;
+}
+ */
+.section-modal .row0 {
+	margin-left: 0;
+	margin-right: 0;
+}

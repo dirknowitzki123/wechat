@@ -1,0 +1,242 @@
+/* login img */
+.logo-img{
+	width: 95px;
+	height: 95px;
+	text-align: center;
+	line-height: 95px;
+	color: #fff;
+	background: #3586FF;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	overflow: hidden;
+	margin: 70px auto 0px;
+}
+.logo-img img{
+	width: 100%;
+	height: 100%;
+}
+.login-fun a{
+	display: inline-block;
+	color: #88C6FF;
+	padding-top: 15px;
+}
+.login-fun a:hover{
+	text-decoration: underline;
+}
+/* input */
+.reg-item{
+	padding: 0px 15px;
+	background: #fff;
+	margin-top: 5px;
+}
+.reg-item p.base-reg{
+	border-bottom: 1px solid #EFEFEF;
+	padding: 12px 5px;
+	margin-top: 15px;
+}
+.reg-item p.person-reg{
+	border-top: 1px solid #EFEFEF;
+	padding: 15px 0px;
+}
+.reg-item p.person-reg:first-child{
+	border-top: 0px;
+}
+.reg-item p input{
+	color: #8D8D8D;
+	border: 0px;
+	outline: none;
+}
+.reg-item p.base-reg input{
+	width: 100%;
+	font-size: 18px;
+}
+.reg-item p.person-reg label,.reg-item .apply-item label{
+	color: #3C3C3C;
+	font-size: 16px;
+}
+.reg-item p.person-reg input{
+	width: 60%;
+	font-size: 16px;
+	padding-left: 10px;
+}
+.reg-item .tab-link{
+	width: 100%;
+}
+.reg-item .tab-link textarea, .reg-item .tab-link p{
+	border: 1px solid #DAD9D9;
+}
+.reg-item .tab-link textarea{
+	color: #959595;
+	resize:none;
+	line-height: 18px;
+	width: 140px;
+	height: 75px;
+	padding: 12px 8px;
+	overflow-y: scroll;
+	border-radius: 0px; 
+}
+.reg-item .tab-link p{
+	width: 93px;
+	padding: 3px 3px 0px;
+	margin-top: -4px;
+}
+.reg-item .tab-link p img{
+	width: 100%;
+	height: 100%;
+}
+.reg-item .tab-link .link-btn{
+	border: 0px;
+	outline: none;
+	height: 28px;
+	line-height: 25px;
+	width: 110px;
+	text-align: center;
+	-webkit-border-radius: 14px;
+	-moz-border-radius: 14px;
+	border-radius: 14px;
+	background: #3487FF;
+	color: #fff;
+	margin: 6px 0px 15px;
+}
+.reg-item .apply-item{
+	padding: 9px 0px;
+}
+.reg-item .apply-item table.tab-input{
+	width: 100%;
+}
+.reg-item .apply-item table.tab-input td{
+	padding: 9px 0px 9px 8px;
+}
+.reg-item .apply-item table.tab-input td:first-child{
+	padding-left: 0px;
+}
+.reg-item .apply-item input[type="text"]{
+	width: 100%;
+	font-size: 16px;
+	border: 0px;
+	border-bottom: 1px solid #EFEFEF;
+	padding: 0px 0px 3px;
+	outline: none;
+	border-radius: 0px;
+}
+.reg-item p input.get-code{
+	width: 34%;
+	text-align: right;
+	font-size: 15px;
+	color: #88C6FF;
+	border: 0px;
+	padding: 0px;
+	background: transparent;
+	float: right;
+}
+.reg-item .agreement{
+	display: block;
+	width: 100%;
+	text-align: center;
+	color: #D2D2D2;
+	margin-top: 20px;
+}
+.reg-item .agreement input{
+	vertical-align: middle;
+}
+.reg-item .agreement a{
+	color: #88C6FF;
+}
+.reg-item .agreement a:hover{
+	text-decoration: underline;
+}
+
+/* register success */
+.cover{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background:rgba(0, 0, 0, 0.8)!important;  
+    filter:Alpha(opacity=80); 
+    background:#000;
+    z-index: 999;
+    display: none;
+}
+.cover .t-code{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -95px;
+	margin-left: -132px;
+	background: #fff;
+	color: #2A80FF;
+	text-align: center;
+	padding: 18px 28px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.cover .t-code p{
+	font-size: 16px;
+}
+.cover .t-code span{
+	font-size: 24px;
+	display: inline-block;
+	margin-top: 12px;
+}
+
+/* alert password succeed */
+.alert-succeed{
+	text-align: center;
+	padding: 28% 0px;
+}
+.alert-succeed p{
+	color: #3E8AFF;
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+/* my info */
+.info-box{
+	position: absolute;
+	width: 95%;
+	top: 135px;
+	left: 2.5%;
+}
+.info-box .head-pic{
+	text-align: center;
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	margin-left: -42px;
+}
+.info-box .head-pic .head-img{
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	text-align: center;
+	line-height: 90px;
+	border: 1px solid #fff;
+	background: #BDAC98;
+	overflow: hidden;
+	-webkit-border-radius: 45px;
+	-moz-border-radius: 45px;
+	border-radius: 45px;
+}
+.info-box .head-pic .head-img img{
+	width: 100%;
+	height: 100%;
+}
+.info-box .head-pic .name{
+	font-size: 16px;
+}
+.info-box .reg-item{
+	padding-top: 10px;
+}
+.register .info-box .reg-item{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.apply .info-box .reg-item{
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
+}

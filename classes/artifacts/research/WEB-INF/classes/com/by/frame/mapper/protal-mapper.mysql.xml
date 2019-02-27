@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.by.frame.mapper.ProtalMapper" >
+	<!-- 查询  列表 -->
+	<select id="getMenus" resultType="com.by.system.model.ASysMenu" parameterType="java.util.Map">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_MENU t
+		LEFT JOIN A_SYS_ROLE_MENU AR  ON AR.MENU_ID = T.ID
+		LEFT JOIN A_SYS_ROLE_USER AU ON AR.ROLE_ID = AU.ROLE_ID 
+		LEFT JOIN A_SYS_USER U ON U.ID = AU.USER_ID
+		<if test="modules != null and modules.size() > 0">
+			INNER JOIN ( 
+				<foreach collection="modules" separator="UNION ALL" item="item" index="index" >
+					SELECT #{item} AS MODULE_CODE FROM DUAL
+				</foreach>
+			 ) M ON M.MODULE_CODE = T.SYS_CODE
+		</if>
+		<if test="menuTypes != null and menuTypes.size() > 0">
+			INNER JOIN ( 
+				<foreach collection="menuTypes" separator="UNION ALL" item="item" index="index" >
+					SELECT #{item} AS MENU_TYPE FROM DUAL
+				</foreach>
+			 ) MT ON MT.MENU_TYPE = T.MENU_TYPE
+		</if>
+		WHERE U.ID=#{userId}
+		AND T.IS_USER_ABLE = #{isUserAble}
+		ORDER BY T.BY_ORDER
+	</select>
+	
+	<sql id="column">
+		distinct t.ID id,
+		t.MENU_NAME menuName,
+		t.MENU_CODE menuCode,
+		t.MENU_LEVEL menuLevel,
+		t.PARENT_MENU_ID parentMenuId,
+		t.URL url,
+		t.IS_USER_ABLE isUserAble,
+		t.BY_ORDER byOrder,
+		t.REMARK remark,
+		t.MENU_ICON menuIcon,
+		t.MENU_TYPE menuType,
+		t.SYS_CODE sysCode,
+		t.SYS_NAME sysName
+	</sql>
+</mapper>

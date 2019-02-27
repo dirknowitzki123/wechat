@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.frame.intfc.mapper.ASysPortLogMapper">
+	<sql id="column">
+		t.ID id,
+		t.SERVER_NAME serverName,
+		t.REQ_NO reqNo,
+		t.TRAN_HEAD tranHead,
+		t.TRAN_BODY tranBody,
+		t.RESP_DATA respData,
+		t.REC_TIME recTime,
+		t.RESP_TIME respTime,
+		t.INST_TIME instTime
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.frame.intfc.model.ASysPortLog">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_PORT_LOG t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="serverName != null and serverName != ''">
+				AND t.SERVER_NAME = #{serverName}
+			</if>
+			<if test="reqNo != null and reqNo != ''">
+				AND t.REQ_NO = #{reqNo}
+			</if>
+			<if test="tranHead != null and tranHead != ''">
+				AND t.TRAN_HEAD = #{tranHead}
+			</if>
+			<if test="tranBody != null and tranBody != ''">
+				AND t.TRAN_BODY = #{tranBody}
+			</if>
+			<if test="respData != null and respData != ''">
+				AND t.RESP_DATA = #{respData}
+			</if>
+			<if test="recTime != null and recTime != ''">
+				AND t.REC_TIME = #{recTime}
+			</if>
+			<if test="respTime != null and respTime != ''">
+				AND t.RESP_TIME = #{respTime}
+			</if>
+			<if test="instTime != null and instTime != ''">
+				AND t.INST_TIME = #{instTime}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.frame.intfc.model.ASysPortLog">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_PORT_LOG t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="serverName != null and serverName != ''">
+				AND t.SERVER_NAME = #{serverName}
+			</if>
+			<if test="reqNo != null and reqNo != ''">
+				AND t.REQ_NO = #{reqNo}
+			</if>
+			<if test="tranHead != null and tranHead != ''">
+				AND t.TRAN_HEAD = #{tranHead}
+			</if>
+			<if test="tranBody != null and tranBody != ''">
+				AND t.TRAN_BODY = #{tranBody}
+			</if>
+			<if test="respData != null and respData != ''">
+				AND t.RESP_DATA = #{respData}
+			</if>
+			<if test="recTime != null and recTime != ''">
+				AND t.REC_TIME = #{recTime}
+			</if>
+			<if test="respTime != null and respTime != ''">
+				AND t.RESP_TIME = #{respTime}
+			</if>
+			<if test="instTime != null and instTime != ''">
+				AND t.INST_TIME = #{instTime}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.frame.intfc.model.ASysPortLog">
+	insert into A_SYS_PORT_LOG
+	(
+		ID,
+		SERVER_NAME,
+		REQ_NO,
+		TRAN_HEAD,
+		TRAN_BODY,
+		RESP_DATA,
+		REC_TIME,
+		RESP_TIME,
+		INST_TIME
+	)
+	values
+	(
+		#{id},
+		#{serverName},
+		#{reqNo},
+		#{tranHead},
+		#{tranBody},
+		#{respData},
+		#{recTime},
+		#{respTime},
+		#{instTime}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_PORT_LOG
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="serverName != null">
+				SERVER_NAME = #{serverName},
+			</if>
+			<if test="reqNo != null">
+				REQ_NO = #{reqNo},
+			</if>
+			<if test="tranHead != null">
+				TRAN_HEAD = #{tranHead},
+			</if>
+			<if test="tranBody != null">
+				TRAN_BODY = #{tranBody},
+			</if>
+			<if test="respData != null">
+				RESP_DATA = #{respData},
+			</if>
+			<if test="recTime != null">
+				REC_TIME = #{recTime},
+			</if>
+			<if test="respTime != null">
+				RESP_TIME = #{respTime},
+			</if>
+			<if test="instTime != null">
+				INST_TIME = #{instTime},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_PORT_LOG WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.frame.intfc.model.ASysPortLog">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_PORT_LOG t
+		WHERE t.ID=#{id}
+	</select>
+</mapper>
+
+

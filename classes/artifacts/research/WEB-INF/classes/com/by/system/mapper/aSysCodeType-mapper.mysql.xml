@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysCodeTypeMapper">
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysCodeType">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_CODE_TYPE t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="typeName != null and typeName != ''">
+				AND t.TYPE_NAME = #{typeName}
+			</if>
+			<if test="typeCode != null and typeCode != ''">
+				AND t.TYPE_CODE = #{typeCode}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysCodeType">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_CODE_TYPE t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="typeName != null and typeName != ''">
+				AND t.TYPE_NAME LIKE CONCAT('%',#{typeName},'%')
+			</if>
+			<if test="typeCode != null and typeCode != ''">
+				AND t.TYPE_CODE = #{typeCode}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+		</trim>
+		ORDER BY t.TYPE_CODE
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysCodeType">
+	insert into A_SYS_CODE_TYPE
+	(
+		ID,
+		TYPE_NAME,
+		TYPE_CODE,
+		REMARK,
+		INST_DATE,
+		INST_USER_NO,
+		UPDT_DATE,
+		STATUS
+	)
+	values
+	(
+		#{id},
+		#{typeName},
+		#{typeCode},
+		#{remark},
+		#{instDate},
+		#{instUserNo},
+		#{updtDate},
+		#{status}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_CODE_TYPE
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="typeName != null">
+				TYPE_NAME = #{typeName},
+			</if>
+			<if test="typeCode != null">
+				TYPE_CODE = #{typeCode},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+			<if test="status != null">
+				STATUS = #{status},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_CODE_TYPE WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysCodeType">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_CODE_TYPE t
+		WHERE t.ID=#{id}
+	</select>
+	<sql id="column">
+		t.ID id,
+		t.TYPE_NAME typeName,
+		t.TYPE_CODE typeCode,
+		t.REMARK remark,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate,
+		t.STATUS status
+	</sql>
+</mapper>
+
+

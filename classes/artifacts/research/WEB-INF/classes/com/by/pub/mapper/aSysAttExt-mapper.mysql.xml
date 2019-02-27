@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.pub.mapper.ASysAttExtMapper">
+	<sql id="column">
+		t.ID id,
+		t.BUSI_NO busiNo,
+		t.BUSI_TYP busiTyp,
+		t.ATT_NO attNo,
+		t.ATT_NAME attName,
+		t.ATT_FILE attFile,
+		t.ATT_DESC attDesc,
+		t.ATT_TYP attTyp,
+		t.ATT_REMARK attRemark,
+		t.ATT_IS_DIR attIsDir,
+		t.ATT_SORT attSort,
+		t.INST_USER_NO instUserNo,
+		t.INST_USER_NAME instUserName,
+		t.INST_DATE instDate,
+		t.UPDT_DATE updtDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.pub.model.ASysAttExt">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ATT_EXT t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="busiNo != null and busiNo != ''">
+				AND t.BUSI_NO = #{busiNo}
+			</if>
+			<if test="busiTyp != null and busiTyp != ''">
+				AND t.BUSI_TYP = #{busiTyp}
+			</if>
+			<if test="attNo != null and attNo != ''">
+				AND t.ATT_NO = #{attNo}
+			</if>
+			<if test="attName != null and attName != ''">
+				AND t.ATT_NAME = #{attName}
+			</if>
+			<if test="attFile != null and attFile != ''">
+				AND t.ATT_FILE = #{attFile}
+			</if>
+			<if test="attDesc != null and attDesc != ''">
+				AND t.ATT_DESC = #{attDesc}
+			</if>
+			<if test="attTyp != null and attTyp != ''">
+				AND t.ATT_TYP = #{attTyp}
+			</if>
+			<if test="attRemark != null and attRemark != ''">
+				AND t.ATT_REMARK = #{attRemark}
+			</if>
+			<if test="attIsDir != null and attIsDir != ''">
+				AND t.ATT_IS_DIR = #{attIsDir}
+			</if>
+			<if test="attSort != null and attSort != ''">
+				AND t.ATT_SORT = #{attSort}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="instUserName != null and instUserName != ''">
+				AND t.INST_USER_NAME = #{instUserName}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.pub.model.ASysAttExt">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ATT_EXT t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="busiNo != null and busiNo != ''">
+				AND t.BUSI_NO = #{busiNo}
+			</if>
+			<if test="busiTyp != null and busiTyp != ''">
+				AND t.BUSI_TYP = #{busiTyp}
+			</if>
+			<if test="attNo != null and attNo != ''">
+				AND t.ATT_NO = #{attNo}
+			</if>
+			<if test="attName != null and attName != ''">
+				AND t.ATT_NAME = #{attName}
+			</if>
+			<if test="attFile != null and attFile != ''">
+				AND t.ATT_FILE = #{attFile}
+			</if>
+			<if test="attDesc != null and attDesc != ''">
+				AND t.ATT_DESC = #{attDesc}
+			</if>
+			<if test="attTyp != null and attTyp != ''">
+				AND t.ATT_TYP = #{attTyp}
+			</if>
+			<if test="attRemark != null and attRemark != ''">
+				AND t.ATT_REMARK = #{attRemark}
+			</if>
+			<if test="attIsDir != null and attIsDir != ''">
+				AND t.ATT_IS_DIR = #{attIsDir}
+			</if>
+			<if test="attSort != null and attSort != ''">
+				AND t.ATT_SORT = #{attSort}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="instUserName != null and instUserName != ''">
+				AND t.INST_USER_NAME = #{instUserName}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.pub.model.ASysAttExt">
+	insert into A_SYS_ATT_EXT
+	(
+		ID,
+		BUSI_NO,
+		BUSI_TYP,
+		ATT_NO,
+		ATT_NAME,
+		ATT_FILE,
+		ATT_DESC,
+		ATT_TYP,
+		ATT_REMARK,
+		ATT_IS_DIR,
+		ATT_SORT,
+		INST_USER_NO,
+		INST_USER_NAME,
+		INST_DATE,
+		UPDT_DATE
+	)
+	values
+	(
+		#{id},
+		#{busiNo},
+		#{busiTyp},
+		#{attNo},
+		#{attName},
+		#{attFile},
+		#{attDesc},
+		#{attTyp},
+		#{attRemark},
+		#{attIsDir},
+		#{attSort},
+		#{instUserNo},
+		#{instUserName},
+		#{instDate},
+		#{updtDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_ATT_EXT
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="busiNo != null">
+				BUSI_NO = #{busiNo},
+			</if>
+			<if test="busiTyp != null">
+				BUSI_TYP = #{busiTyp},
+			</if>
+			<if test="attNo != null">
+				ATT_NO = #{attNo},
+			</if>
+			<if test="attName != null">
+				ATT_NAME = #{attName},
+			</if>
+			<if test="attFile != null">
+				ATT_FILE = #{attFile},
+			</if>
+			<if test="attDesc != null">
+				ATT_DESC = #{attDesc},
+			</if>
+			<if test="attTyp != null">
+				ATT_TYP = #{attTyp},
+			</if>
+			<if test="attRemark != null">
+				ATT_REMARK = #{attRemark},
+			</if>
+			<if test="attIsDir != null">
+				ATT_IS_DIR = #{attIsDir},
+			</if>
+			<if test="attSort != null">
+				ATT_SORT = #{attSort},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="instUserName != null">
+				INST_USER_NAME = #{instUserName},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ATT_EXT WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.pub.model.ASysAttExt">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ATT_EXT t
+		WHERE t.ID=#{id}
+	</select>
+</mapper>
+
+

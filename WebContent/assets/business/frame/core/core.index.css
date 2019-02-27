@@ -1,0 +1,161 @@
+@CHARSET "utf-8";
+
+.btn, .input-group-addon, .form-control,
+.input-group-lg > .input-group-btn > .btn, .input-group-lg > .input-group-addon, .input-group-lg .form-control { border-radius: 2px; outline: none!important;}
+.input-group-addon{background-color: #f7f7f7;}
+.btn.btn-embossed{ padding-right: 15px; padding-left: 15px; }
+.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn { height: auto;}
+.input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn { padding-top: 12px; padding-bottom: 11.5px; }
+a { outline: none !important; }
+
+.section-loading2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	display: none;
+	cursor: not-allowed;
+}
+.section-loading2 .section-loadding-spiner {
+	position: absolute;
+	z-index: 99;
+	top: 50%;
+	left: 50%;
+	margin-top: -30px;
+	margin-left: -100px; 
+	font-size: 18px;
+	letter-spacing: 1px;
+	background-color: #e74c3c;
+	background-color: rgba( 231,76,60, 0.8 );
+	color: #fff;
+	padding: 8px 30px;
+	border-radius: 2px;
+	font-size: 18px;
+}
+
+html{ overflow: hidden;}
+
+body {
+	background-color: #fff;
+	color: #636E7B;
+	font-family: "微软雅黑","LatoRegular","Lucida Grande","Lucida Sans Unicode",Helvetica,sans-serif !important;
+	font-size: 13px;
+	line-height: 21px;
+	overflow: hidden;
+}
+.section > .section-container > .page-header {
+	margin: 0 0 15px 0;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 0;
+}
+.sections .section {
+	overflow: visible;
+}
+.sections .section:before,
+.sections .section:after {
+	content: " ";
+	clear: both;
+}
+.sections .section .section-close.close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	font-weight: normal;
+	font-size: 20px;
+	opacity: 1;
+}
+.sections .section .section-close.close:hover {
+	background-color:#eee;
+}
+.sections .sections .section {
+	/* padding: 15px 15px; */
+	/* position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%; */
+}
+.sections .section.active {
+	position: relative;
+	display: block;
+}
+.sections .section .container-fluid {
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+.sections .section > .section-container {
+	padding: 15px 12px 0px!important;
+}
+.sections .section-loading {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	background: rgba(255,255,255, 0.2);
+	display: none;
+}
+.sections .section-loading > div {
+	text-align: right;
+	font-size: 20px;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+.sections .sections .section .section {
+	padding: 0;
+}
+
+.section > .section-container.container-fluid .container-fluid { padding: 0; }
+.section > .section-container > .container-fluid .row { margin: 0; padding: 0;}
+
+.section > .section-container > .container-fluid .row {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.section > .section-container > .container-fluid .row0,
+.section > .section-container > .container-fluid .row .row {
+	margin-left: 0;
+	margin-right: 0;
+}
+.sections .section > .section-container .section-module.active .section-container {
+	padding: 0!important;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+
+body.sections > div.section { 
+	padding: 15px 15px!important;
+}
+
+.section-container > .container-fluid .page-header {
+	margin: 5px 0 15px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	font-size: 16px;
+	color: #333;
+}
+.section-container > .container-fluid .page-header:before {
+	content: "\f0da";
+	display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 20px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-right: 5px;
+   	color: #777;
+}
+.sections-wrapper .sections-wrapper .section-container > .container-fluid  .page-header > i {
+	display: none;
+}
+
+.ztree *  {
+	font-size: 14px;
+}

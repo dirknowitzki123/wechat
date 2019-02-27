@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.pub.mapper.ASysAttMapper">
+	<sql id="column">
+		t.ID id,
+		t.BUSI_NO busiNo,
+		t.BUSI_TYP busiTyp,
+		t.NEW_ATT newAtt,
+		t.OLD_ATT oldAtt,
+		t.ATT_TYP attTyp,
+		t.ATT_FILE attFile,
+		t.ATT_SIZE attSize,
+		t.PH_PATH phPath,
+		t.IN_PATH inPath,
+		t.IS_IN_ATT isInAtt,
+		t.SORT sort,
+		t.REMARK remark,
+		t.INST_USER_NO instUserNo,
+		t.INST_USER_NAME instUserName,
+		t.INST_USER_ORG instUserOrg,
+		t.INST_DATE instDate,
+		t.UPDT_USER_NO updtUserNo,
+		t.UPDT_USER_NAME updtUserName,
+		t.UPDT_USER_ORG updtUserOrg,
+		t.UPDT_DATE updtDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.pub.model.ASysAtt">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ATT t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="busiNo != null and busiNo != ''">
+				AND t.BUSI_NO = #{busiNo}
+			</if>
+			<if test="busiTyp != null and busiTyp != ''">
+				AND t.BUSI_TYP = #{busiTyp}
+			</if>
+			<if test="newAtt != null and newAtt != ''">
+				AND t.NEW_ATT = #{newAtt}
+			</if>
+			<if test="oldAtt != null and oldAtt != ''">
+				AND t.OLD_ATT = #{oldAtt}
+			</if>
+			<if test="attTyp != null and attTyp != ''">
+				AND t.ATT_TYP = #{attTyp}
+			</if>
+			<if test="attFile != null and attFile != ''">
+				AND t.ATT_FILE = #{attFile}
+			</if>
+			<if test="attSize != null and attSize != ''">
+				AND t.ATT_SIZE = #{attSize}
+			</if>
+			<if test="phPath != null and phPath != ''">
+				AND t.PH_PATH = #{phPath}
+			</if>
+			<if test="inPath != null and inPath != ''">
+				AND t.IN_PATH = #{inPath}
+			</if>
+			<if test="isInAtt != null and isInAtt != ''">
+				AND t.IS_IN_ATT = #{isInAtt}
+			</if>
+			<if test="sort != null and sort != ''">
+				AND t.SORT = #{sort}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="instUserName != null and instUserName != ''">
+				AND t.INST_USER_NAME = #{instUserName}
+			</if>
+			<if test="instUserOrg != null and instUserOrg != ''">
+				AND t.INST_USER_ORG = #{instUserOrg}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="updtUserNo != null and updtUserNo != ''">
+				AND t.UPDT_USER_NO = #{updtUserNo}
+			</if>
+			<if test="updtUserName != null and updtUserName != ''">
+				AND t.UPDT_USER_NAME = #{updtUserName}
+			</if>
+			<if test="updtUserOrg != null and updtUserOrg != ''">
+				AND t.UPDT_USER_ORG = #{updtUserOrg}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.pub.model.ASysAtt">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ATT t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="busiNo != null and busiNo != ''">
+				AND t.BUSI_NO = #{busiNo}
+			</if>
+			<if test="busiTyp != null and busiTyp != ''">
+				AND t.BUSI_TYP = #{busiTyp}
+			</if>
+			<if test="newAtt != null and newAtt != ''">
+				AND t.NEW_ATT = #{newAtt}
+			</if>
+			<if test="oldAtt != null and oldAtt != ''">
+				AND t.OLD_ATT = #{oldAtt}
+			</if>
+			<if test="attTyp != null and attTyp != ''">
+				AND t.ATT_TYP = #{attTyp}
+			</if>
+			<if test="attFile != null and attFile != ''">
+				AND t.ATT_FILE = #{attFile}
+			</if>
+			<if test="attSize != null and attSize != ''">
+				AND t.ATT_SIZE = #{attSize}
+			</if>
+			<if test="phPath != null and phPath != ''">
+				AND t.PH_PATH = #{phPath}
+			</if>
+			<if test="inPath != null and inPath != ''">
+				AND t.IN_PATH = #{inPath}
+			</if>
+			<if test="isInAtt != null and isInAtt != ''">
+				AND t.IS_IN_ATT = #{isInAtt}
+			</if>
+			<if test="sort != null and sort != ''">
+				AND t.SORT = #{sort}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="instUserName != null and instUserName != ''">
+				AND t.INST_USER_NAME = #{instUserName}
+			</if>
+			<if test="instUserOrg != null and instUserOrg != ''">
+				AND t.INST_USER_ORG = #{instUserOrg}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="updtUserNo != null and updtUserNo != ''">
+				AND t.UPDT_USER_NO = #{updtUserNo}
+			</if>
+			<if test="updtUserName != null and updtUserName != ''">
+				AND t.UPDT_USER_NAME = #{updtUserName}
+			</if>
+			<if test="updtUserOrg != null and updtUserOrg != ''">
+				AND t.UPDT_USER_ORG = #{updtUserOrg}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.pub.model.ASysAtt">
+	insert into A_SYS_ATT
+	(
+		ID,
+		BUSI_NO,
+		BUSI_TYP,
+		NEW_ATT,
+		OLD_ATT,
+		ATT_TYP,
+		ATT_FILE,
+		ATT_SIZE,
+		PH_PATH,
+		IN_PATH,
+		IS_IN_ATT,
+		SORT,
+		REMARK,
+		INST_USER_NO,
+		INST_USER_NAME,
+		INST_USER_ORG,
+		INST_DATE,
+		UPDT_USER_NO,
+		UPDT_USER_NAME,
+		UPDT_USER_ORG,
+		UPDT_DATE
+	)
+	values
+	(
+		#{id},
+		#{busiNo},
+		#{busiTyp},
+		#{newAtt},
+		#{oldAtt},
+		#{attTyp},
+		#{attFile},
+		#{attSize},
+		#{phPath},
+		#{inPath},
+		#{isInAtt},
+		#{sort},
+		#{remark},
+		#{instUserNo},
+		#{instUserName},
+		#{instUserOrg},
+		#{instDate},
+		#{updtUserNo},
+		#{updtUserName},
+		#{updtUserOrg},
+		#{updtDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_ATT
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="busiNo != null">
+				BUSI_NO = #{busiNo},
+			</if>
+			<if test="busiTyp != null">
+				BUSI_TYP = #{busiTyp},
+			</if>
+			<if test="newAtt != null">
+				NEW_ATT = #{newAtt},
+			</if>
+			<if test="oldAtt != null">
+				OLD_ATT = #{oldAtt},
+			</if>
+			<if test="attTyp != null">
+				ATT_TYP = #{attTyp},
+			</if>
+			<if test="attFile != null">
+				ATT_FILE = #{attFile},
+			</if>
+			<if test="attSize != null">
+				ATT_SIZE = #{attSize},
+			</if>
+			<if test="phPath != null">
+				PH_PATH = #{phPath},
+			</if>
+			<if test="inPath != null">
+				IN_PATH = #{inPath},
+			</if>
+			<if test="isInAtt != null">
+				IS_IN_ATT = #{isInAtt},
+			</if>
+			<if test="sort != null">
+				SORT = #{sort},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="instUserName != null">
+				INST_USER_NAME = #{instUserName},
+			</if>
+			<if test="instUserOrg != null">
+				INST_USER_ORG = #{instUserOrg},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="updtUserNo != null">
+				UPDT_USER_NO = #{updtUserNo},
+			</if>
+			<if test="updtUserName != null">
+				UPDT_USER_NAME = #{updtUserName},
+			</if>
+			<if test="updtUserOrg != null">
+				UPDT_USER_ORG = #{updtUserOrg},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ATT WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.pub.model.ASysAtt">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ATT t
+		WHERE t.ID=#{id}
+	</select>
+</mapper>
+
+

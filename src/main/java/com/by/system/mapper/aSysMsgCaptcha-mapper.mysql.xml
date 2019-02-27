@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysMsgCaptchaMapper">
+	<sql id="column">
+		t.ID id,
+		t.moble moble,
+		t.check_date checkDate,
+		t.code code,
+		t.check_reslt checkReslt,
+		t.inst_date instDate,
+		t.updt_date updtDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysMsgCaptcha">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_MSG_CAPTCHA t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="moble != null and moble != ''">
+				AND t.moble = #{moble}
+			</if>
+			<if test="checkDate != null and checkDate != ''">
+				AND t.check_date = #{checkDate}
+			</if>
+			<if test="code != null and code != ''">
+				AND t.code = #{code}
+			</if>
+			<if test="checkReslt != null and checkReslt != ''">
+				AND t.check_reslt = #{checkReslt}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.inst_date = #{instDate}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.updt_date = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysMsgCaptcha">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_MSG_CAPTCHA t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="moble != null and moble != ''">
+				AND t.moble = #{moble}
+			</if>
+			<if test="checkDate != null and checkDate != ''">
+				AND t.check_date = #{checkDate}
+			</if>
+			<if test="code != null and code != ''">
+				AND t.code = #{code}
+			</if>
+			<if test="checkReslt != null and checkReslt != ''">
+				AND t.check_reslt = #{checkReslt}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.inst_date = #{instDate}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.updt_date = #{updtDate}
+			</if>
+		</trim>
+		order by t.check_date ASC
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysMsgCaptcha">
+	insert into A_SYS_MSG_CAPTCHA
+	(
+		ID,
+		moble,
+		check_date,
+		code,
+		check_reslt,
+		inst_date,
+		updt_date
+	)
+	values
+	(
+		#{id},
+		#{moble},
+		#{checkDate},
+		#{code},
+		#{checkReslt},
+		#{instDate},
+		#{updtDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_MSG_CAPTCHA
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="moble != null">
+				moble = #{moble},
+			</if>
+			<if test="checkDate != null">
+				check_date = #{checkDate},
+			</if>
+			<if test="code != null">
+				code = #{code},
+			</if>
+			<if test="checkReslt != null">
+				check_reslt = #{checkReslt},
+			</if>
+			<if test="instDate != null">
+				inst_date = #{instDate},
+			</if>
+			<if test="updtDate != null">
+				updt_date = #{updtDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_MSG_CAPTCHA WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysMsgCaptcha">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_MSG_CAPTCHA t
+		WHERE ID=#{id}
+	</select>
+</mapper>
+
+

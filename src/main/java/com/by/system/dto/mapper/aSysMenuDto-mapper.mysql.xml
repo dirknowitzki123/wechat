@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.dto.mapper.ASysMenuDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.MENU_NAME menuName,
+		t.MENU_CODE menuCode,
+		t.MENU_LEVEL menuLevel,
+		t.PARENT_MENU_ID parentMenuId,
+		t.URL url,
+		t.IS_USER_ABLE isUserAble,
+		t.BY_ORDER byOrder,
+		t.REMARK remark,
+		t.MENU_ICON menuIcon,
+		t.MENU_TYPE menuType,
+		t.SYS_CODE sysCode,
+		t.SYS_NAME sysName,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate
+	</sql>
+	
+	<select id="getMenusByModules" parameterType="java.util.Map" resultType="com.by.system.model.ASysMenu">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_MENU t
+		<if test="sysCodes != null and sysCodes.size() > 0">
+			INNER JOIN ( 
+				<foreach collection="sysCodes" separator="UNION ALL" item="item" index="index" >
+					SELECT #{item} AS MODULE_CODE FROM DUAL
+				</foreach>
+			 ) M ON M.MODULE_CODE = t.SYS_CODE
+		</if>
+		WHERE t.IS_USER_ABLE = #{isUserAble}
+		ORDER BY t.BY_ORDER
+	</select>
+	
+</mapper>
+
+

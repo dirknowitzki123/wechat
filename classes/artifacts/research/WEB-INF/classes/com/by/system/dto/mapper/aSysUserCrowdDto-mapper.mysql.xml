@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.dto.mapper.ASysUserCrowdDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.CROWD_NO crowdNo,
+		t.CROWD_NAME crowdName,
+		t.RULE_ID ruleId,
+		t.CROWD_DESC crowdDesc,
+		t.STAT stat,
+		t.INST_DATE instDate,
+		t.UPDT_DATE updtDate
+	</sql>
+	
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysUserCrowd">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_USER_CROWD t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="crowdNo != null and crowdNo != ''">
+				AND t.CROWD_NO = #{crowdNo}
+			</if>
+			<if test="crowdName != null and crowdName != ''">
+				AND t.CROWD_NAME like CONCAT('%',#{crowdName},'%')
+			</if>
+			<if test="ruleId != null and ruleId != ''">
+				AND t.RULE_ID = #{ruleId}
+			</if>
+			<if test="crowdDesc != null and crowdDesc != ''">
+				AND t.CROWD_DESC = #{crowdDesc}
+			</if>
+			<if test="stat != null and stat != ''">
+				AND t.STAT = #{stat}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+</mapper>
+
+

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.bussiness.wechat.mapper.TCustEleSignatureMapper">
+	<sql id="column">
+		t.ID id,
+		t.BUSI_NO busiNo,
+		t.BUSI_TYPE busiType,
+		t.IS_WECHAT isWechat,
+		t.ATT_NAME attName,
+		t.ATT_SUFFIX attSuffix,
+		t.ATT_PATH attPath,
+		t.REMARK remark,
+		t.CREATE_DATE createDate,
+		t.MODIFY_DATE modifyDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.TCustEleSignature">
+		SELECT
+			<include refid="column"/>
+		FROM T_CUST_ELE_SIGNATURE t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="busiNo != null and busiNo != ''">
+				AND t.BUSI_NO = #{busiNo}
+			</if>
+			<if test="busiType != null and busiType != ''">
+				AND t.BUSI_TYPE = #{busiType}
+			</if>
+			<if test="isWechat != null and isWechat != ''">
+				AND t.IS_WECHAT = #{isWechat}
+			</if>
+			<if test="attName != null and attName != ''">
+				AND t.ATT_NAME = #{attName}
+			</if>
+			<if test="attSuffix != null and attSuffix != ''">
+				AND t.ATT_SUFFIX = #{attSuffix}
+			</if>
+			<if test="attPath != null and attPath != ''">
+				AND t.ATT_PATH = #{attPath}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.TCustEleSignature">
+		SELECT
+			<include refid="column"/>
+		FROM T_CUST_ELE_SIGNATURE t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="busiNo != null and busiNo != ''">
+				AND t.BUSI_NO = #{busiNo}
+			</if>
+			<if test="busiType != null and busiType != ''">
+				AND t.BUSI_TYPE = #{busiType}
+			</if>
+			<if test="isWechat != null and isWechat != ''">
+				AND t.IS_WECHAT = #{isWechat}
+			</if>
+			<if test="attName != null and attName != ''">
+				AND t.ATT_NAME = #{attName}
+			</if>
+			<if test="attSuffix != null and attSuffix != ''">
+				AND t.ATT_SUFFIX = #{attSuffix}
+			</if>
+			<if test="attPath != null and attPath != ''">
+				AND t.ATT_PATH = #{attPath}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.bussiness.wechat.model.TCustEleSignature">
+	insert into T_CUST_ELE_SIGNATURE
+	(
+		ID,
+		BUSI_NO,
+		BUSI_TYPE,
+		IS_WECHAT,
+		ATT_NAME,
+		ATT_SUFFIX,
+		ATT_PATH,
+		REMARK,
+		CREATE_DATE,
+		MODIFY_DATE
+	)
+	values
+	(
+		#{id},
+		#{busiNo},
+		#{busiType},
+		#{isWechat},
+		#{attName},
+		#{attSuffix},
+		#{attPath},
+		#{remark},
+		#{createDate},
+		#{modifyDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE T_CUST_ELE_SIGNATURE
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="busiNo != null">
+				BUSI_NO = #{busiNo},
+			</if>
+			<if test="busiType != null">
+				BUSI_TYPE = #{busiType},
+			</if>
+			<if test="isWechat != null">
+				IS_WECHAT = #{isWechat},
+			</if>
+			<if test="attName != null">
+				ATT_NAME = #{attName},
+			</if>
+			<if test="attSuffix != null">
+				ATT_SUFFIX = #{attSuffix},
+			</if>
+			<if test="attPath != null">
+				ATT_PATH = #{attPath},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+			<if test="createDate != null">
+				CREATE_DATE = #{createDate},
+			</if>
+			<if test="modifyDate != null">
+				MODIFY_DATE = #{modifyDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM T_CUST_ELE_SIGNATURE WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.bussiness.wechat.model.TCustEleSignature">
+		SELECT
+			<include refid="column"/>
+		FROM T_CUST_ELE_SIGNATURE t
+		WHERE ID=#{id}
+	</select>
+	
+	<delete id="deleteByPhoneNo" parameterType="java.lang.String">
+		DELETE FROM T_CUST_ELE_SIGNATURE WHERE BUSI_NO=#{phoneNo}
+	</delete>
+</mapper>
+
+

@@ -1,0 +1,317 @@
+/** form 表单 | @author hemf(bee) 2504637134@qq.com | @version 2.0 */
+@CHARSET "UTF-8";
+
+.form-control[readonly],
+.form-control[disabled]  {
+	background-color: #fafafa;
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+	z-index: 98;
+}
+
+.input-default {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.input-default {}
+
+.input-default a {
+	outline: none!important;
+}
+.input-default li > a > i.fa-radio:before {
+	content: "\f10c";
+}
+.input-default li.active > a > i.fa-radio:before {
+ 	content: "\f05d";
+}
+.input-default li > a > i.fa-checkbox:before {
+	content: "\f096";
+}
+.input-default li.active > a > i.fa-checkbox:before {
+ 	content: "\f046";
+}
+.select-default input[readonly] {
+	background-color: #fdfdfd;
+}
+.select-defualt ul.dropdown-menu {
+	z-index: 1061;
+}
+.select-default .input-group .input-group-btn:not(:last-child) button {
+	border-left: 0;
+	border-radius: 0;
+}
+.select-default li.active > a,
+.select-default li.active > a:hover {
+	/* background: #fff !important;
+	color: #F62A2A !important; */
+}
+
+.select-tree-default .input-group .input-group-btn:not(:last-child) button {
+	border-left: 0;
+	border-radius: 0;
+}
+.select-tree-default input[readonly] {
+	background-color: #fdfdfd;
+}
+.select-tree-default .ztree {
+	padding: 10px 25px 25px 15px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.select-tree-default .ztree *{
+	font-size: 14px;
+}
+.select-tree-default .dropdown-menu.ztree > li > a {
+	padding: 0;
+}
+.select-tree-default .ztree li a.curSelectedNode {
+	border-radius: 2px;
+}
+.select-area-default .input-group input[readonly] { 
+	background-color: #fdfdfd;
+}
+.select-area-default .input-group .input-group-btn:not(:last-child) button {
+	border-left: 0;
+	border-right: 0;
+	border-radius: 0;
+}
+.select-area-default .input-group .input-group-btn button.disabled {
+	cursor: not-allowed!important;
+}
+.select-area-tab-default {
+	
+}
+.select-area-tab-default .dropdown-menu {
+	padding: 5px 5px;
+	min-width: 350px;
+}
+.select-area-tab-default .dropdown-menu .nav-tabs > li {
+	cursor: pointer;
+}
+.select-area-tab-default .dropdown-menu .nav-tabs > li > a {
+	padding: 5px 10px;
+}
+.select-area-tab-default .dropdown-menu .nav-tab-content {
+	overflow: auto;
+}
+.select-area-tab-default .dropdown-menu .nav-tab-content > ul:after {
+	clear: both;
+}
+.select-area-tab-default .dropdown-menu .nav-tab-content > ul > li {
+	float: left;
+	display: block;
+	padding: 5px 5px 0px 5px;
+	cursor: pointer;
+}
+.select-area-tab-default .dropdown-menu .nav-tab-content > ul > li.active > a {
+	color: #a94442;
+}
+.file-upload-default {
+	float: left;
+	margin: 5px 5px;
+}
+.file-upload-default h6 {
+	font-weight: normal;
+	text-align: center;
+	font-size: 14px;
+	border: 1px solid #ddd;
+	border-top: 0;
+	background-color: #fdfdfd;
+	color: #777;
+	margin: 0;
+	padding: 7px 5px;
+}
+.file-upload-default .container {
+	position: relative;
+	width: 220px;
+	height: 120px;
+	border: 1px solid #ddd;	
+	overflow: hidden;
+}
+.file-upload-default .container form {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%; 
+	z-index: 13;
+	overflow: h
+}
+.file-upload-default .container form >input {
+	opacity:0; 
+	filter:alpha(opacity=0);
+	width: 100%;
+	height: 100%; 
+	font-size: 200px;
+	cursor: pointer;
+}
+.file-upload-default .container .loading {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	z-index: 15;
+}
+.file-upload-default .container .loading > i.fa {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	color: #fff;
+}
+.file-upload-default .container .loading > i.fa-3x {
+	margin-top: -21px;
+	margin-left: -16.5px;
+}
+.file-upload-default .container .add {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	cursor: pointer;
+}
+.file-upload-default .container .add > i.fa {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	color: #aaa;
+}
+.file-upload-default .container .add > i.fa-3x {
+	margin-top: -21px;
+	margin-left: -16.5px;
+}
+.file-upload-default .container .add > i.fa-4x {
+	margin-top: -28px;
+	margin-left: -22px;
+}
+.file-upload-default .container .add:hover > i.fa {
+	color: #999;
+}
+.file-upload-default .container .preview {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 14;
+	display: none;
+	background-color: #fff;
+}
+.file-upload-default .container .preview > .icon > i.fa {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	color: #aaa;
+}
+.file-upload-default .container .preview > .icon > i.fa-3x {
+	margin-top: -21px;
+	margin-left: -16.5px;
+}
+.file-upload-default .container .preview > .icon > i.fa-4x {
+	margin-top: -28px;
+	margin-left: -22px;
+}
+.file-upload-default .container .preview > img {
+	width: 100%;
+	height: 100%;
+}
+.file-upload-default .container .preview > .tools {
+	position: absolute;
+	width: 100%;
+	height: 25px;
+	bottom: 0;
+	left: 0;
+	background-color: rgba( 0, 0, 0, .5);
+	padding-top: 4px;
+	display: none;
+}
+.file-upload-default .container .preview > .tools:before,
+.file-upload-default .container .preview > .tools:after {
+	content: " ";
+	clear: both;
+}
+.file-upload-default .container .preview > .tools > .download {
+	float: left;	
+	color: #fdfdfd;
+	padding-left: 5px;
+}
+
+.file-upload-default .container .preview > .tools > .remove {
+	float: right;
+	color: #fdfdfd;
+	padding-right: 5px;
+}
+
+.has-error.input-default .btn {
+	/* border-color: #a94442; */
+	color: #a94442;
+  	background-color: #f2dede;
+  	border-color: #a94442;
+}
+.popover.has-error {
+	color: #a94442;
+ 	border-color: #a94442;
+}
+.popover.has-error .popover-title {
+	color: #a94442;
+	background-color: #f2dede;
+  	border-bottom-color: #a94442;
+}
+.popover.top.has-error > .arrow {
+	border-top-color: #a94442;
+}
+.popover.top.has-error > .arrow:after {
+	border-top-color: #f2dede;
+}
+.popover.right.has-error > .arrow {
+	border-right-color: #a94442;
+}
+.popover.right.has-error > .arrow:after {
+	border-right-color: #f2dede;
+}
+.popover.bottom.has-error > .arrow {
+	border-bottom-color: #a94442;
+}
+.popover.bottom.has-error > .arrow:after {
+	border-bottom-color: #f2dede;
+}
+.popover.left.has-error > .arrow {
+	border-left-color: #a94442;
+}
+.popover.left.has-error > .arrow:after {
+	border-left-color: #f2dede;
+}
+
+
+.page-header.toggle {
+	cursor: pointer;
+	position: relative;
+}
+.page-header.toggle > div {
+	display: none;
+}
+.page-header.toggle.next + div {
+	display: none;
+}
+.page-header.toggle:after {
+	content: "\f196";
+	display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 20px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-right: 5px;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    color: #777;
+}
+.page-header.toggle.open > div, .page-header.toggle.next.open + div {
+	display: block;
+}
+.page-header.toggle.open:after {
+	content: "\f147"!important;
+}

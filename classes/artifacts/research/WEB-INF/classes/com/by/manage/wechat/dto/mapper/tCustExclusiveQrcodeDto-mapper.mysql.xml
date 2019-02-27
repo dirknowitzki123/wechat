@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.manage.wechat.dto.mapper.TCustExclusiveQrcodeDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.BUSI_NO busiNo,
+		t.BUSI_TYPE busiType,
+		t.CONTENT content,
+		t.IS_WECHAT isWechat,
+		t.TICKET ticket,
+		t.ATT_NAME attName,
+		t.ATT_SUFFIX attSuffix,
+		t.ATT_PATH attPath,
+		t.REMARK remark,
+		t.CREATE_DATE createDate,
+		t.MODIFY_DATE modifyDate
+	</sql>
+	<delete id="deleteByBusiNo" parameterType="java.lang.String">
+		DELETE FROM T_CUST_EXCLUSIVE_QRCODE WHERE BUSI_NO=#{busiNo}
+	</delete>
+</mapper>
+
+

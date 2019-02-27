@@ -1,0 +1,146 @@
+Grid说明
+
+that.vars.gridVar =  that.selector.find( "#grid" ).grid( config );
+
+that 
+框架中每个组件页面的 全局对象         强制规范
+
+that.vars 
+全局对象的全局变量申明     强制规范
+
+that.vars.gridVar            
+强制规范
+
+GridVar实例说明	
+gridVar.select 
+选中行
+@param indexs {namber || array(number) }
+当前行的索引，不加当前页 如当前每页1-10 那索引值为 0-10  值可以数字或数字数组
+此时会触发
+	列表change事件
+无返回值
+	
+@param .unselect
+取消选择行
+@param indexs {namber || array(number) }
+当前行的索引，不加当前页 如当前每页1-10 那索引值为 0-10  值可以数字或数字数组
+此时会触发
+	列表change事件
+无返回值
+	
+	
+gridVar.selectedRows
+获取选择数据   注意获取不是html元素对象 ，获取是JSON数据 结果为数组 items
+无参数
+返回 items {array(map:object)}
+
+
+gridVar.selectedRowIndexs
+获取选择行索引 
+无参数
+返回 indexs {array{map:number}}
+
+gridVar.getAllRows
+获取当前列表所有加载的数据   注意获取不是html元素对象 ，获取是JSON数据 结果为数组 items
+无参数
+返回 items {array(map:object)}
+
+gridVar.getRow
+用指定的索引获取行数据（items） 注意获取不是html元素对象 ，获取是JSON数据 结果为数组 items
+@param indexs {namber || array(number) }
+当前行的索引，不加当前页 如当前每页1-10 那索引值为 0-10  值可以数字或数字数组
+返回 items {array(map:object)}
+
+gridVar.load
+grid重新加载（刷新）
+@param map {map:object}
+可以指定当前查询参数 一般指定分页跳转到第一页
+如果只是刷新 就用 gridVar.load(); 即可
+需要跳转第一页 gridVar.load( { pageNo: 1 } );
+无返回值
+ 
+
+
+that.selector
+强制规范
+获取上下文
+
+that.selector.find
+强制规范
+上下文查找对象
+
+//====================================================================
+config 列表配置参数说明
+id: "", //Grid列表id
+css: "", //Grid列表class
+style: "",//Grid列表style
+theme: 'default', //主题
+cols: [], //列自定义
+autoLoad: true, //是否自动加载 数据 与remote一起配置才可用
+remote: { //列表数据源一
+	 url: '', //远程地址
+     cache: false, //是否缓存
+     method: 'POST', //方法
+     params: {}, //自带参数
+     callback: function (data) { //远程回调函数 对数据封装
+    	 return data;
+     },
+     dataType: 'json' //返回数据格式
+ },
+ items: false, //列表数据源二 静态数据
+ root: "list", //如果数据源非数组Array而是对象object 获取对象下的root对象来做数据源
+ multi: true, //是否多选
+ checkCol: true, //是否显示checkbox
+ indexCol: true, //是否显示索引
+ indexColWidth: '40px', //序号宽度
+ defaultColWidth: '100px', //默认列宽度
+ noDataTipHtml: '&nbsp;',  //无数据显示提示信息
+ height: 'auto', //高度 默认auto 可以指定高度 请自带单位
+ nowrap : false, //内容不折行 
+ page: false,  //分页 下面对page说明
+ query: false,  //查询 下面对query说明
+ plugins: [], //插件 保留 
+ events: { //事件
+	 loaded: { //每次加载数据完后调用
+		 data: {}, //事件你需要final值
+		 handler: function (event, items) {
+		 	//event.data 获取你的final值
+		 	//items 列表加载的数据
+		 }
+	 },
+	 change: {
+		 data: {}, //事件你需要final值
+		 handler: function (event, items, rowIndexs) {
+		 	//event.data 获取你的final值
+		 	//items 当前选择的数据
+		 	//rowIndexs 当前选择的索引
+		 }
+	 },
+	 click: {
+		 data: {}, //事件你需要final值
+		 handler: function (event, item, rowIndex) {
+		 	//event.data 获取你的final值
+		 	//items 当前点击行的数据
+		 	//rowIndexs 当前当前点击行的索引
+		 }
+	 }
+ },
+ customEvents: []
+ 
+ 
+cols 说明	
+ title //列名称
+ name //数据对应字段
+ width //宽度
+ lockWidth: true //是否锁定宽度  保留
+ renderer: function( val, item, rowIndex ) {
+ 	//val name对应数据item的值
+ 	//item 数据
+ 	//当前行索引
+ }
+ 
+ 
+ 
+ 
+
+

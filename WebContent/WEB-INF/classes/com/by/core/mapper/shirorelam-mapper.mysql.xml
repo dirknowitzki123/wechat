@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.by.core.mapper.ShiroRelamMapper">
+
+	<select id="findRoles" parameterType="java.util.Map" resultType="java.lang.String">
+		SELECT 
+			SRU.ROLE_ID
+		FROM a_sys_role_user SRU 
+		<trim prefix="WHERE" prefixOverrides="AND | OR ">
+			<if test="userId != null and userId != ''">
+				SRU.USER_ID = #{userId}
+			</if>
+		</trim>
+	</select>
+	
+	<select id="findPermissions" parameterType="java.util.Map" resultType="java.lang.String">
+		SELECT
+			distinct(asm.MENU_CODE) 
+		FROM
+			a_sys_menu asm
+		LEFT JOIN a_sys_role_menu asrm ON asm.ID = asrm.MENU_ID
+		LEFT JOIN a_sys_role_user asru ON asrm.ROLE_ID = asru.ROLE_ID
+		LEFT JOIN a_sys_user asu ON asru.USER_ID = asu.id
+		<if test="modules != null and modules.size() > 0">
+			INNER JOIN ( 
+				<foreach collection="modules" separator="UNION ALL" item="item" index="index" >
+					SELECT #{item} AS MODULE_CODE FROM DUAL
+				</foreach>
+			 ) M ON M.MODULE_CODE = asm.SYS_CODE
+		</if>
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="userId != null and userId != ''">
+				asu.LOGIN_NAME = #{userId}
+			</if>
+		</trim>
+	</select>
+	
+</mapper>

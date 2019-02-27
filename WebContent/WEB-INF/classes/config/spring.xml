@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+
+	<context:annotation-config/>
+	<task:annotation-driven/>
+	<context:component-scan base-package="com.by" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+	</context:component-scan>
+	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="fileEncoding" value="UTF-8"/> 
+		<property name="locations">
+			<list>
+				<value>classpath:config/props/jdbc.properties</value>
+				<value>classpath:config/props/file.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="exceptionConfig" class="com.by.core.startup.ExceptionConfig">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="fileEncoding" value="UTF-8"/> 
+		<property name="locations">
+			<list><value>classpath:config/app/exception.properties</value></list>
+		</property>
+	</bean>
+	<!-- 导入数据库配置 -->
+	<!-- mysql 但数据源配置  -->
+	<import resource="datasource/spring.mysql.xml"/>
+	<!-- oracle 单数据员配置
+	<import resource="datasource/spring.oracle.xml"/> -->
+	<!-- oracle and mysql 双数据员配置 
+	<import resource="datasource/spring.all.xml"/>-->
+
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 核心线程数 -->  
+		<property name="corePoolSize" value="60" />
+		 <!-- 队列最大长度 -->
+		<property name="maxPoolSize" value="150" />
+		<!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+		<property name="queueCapacity" value="180" />
+	</bean>
+</beans>

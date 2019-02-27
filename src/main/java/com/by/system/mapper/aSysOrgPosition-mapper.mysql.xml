@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysOrgPositionMapper">
+	<sql id="column">
+		t.ID id,
+		t.ORG_CODE orgCode,
+		t.ORG_NAME orgName,
+		t.POSTION_NO postionNo,
+		t.POSTION_NAME postionName,
+		t.REMARK remark,
+		t.STATUS status
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysOrgPosition">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ORG_POSITION t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND t.ORG_CODE = #{orgCode}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND t.ORG_NAME = #{orgName}
+			</if>
+			<if test="postionNo != null and postionNo != ''">
+				AND t.POSTION_NO = #{postionNo}
+			</if>
+			<if test="postionName != null and postionName != ''">
+				AND t.POSTION_NAME = #{postionName}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysOrgPosition">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ORG_POSITION t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND t.ORG_CODE = #{orgCode}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND t.ORG_NAME = #{orgName}
+			</if>
+			<if test="postionNo != null and postionNo != ''">
+				AND t.POSTION_NO = #{postionNo}
+			</if>
+			<if test="postionName != null and postionName != ''">
+				AND t.POSTION_NAME = #{postionName}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="status != null and status != ''">
+				AND t.STATUS = #{status}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysOrgPosition">
+	insert into A_SYS_ORG_POSITION
+	(
+		ID,
+		ORG_CODE,
+		ORG_NAME,
+		POSTION_NO,
+		POSTION_NAME,
+		REMARK,
+		STATUS
+	)
+	values
+	(
+		#{id},
+		#{orgCode},
+		#{orgName},
+		#{postionNo},
+		#{postionName},
+		#{remark},
+		#{status}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_ORG_POSITION
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="orgCode != null">
+				ORG_CODE = #{orgCode},
+			</if>
+			<if test="orgName != null">
+				ORG_NAME = #{orgName},
+			</if>
+			<if test="postionNo != null">
+				POSTION_NO = #{postionNo},
+			</if>
+			<if test="postionName != null">
+				POSTION_NAME = #{postionName},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+			<if test="status != null">
+				STATUS = #{status},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_ORG_POSITION WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysOrgPosition">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ORG_POSITION t
+		WHERE ID=#{id}
+	</select>
+	<select id="getPositionInfoByOrgCode" parameterType="java.lang.String" resultType="com.by.system.model.ASysOrgPosition">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_ORG_POSITION t
+		WHERE ORG_CODE=#{orgCode} and STATUS='13900001' ORDER BY POSTION_NO
+	</select>
+</mapper>
+
+

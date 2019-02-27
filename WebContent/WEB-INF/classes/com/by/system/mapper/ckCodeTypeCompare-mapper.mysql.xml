@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.CkCodeTypeCompareMapper">
+	<sql id="column">
+		t.old_type oldType,
+		t.new_type newType,
+		t.old_code_val oldCodeVal,
+		t.new_code_val newCodeVal,
+		t.state state
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.CkCodeTypeCompare">
+		SELECT
+			<include refid="column"/>
+		FROM CK_CODE_TYPE_COMPARE t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="oldType != null and oldType != ''">
+				AND t.old_type = #{oldType}
+			</if>
+			<if test="newType != null and newType != ''">
+				AND t.new_type = #{newType}
+			</if>
+			<if test="oldCodeVal != null and oldCodeVal != ''">
+				AND t.old_code_val = #{oldCodeVal}
+			</if>
+			<if test="newCodeVal != null and newCodeVal != ''">
+				AND t.new_code_val = #{newCodeVal}
+			</if>
+			<if test="state != null and state != ''">
+				AND t.state = #{state}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.CkCodeTypeCompare">
+		SELECT
+			<include refid="column"/>
+		FROM CK_CODE_TYPE_COMPARE t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="oldType != null and oldType != ''">
+				AND t.old_type = #{oldType}
+			</if>
+			<if test="newType != null and newType != ''">
+				AND t.new_type = #{newType}
+			</if>
+			<if test="oldCodeVal != null and oldCodeVal != ''">
+				AND t.old_code_val = #{oldCodeVal}
+			</if>
+			<if test="newCodeVal != null and newCodeVal != ''">
+				AND t.new_code_val = #{newCodeVal}
+			</if>
+			<if test="state != null and state != ''">
+				AND t.state = #{state}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.CkCodeTypeCompare">
+	insert into CK_CODE_TYPE_COMPARE
+	(
+		old_type,
+		new_type,
+		old_code_val,
+		new_code_val,
+		state
+	)
+	values
+	(
+		#{oldType},
+		#{newType},
+		#{oldCodeVal},
+		#{newCodeVal},
+		#{state}
+	)
+	</insert>
+<!-- 	
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE CK_CODE_TYPE_COMPARE
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="oldType != null">
+				old_type = #{oldType},
+			</if>
+			<if test="newType != null">
+				new_type = #{newType},
+			</if>
+			<if test="oldCodeVal != null">
+				old_code_val = #{oldCodeVal},
+			</if>
+			<if test="newCodeVal != null">
+				new_code_val = #{newCodeVal},
+			</if>
+			<if test="state != null">
+				state = #{state},
+			</if>
+		</trim>
+		WHERE =#{}
+	</update>
+	 -->
+	<!-- 
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM CK_CODE_TYPE_COMPARE WHERE =#{}
+	</delete>
+	 -->
+	<!-- 
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.CkCodeTypeCompare">
+		SELECT
+			<include refid="column"/>
+		FROM CK_CODE_TYPE_COMPARE t
+		WHERE =#{}
+	</select>
+	 -->
+	
+</mapper>
+
+

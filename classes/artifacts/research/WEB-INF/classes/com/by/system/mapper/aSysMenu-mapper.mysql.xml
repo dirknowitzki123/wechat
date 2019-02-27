@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysMenuMapper">
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysMenu">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_MENU t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="menuName != null and menuName != ''">
+				AND t.MENU_NAME = #{menuName}
+			</if>
+			<if test="menuCode != null and menuCode != ''">
+				AND t.MENU_CODE = #{menuCode}
+			</if>
+			<if test="menuLevel != null and menuLevel != ''">
+				AND t.MENU_LEVEL = #{menuLevel}
+			</if>
+			<if test="parentMenuId != null and parentMenuId != ''">
+				AND t.PARENT_MENU_ID = #{parentMenuId}
+			</if>
+			<if test="parentMenuId == null or parentMenuId == ''">
+				AND t.PARENT_MENU_ID = '' 
+			</if>
+			<if test="url != null and url != ''">
+				AND t.URL = #{url}
+			</if>
+			<if test="isUserAble != null and isUserAble != ''">
+				AND t.IS_USER_ABLE = #{isUserAble}
+			</if>
+			<if test="byOrder != null and byOrder != ''">
+				AND t.BY_ORDER = #{byOrder}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="menuIcon != null and menuIcon != ''">
+				AND t.MENU_ICON = #{menuIcon}
+			</if>
+			<if test="menuType != null and menuType != ''">
+				AND t.MENU_TYPE = #{menuType}
+			</if>
+			<if test="sysCode != null and sysCode != ''">
+				AND t.SYS_CODE = #{sysCode}
+			</if>
+			<if test="sysName != null and sysName != ''">
+				AND t.SYS_NAME = #{sysName}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysMenu">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_MENU t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="menuName != null and menuName != ''">
+				AND t.MENU_NAME LIKE '%${menuName}%'
+			</if>
+			<if test="menuCode != null and menuCode != ''">
+				AND t.MENU_CODE = #{menuCode}
+			</if>
+			<if test="menuLevel != null and menuLevel != ''">
+				AND t.MENU_LEVEL = #{menuLevel}
+			</if>
+			<if test="parentMenuId != null and parentMenuId != ''">
+				AND t.PARENT_MENU_ID = #{parentMenuId ,jdbcType=VARCHAR}
+			</if>
+			<if test="url != null and url != ''">
+				AND t.URL like '%${url}%'
+			</if>
+			<if test="isUserAble != null and isUserAble != ''">
+				AND t.IS_USER_ABLE = #{isUserAble}
+			</if>
+			<if test="byOrder != null and byOrder != ''">
+				AND t.BY_ORDER = #{byOrder}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="menuIcon != null and menuIcon != ''">
+				AND t.MENU_ICON = #{menuIcon}
+			</if>
+			<if test="menuType != null and menuType != ''">
+				AND t.MENU_TYPE = #{menuType}
+			</if>
+			<if test="sysCode != null and sysCode != ''">
+				AND t.SYS_CODE = #{sysCode}
+			</if>
+			<if test="sysName != null and sysName != ''">
+				AND t.SYS_NAME = #{sysName}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+		ORDER BY t.SYS_CODE, t.PARENT_MENU_ID,t.BY_ORDER
+	</select>
+	<select id="getListBO" parameterType="java.util.Map" resultType="com.by.system.dto.ASysMenuDTO">
+		SELECT
+			<include refid="column"/>,
+			t2.MENU_NAME pName,
+			t2.MENU_CODE pCode
+		FROM A_SYS_MENU t
+		LEFT JOIN A_SYS_MENU t2 on t.PARENT_MENU_ID=t2.ID
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="menuName != null and menuName != ''">
+				AND t.MENU_NAME LIKE '%${menuName}%'
+			</if>
+			<if test="menuCode != null and menuCode != ''">
+				AND t.MENU_CODE = #{menuCode}
+			</if>
+			<if test="menuLevel != null and menuLevel != ''">
+				AND t.MENU_LEVEL = #{menuLevel}
+			</if>
+			<if test="parentMenuId != null and parentMenuId != ''">
+				AND t.PARENT_MENU_ID = #{parentMenuId}
+			</if>
+			<if test="url != null and url != ''">
+				AND t.URL like '%${url}%'
+			</if>
+			<if test="isUserAble != null and isUserAble != ''">
+				AND t.IS_USER_ABLE = #{isUserAble}
+			</if>
+			<if test="byOrder != null and byOrder != ''">
+				AND t.BY_ORDER = #{byOrder}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="menuIcon != null and menuIcon != ''">
+				AND t.MENU_ICON = #{menuIcon}
+			</if>
+			<if test="menuType != null and menuType != ''">
+				AND t.MENU_TYPE = #{menuType}
+			</if>
+			<if test="sysCode != null and sysCode != ''">
+				AND t.SYS_CODE = #{sysCode}
+			</if>
+			<if test="sysName != null and sysName != ''">
+				AND t.SYS_NAME = #{sysName}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+		ORDER BY t.PARENT_MENU_ID,t.BY_ORDER
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysMenu">
+	insert into A_SYS_MENU
+	(
+		ID,
+		MENU_NAME,
+		MENU_CODE,
+		MENU_LEVEL,
+		PARENT_MENU_ID,
+		URL,
+		IS_USER_ABLE,
+		BY_ORDER,
+		REMARK,
+		MENU_ICON,
+		MENU_TYPE,
+		SYS_CODE,
+		SYS_NAME,
+		INST_DATE,
+		INST_USER_NO,
+		UPDT_DATE
+	)
+	values
+	(
+		#{id},
+		#{menuName},
+		#{menuCode},
+		#{menuLevel},
+		#{parentMenuId},
+		#{url},
+		#{isUserAble},
+		#{byOrder},
+		#{remark},
+		#{menuIcon},
+		#{menuType},
+		#{sysCode},
+		#{sysName},
+		#{instDate},
+		#{instUserNo},
+		#{updtDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_MENU
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="menuName != null">
+				MENU_NAME = #{menuName},
+			</if>
+			<if test="menuCode != null">
+				MENU_CODE = #{menuCode},
+			</if>
+			<if test="menuLevel != null">
+				MENU_LEVEL = #{menuLevel},
+			</if>
+			<if test="parentMenuId != null">
+				PARENT_MENU_ID = #{parentMenuId},
+			</if>
+			<if test="url != null">
+				URL = #{url},
+			</if>
+			<if test="isUserAble != null">
+				IS_USER_ABLE = #{isUserAble},
+			</if>
+			<if test="byOrder != null">
+				BY_ORDER = #{byOrder},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark},
+			</if>
+			<if test="menuIcon != null">
+				MENU_ICON = #{menuIcon},
+			</if>
+			<if test="menuType != null">
+				MENU_TYPE = #{menuType},
+			</if>
+			<if test="sysCode != null">
+				SYS_CODE = #{sysCode},
+			</if>
+			<if test="sysName != null">
+				SYS_NAME = #{sysName},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_MENU WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysMenu">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_MENU t
+		WHERE t.ID=#{id}
+	</select>
+	
+	<!-- 查询  列表 -->
+	<select id="getMenus" resultType="com.by.system.model.ASysMenu" parameterType="java.util.Map">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_MENU t
+		<if test="modules != null and modules.size() > 0">
+			INNER JOIN ( 
+				<foreach collection="modules" separator="UNION ALL" item="item" index="index" >
+					SELECT #{item} AS MODULE_CODE FROM DUAL
+				</foreach>
+			 ) M ON M.MODULE_CODE = T.SYS_CODE
+		</if>
+		<if test="menuTypes != null and menuTypes.size() > 0">
+			INNER JOIN ( 
+				<foreach collection="menuTypes" separator="UNION ALL" item="item" index="index" >
+					SELECT #{item} AS MENU_TYPE FROM DUAL
+				</foreach>
+			 ) MT ON MT.MENU_TYPE = T.MENU_TYPE
+		</if>
+		AND T.IS_USER_ABLE = #{isUserAble}
+		ORDER BY T.BY_ORDER
+	</select>
+	
+	
+	<sql id="column">
+		t.ID id,
+		t.MENU_NAME menuName,
+		t.MENU_CODE menuCode,
+		t.MENU_LEVEL menuLevel,
+		t.PARENT_MENU_ID parentMenuId,
+		t.URL url,
+		t.IS_USER_ABLE isUserAble,
+		t.BY_ORDER byOrder,
+		t.REMARK remark,
+		t.MENU_ICON menuIcon,
+		t.MENU_TYPE menuType,
+		t.SYS_CODE sysCode,
+		t.SYS_NAME sysName,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate
+	</sql>
+</mapper>
+
+

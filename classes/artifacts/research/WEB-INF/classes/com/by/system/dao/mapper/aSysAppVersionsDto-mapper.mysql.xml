@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.dao.mapper.ASysAppVersionsDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.OS_TYPE osType,
+		t.VERSION_NO versionNo,
+		t.APPLY_TYPE applyType,
+		t.DOWN_PATH downPath,
+		t.REMARK remark,
+		t.IS_NO isNo,
+		t.APP_SIZE appSize,
+		t.APPLY_ENVIR applyEnvir,
+		t.ONLINE_DATE onlineDate,
+		t.INST_DATE instDate,
+		t.UPDT_DATE updtDate
+	</sql>
+	<select id="queryNewVersion" parameterType="com.by.system.model.ASysAppVersions" resultType="com.by.system.model.ASysAppVersions">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_APP_VERSIONS t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="osType != null and osType != ''">
+				AND t.OS_TYPE = #{osType}
+			</if>
+			<if test="versionNo != null and versionNo != ''">
+				AND t.VERSION_NO = #{versionNo}
+			</if>
+			<if test="applyType != null and applyType != ''">
+				AND t.APPLY_TYPE = #{applyType}
+			</if>
+			<if test="downPath != null and downPath != ''">
+				AND t.DOWN_PATH = #{downPath}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND t.REMARK = #{remark}
+			</if>
+			<if test="isNo != null and isNo != ''">
+				AND t.IS_NO = #{isNo}
+			</if>
+			<if test="appSize != null and appSize != ''">
+				AND t.APP_SIZE = #{appSize}
+			</if>
+			<if test="applyEnvir != null and applyEnvir != ''">
+				AND t.APPLY_ENVIR = #{applyEnvir}
+			</if>
+			<if test="onlineDate != null and onlineDate != ''">
+				AND t.ONLINE_DATE = #{onlineDate}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+		ORDER BY t.UPDT_DATE DESC
+		LIMIT 0,1
+	</select>
+	
+	<!--查询版本信息-->
+	<select id="getVersionsList" parameterType="com.by.system.model.ASysAppVersions" resultType="com.by.system.model.ASysAppVersions">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_APP_VERSIONS t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="osType != null and osType != ''">
+				AND t.OS_TYPE = #{osType}
+			</if>
+			<if test="versionNo != null and versionNo != ''">
+				AND t.VERSION_NO LIKE CONCAT('%',#{versionNo},'%')
+			</if>
+		</trim>
+	</select>
+</mapper>
+
+

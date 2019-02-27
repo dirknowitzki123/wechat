@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.bussiness.wechat.mapper.PubMsgCaptchaMapper">
+	<sql id="column">
+		t.ID id,
+		t.MOBL_NO moblNo,
+		t.CHECK_TYP checkTyp,
+		t.CHECK_DATE checkDate,
+		t.CHECK_DESC checkDesc,
+		t.CHECK_RESLT checkReslt,
+		t.CREATE_DATE createDate,
+		t.MODIFY_DATE modifyDate
+	</sql>
+	<sql id="condition">
+			<if test="id != null and id != ''">AND t.ID = #{id}</if>
+			<if test="moblNo != null and moblNo != ''">AND t.MOBL_NO = #{moblNo}</if>
+			<if test="checkTyp != null and checkTyp != ''">AND t.CHECK_TYP = #{checkTyp}</if>
+			<if test="checkDate != null and checkDate != ''">AND t.CHECK_DATE = #{checkDate}</if>
+			<if test="checkDesc != null and checkDesc != ''">AND t.CHECK_DESC = #{checkDesc}</if>
+			<if test="checkReslt != null and checkReslt != ''">AND t.CHECK_RESLT = #{checkReslt}</if>
+			<if test="createDate != null and createDate != ''">AND t.CREATE_DATE = #{createDate}</if>
+			<if test="modifyDate != null and modifyDate != ''">AND t.MODIFY_DATE = #{modifyDate}</if>
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.PubMsgCaptcha">
+		SELECT
+			<include refid="column"/>
+		FROM PUB_MSG_CAPTCHA t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<include refid="condition"/>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.PubMsgCaptcha">
+		SELECT
+			<include refid="column"/>
+		FROM PUB_MSG_CAPTCHA t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<include refid="condition"/>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.bussiness.wechat.model.PubMsgCaptcha">
+	insert into PUB_MSG_CAPTCHA
+	(
+		ID,
+		MOBL_NO,
+		CHECK_TYP,
+		CHECK_DATE,
+		CHECK_DESC,
+		CHECK_RESLT,
+		CREATE_DATE,
+		MODIFY_DATE
+	)
+	values
+	(
+		#{id},
+		#{moblNo},
+		#{checkTyp},
+		#{checkDate},
+		#{checkDesc},
+		#{checkReslt},
+		#{createDate},
+		#{modifyDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="com.by.bussiness.wechat.model.PubMsgCaptcha">
+		UPDATE PUB_MSG_CAPTCHA
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="moblNo != null">
+				MOBL_NO = #{moblNo},
+			</if>
+			<if test="checkTyp != null">
+				CHECK_TYP = #{checkTyp},
+			</if>
+			<if test="checkDate != null">
+				CHECK_DATE = #{checkDate},
+			</if>
+			<if test="checkDesc != null">
+				CHECK_DESC = #{checkDesc},
+			</if>
+			<if test="checkReslt != null">
+				CHECK_RESLT = #{checkReslt},
+			</if>
+			<if test="createDate != null">
+				CREATE_DATE = #{createDate},
+			</if>
+			<if test="modifyDate != null">
+				MODIFY_DATE = #{modifyDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM PUB_MSG_CAPTCHA WHERE ID=#{id}
+	</delete>
+	<delete id="delete" parameterType="java.util.List">
+		DELETE FROM PUB_MSG_CAPTCHA WHERE ID IN
+		<foreach collection="list" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	<delete id="deleteObj" parameterType="java.util.List">
+		DELETE FROM PUB_MSG_CAPTCHA WHERE ID IN
+		<foreach collection="list" item="obj" open="(" separator="," close=")">
+			#{obj.id}
+		</foreach>
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.bussiness.wechat.model.PubMsgCaptcha">
+		SELECT
+			<include refid="column"/>
+		FROM PUB_MSG_CAPTCHA t
+		WHERE ID=#{id}
+	</select>
+</mapper>
+
+

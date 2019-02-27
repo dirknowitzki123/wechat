@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.dto.mapper.ASysOrgDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.ORG_CODE orgCode,
+		t.ORG_NAME orgName,
+		t.PARENT_ID parentId,
+		t.ORG_ORDER orgOrder,
+		t.ORG_LEVEL orgLevel,
+		t.ORG_TYPE orgType,
+		t.ORG_PATH orgPath,
+		t.ORG_ADDR orgAddr,
+		t.ORG_PHONE orgPhone,
+		t.REMARK remark,
+		t.STATUS status,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate
+	</sql>
+	
+	<!--通过用户登录名获得该用户的所有机构  -->
+	<select id="getOrgList" parameterType="map" resultType="com.by.system.model.ASysOrg">
+		SELECT
+			<include refid="column" />
+		FROM
+			a_sys_org t
+		LEFT JOIN a_sys_user_org o ON t.ID = o.org_id
+		LEFT JOIN a_sys_user u ON u.id = o.user_id
+		WHERE 
+			t.status = #{stat}
+		AND 
+			u.status = #{stat}
+		and u.login_name = #{loginName}
+	</select>
+	
+</mapper>
+
+

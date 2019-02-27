@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.manage.wechat.dto.mapper.TClientAppointmentCashloanDtoMapper">
+	<sql id="column">
+		t.ID id,
+		t.CUST_NAME custName,
+		t.PHONE_NO phoneNo,
+		t.IVING_CITY ivingCity,
+		t.REFERRAL_CODE referralCode,
+		t.IS_STAGED isStaged,
+		t.IS_CREDITES isCredites,
+		t.CREATE_DATE createDate,
+		t.MODIFY_DATE modifyDate
+	</sql>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.bussiness.wechat.model.TClientAppointmentCashloan">
+		SELECT
+			<include refid="column"/>
+		FROM T_CLIENT_APPOINTMENT_CASHLOAN t
+		LEFT JOIN T_CUST_BASE_INFO b ON t.REFERRAL_CODE = b.REFERRAL_CODE
+		LEFT JOIN T_CUST_LOGIN_INFO l ON b.CUST_NO = l.CUST_NO
+		WHERE l.STATUS != #{status}
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="custName != null and custName != ''">
+				AND t.CUST_NAME = #{custName}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				AND t.PHONE_NO = #{phoneNo}
+			</if>
+			<if test="ivingCity != null and ivingCity != ''">
+				AND t.IVING_CITY = #{ivingCity}
+			</if>
+			<if test="referralCode != null and referralCode != ''">
+				AND t.REFERRAL_CODE = #{referralCode}
+			</if>
+			<if test="isStaged != null and isStaged != ''">
+				AND t.IS_STAGED = #{isStaged}
+			</if>
+			<if test="isCredites != null and isCredites != ''">
+				AND t.IS_CREDITES = #{isCredites}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND t.CREATE_DATE = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				AND t.MODIFY_DATE = #{modifyDate}
+			</if>
+			<if test="beginDate != null and beginDate != ''">
+				AND unix_timestamp(date_format (t.CREATE_DATE, '%Y-%m-%d')) &gt;= unix_timestamp(date_format (#{beginDate}, '%Y-%m-%d'))
+			</if>
+			<if test="endDate != null and endDate != ''">
+				AND  unix_timestamp(date_format (t.CREATE_DATE, '%Y-%m-%d')) &lt;= unix_timestamp(date_format (#{endDate}, '%Y-%m-%d'))
+			</if>
+	</select>
+</mapper>
+
+

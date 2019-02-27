@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.CkCodeCompareFlatfromMapper">
+	<sql id="column">
+		t.id id,
+		t.mine_code_val mineCodeVal,
+		t.flat_code_val flatCodeVal,
+		t.type type
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.CkCodeCompareFlatfrom">
+		SELECT
+			<include refid="column"/>
+		FROM CK_CODE_COMPARE_FLATFROM t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.id = #{id}
+			</if>
+			<if test="mineCodeVal != null and mineCodeVal != ''">
+				AND t.mine_code_val = #{mineCodeVal}
+			</if>
+			<if test="flatCodeVal != null and flatCodeVal != ''">
+				AND t.flat_code_val = #{flatCodeVal}
+			</if>
+			<if test="type != null and type != ''">
+				AND t.type = #{type}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.CkCodeCompareFlatfrom">
+		SELECT
+			<include refid="column"/>
+		FROM CK_CODE_COMPARE_FLATFROM t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.id = #{id}
+			</if>
+			<if test="mineCodeVal != null and mineCodeVal != ''">
+				AND t.mine_code_val = #{mineCodeVal}
+			</if>
+			<if test="flatCodeVal != null and flatCodeVal != ''">
+				AND t.flat_code_val = #{flatCodeVal}
+			</if>
+			<if test="type != null and type != ''">
+				AND t.type = #{type}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.CkCodeCompareFlatfrom">
+	insert into CK_CODE_COMPARE_FLATFROM
+	(
+		id,
+		mine_code_val,
+		flat_code_val,
+		type
+	)
+	values
+	(
+		#{id},
+		#{mineCodeVal},
+		#{flatCodeVal},
+		#{type}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE CK_CODE_COMPARE_FLATFROM
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="mineCodeVal != null">
+				mine_code_val = #{mineCodeVal},
+			</if>
+			<if test="flatCodeVal != null">
+				flat_code_val = #{flatCodeVal},
+			</if>
+			<if test="type != null">
+				type = #{type},
+			</if>
+		</trim>
+		WHERE t.id =#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM CK_CODE_COMPARE_FLATFROM WHERE t.id =#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.CkCodeCompareFlatfrom">
+		SELECT
+			<include refid="column"/>
+		FROM CK_CODE_COMPARE_FLATFROM t
+		WHERE t.id =#{id}
+	</select>
+</mapper>
+
+

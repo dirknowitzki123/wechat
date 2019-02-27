@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.by.system.mapper.ASysRescMapper" >
+	<!-- 返回 Bean-->
+	<resultMap id="ASysRescRetMap" type="com.by.system.model.ASysResc">
+			<result column="ID" property="id"/>
+			<result column="RESC_NAME" property="rescName"/>
+			<result column="RESC_CODE" property="rescCode"/>
+			<result column="RESC_URI" property="rescUri"/>
+			<result column="RESC_TYPE" property="rescType"/>
+			<result column="RESC_REMARK" property="rescRemark"/>
+	</resultMap>
+	
+	<!-- 新增  -->
+	<insert id="insert" parameterType="com.by.system.model.ASysResc">
+		insert into A_SYS_RESC
+		(
+  			ID
+  			,RESC_NAME
+  			,RESC_CODE
+  			,RESC_URI
+  			,RESC_TYPE
+  			,RESC_REMARK
+    	)
+    	values
+    	(
+  			 #{id}
+  			, #{rescName}
+  			, #{rescCode}
+  			, #{rescUri}
+  			, #{rescType}
+  			, #{rescRemark}
+    	)
+	</insert>
+	
+	<!-- 修改  -->
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update A_SYS_RESC
+		<trim prefix="SET" suffixOverrides=",">
+  				<if test="_parameter.containsKey('rescName')">  
+  					RESC_NAME = #{rescName},  
+  				</if>		
+  				<if test="_parameter.containsKey('rescCode')">  
+  					RESC_CODE = #{rescCode},  
+  				</if>		
+  				<if test="_parameter.containsKey('rescUri')">  
+  					RESC_URI = #{rescUri},  
+  				</if>		
+  				<if test="_parameter.containsKey('rescType')">  
+  					RESC_TYPE = #{rescType},  
+  				</if>		
+  				<if test="_parameter.containsKey('rescRemark')">  
+  					RESC_REMARK = #{rescRemark},  
+  				</if>		
+    	</trim>
+		where 
+  			ID = #{id}				
+	</update>
+	<select id="get" resultMap="ASysRescRetMap" parameterType="java.util.Map">
+		select	
+			<include refid="column"/>
+		from A_SYS_RESC t
+		<trim prefix="WHERE" prefixOverrides="AND |OR "> 
+				<if test="id != null and id != ''">
+	  				and t.ID = #{id}				
+	  			</if>
+				<if test="rescName != null and rescName != ''">
+	  				and t.RESC_NAME = #{rescName}				
+	  			</if>
+				<if test="rescCode != null and rescCode != ''">
+	  				and t.RESC_CODE = #{rescCode}				
+	  			</if>
+				<if test="rescUri != null and rescUri != ''">
+	  				and t.RESC_URI = #{rescUri}				
+	  			</if>
+				<if test="rescType != null and rescType != ''">
+	  				and t.RESC_TYPE = #{rescType}				
+	  			</if>
+				<if test="rescRemark != null and rescRemark != ''">
+	  				and t.RESC_REMARK = #{rescRemark}				
+	  			</if>
+    	</trim>
+	</select>
+	<!-- 查询  列表 -->
+	<select id="getList" resultMap="ASysRescRetMap" parameterType="java.util.Map">
+		select	
+			<include refid="column"/>
+		from A_SYS_RESC t
+		<trim prefix="WHERE" prefixOverrides="AND |OR "> 
+				<if test="id != null and id != ''">
+	  				and t.ID = #{id}				
+	  			</if>
+				<if test="rescName != null and rescName != ''">
+	  				and t.RESC_NAME = #{rescName}				
+	  			</if>
+				<if test="rescCode != null and rescCode != ''">
+	  				and t.RESC_CODE = #{rescCode}				
+	  			</if>
+				<if test="rescUri != null and rescUri != ''">
+	  				and t.RESC_URI = #{rescUri}				
+	  			</if>
+				<if test="rescType != null and rescType != ''">
+	  				and t.RESC_TYPE = #{rescType}				
+	  			</if>
+				<if test="rescRemark != null and rescRemark != ''">
+	  				and t.RESC_REMARK = #{rescRemark}				
+	  			</if>
+    	</trim>
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_RESC WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysOrg">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_RESC t
+		WHERE t.ID=#{id}
+	</select>
+	
+	<sql id="column">
+		t.ID
+		, t.RESC_NAME
+		, t.RESC_CODE
+		, t.RESC_URI
+		, t.RESC_TYPE
+		, t.RESC_REMARK
+	</sql>
+</mapper>

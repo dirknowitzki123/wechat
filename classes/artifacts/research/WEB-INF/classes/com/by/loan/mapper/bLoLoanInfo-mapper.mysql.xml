@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.loan.mapper.BLoLoanInfoMapper">
+	<sql id="column">
+		t.ID id,
+		t.LOAN_NO loanNo,
+		t.CUST_NO custNo,
+		t.CUST_NAME custName,
+		t.LOAN_AMT loanAmt,
+		t.CONTR_AMT contrAmt,
+		t.LOAN_TYP loanTyp,
+		t.INST_NUM instNum,
+		t.FST_PAY_AMT fstPayAmt,
+		t.FST_REPAY_AMT fstRepayAmt,
+		t.FST_REPAY_DATE fstRepayDate,
+		t.MTH_REPAY_DATE mthRepayDate,
+		t.MTH_REPAY_AMT mthRepayAmt,
+		t.APPLY_DATE applyDate,
+		t.APRV_DATE aprvDate,
+		t.REG_DATE regDate,
+		t.DISTR_DATE distrDate,
+		t.FILE_NO fileNo,
+		t.STAT stat,
+		t.AFTER_STAT afterStat,
+		t.FIV_CLS fivCls,
+		t.PROPR_FLAG proprFlag,
+		t.CHECK_FLAG checkFlag,
+		t.CHECK_AMT checkAmt,
+		t.CHECK_MTH_AMT checkMthAmt,
+		t.CHECK_ACC_FLAG checkAccFlag,
+		t.WORK_ORDER_ID workOrderId,
+		t.LOAN_USE loanUse,
+		t.APPLY_PROV applyProv,
+		t.APPLY_AREA applyArea,
+		t.APPLY_CITY applyCity,
+		t.SOURCE_TYPE sourceType,
+		t.SOURCE_USER_TYPE sourceUserType,
+		t.SOURCE_OS_TYPE sourceOsType,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate,
+		t.APPR_AMT apprAmt,
+		t.IS_OUT_VISIT isOutVisit
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.loan.model.BLoLoanInfo">
+		SELECT
+			<include refid="column"/>
+		FROM B_LO_LOAN_INFO t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="loanNo != null and loanNo != ''">
+				AND t.LOAN_NO = #{loanNo}
+			</if>
+			<if test="custNo != null and custNo != ''">
+				AND t.CUST_NO = #{custNo}
+			</if>
+			<if test="custName != null and custName != ''">
+				AND t.CUST_NAME = #{custName}
+			</if>
+			<if test="loanAmt != null and loanAmt != ''">
+				AND t.LOAN_AMT = #{loanAmt}
+			</if>
+			<if test="contrAmt != null and contrAmt != ''">
+				AND t.CONTR_AMT = #{contrAmt}
+			</if>
+			<if test="loanTyp != null and loanTyp != ''">
+				AND t.LOAN_TYP = #{loanTyp}
+			</if>
+			<if test="instNum != null and instNum != ''">
+				AND t.INST_NUM = #{instNum}
+			</if>
+			<if test="fstPayAmt != null and fstPayAmt != ''">
+				AND t.FST_PAY_AMT = #{fstPayAmt}
+			</if>
+			<if test="fstRepayAmt != null and fstRepayAmt != ''">
+				AND t.FST_REPAY_AMT = #{fstRepayAmt}
+			</if>
+			<if test="fstRepayDate != null and fstRepayDate != ''">
+				AND t.FST_REPAY_DATE = #{fstRepayDate}
+			</if>
+			<if test="mthRepayDate != null and mthRepayDate != ''">
+				AND t.MTH_REPAY_DATE = #{mthRepayDate}
+			</if>
+			<if test="mthRepayAmt != null and mthRepayAmt != ''">
+				AND t.MTH_REPAY_AMT = #{mthRepayAmt}
+			</if>
+			<if test="applyDate != null and applyDate != ''">
+				AND t.APPLY_DATE = #{applyDate}
+			</if>
+			<if test="aprvDate != null and aprvDate != ''">
+				AND t.APRV_DATE = #{aprvDate}
+			</if>
+			<if test="regDate != null and regDate != ''">
+				AND t.REG_DATE = #{regDate}
+			</if>
+			<if test="distrDate != null and distrDate != ''">
+				AND t.DISTR_DATE = #{distrDate}
+			</if>
+			<if test="fileNo != null and fileNo != ''">
+				AND t.FILE_NO = #{fileNo}
+			</if>
+			<if test="stat != null and stat != ''">
+				AND t.STAT = #{stat}
+			</if>
+			<if test="afterStat != null and afterStat != ''">
+				AND t.AFTER_STAT = #{afterStat}
+			</if>
+			<if test="fivCls != null and fivCls != ''">
+				AND t.FIV_CLS = #{fivCls}
+			</if>
+			<if test="proprFlag != null and proprFlag != ''">
+				AND t.PROPR_FLAG = #{proprFlag}
+			</if>
+			<if test="checkFlag != null and checkFlag != ''">
+				AND t.CHECK_FLAG = #{checkFlag}
+			</if>
+			<if test="checkAmt != null and checkAmt != ''">
+				AND t.CHECK_AMT = #{checkAmt}
+			</if>
+			<if test="checkMthAmt != null and checkMthAmt != ''">
+				AND t.CHECK_MTH_AMT = #{checkMthAmt}
+			</if>
+			<if test="checkAccFlag != null and checkAccFlag != ''">
+				AND t.CHECK_ACC_FLAG = #{checkAccFlag}
+			</if>
+			<if test="workOrderId != null and workOrderId != ''">
+				AND t.WORK_ORDER_ID = #{workOrderId}
+			</if>
+			<if test="loanUse != null and loanUse != ''">
+				AND t.LOAN_USE = #{loanUse}
+			</if>
+			<if test="applyProv != null and applyProv != ''">
+				AND t.APPLY_PROV = #{applyProv}
+			</if>
+			<if test="applyArea != null and applyArea != ''">
+				AND t.APPLY_AREA = #{applyArea}
+			</if>
+			<if test="applyCity != null and applyCity != ''">
+				AND t.APPLY_CITY = #{applyCity}
+			</if>
+			<if test="sourceType != null and sourceType != ''">
+				AND t.SOURCE_TYPE = #{sourceType}
+			</if>
+			<if test="sourceUserType != null and sourceUserType != ''">
+				AND t.SOURCE_USER_TYPE = #{sourceUserType}
+			</if>
+			<if test="sourceOsType != null and sourceOsType != ''">
+				AND t.SOURCE_OS_TYPE = #{sourceOsType}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.loan.model.BLoLoanInfo">
+		SELECT
+			<include refid="column"/>
+		FROM B_LO_LOAN_INFO t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="loanNo != null and loanNo != ''">
+				AND t.LOAN_NO = #{loanNo}
+			</if>
+			<if test="custNo != null and custNo != ''">
+				AND t.CUST_NO = #{custNo}
+			</if>
+			<if test="custName != null and custName != ''">
+				AND t.CUST_NAME = #{custName}
+			</if>
+			<if test="loanAmt != null and loanAmt != ''">
+				AND t.LOAN_AMT = #{loanAmt}
+			</if>
+			<if test="contrAmt != null and contrAmt != ''">
+				AND t.CONTR_AMT = #{contrAmt}
+			</if>
+			<if test="loanTyp != null and loanTyp != ''">
+				AND t.LOAN_TYP = #{loanTyp}
+			</if>
+			<if test="instNum != null and instNum != ''">
+				AND t.INST_NUM = #{instNum}
+			</if>
+			<if test="fstPayAmt != null and fstPayAmt != ''">
+				AND t.FST_PAY_AMT = #{fstPayAmt}
+			</if>
+			<if test="fstRepayAmt != null and fstRepayAmt != ''">
+				AND t.FST_REPAY_AMT = #{fstRepayAmt}
+			</if>
+			<if test="fstRepayDate != null and fstRepayDate != ''">
+				AND t.FST_REPAY_DATE = #{fstRepayDate}
+			</if>
+			<if test="mthRepayDate != null and mthRepayDate != ''">
+				AND t.MTH_REPAY_DATE = #{mthRepayDate}
+			</if>
+			<if test="mthRepayAmt != null and mthRepayAmt != ''">
+				AND t.MTH_REPAY_AMT = #{mthRepayAmt}
+			</if>
+			<if test="applyDate != null and applyDate != ''">
+				AND t.APPLY_DATE = #{applyDate}
+			</if>
+			<if test="aprvDate != null and aprvDate != ''">
+				AND t.APRV_DATE = #{aprvDate}
+			</if>
+			<if test="regDate != null and regDate != ''">
+				AND t.REG_DATE = #{regDate}
+			</if>
+			<if test="distrDate != null and distrDate != ''">
+				AND t.DISTR_DATE = #{distrDate}
+			</if>
+			<if test="fileNo != null and fileNo != ''">
+				AND t.FILE_NO = #{fileNo}
+			</if>
+			<if test="stat != null and stat != ''">
+				AND t.STAT = #{stat}
+			</if>
+			<if test="afterStat != null and afterStat != ''">
+				AND t.AFTER_STAT = #{afterStat}
+			</if>
+			<if test="fivCls != null and fivCls != ''">
+				AND t.FIV_CLS = #{fivCls}
+			</if>
+			<if test="proprFlag != null and proprFlag != ''">
+				AND t.PROPR_FLAG = #{proprFlag}
+			</if>
+			<if test="checkFlag != null and checkFlag != ''">
+				AND t.CHECK_FLAG = #{checkFlag}
+			</if>
+			<if test="checkAmt != null and checkAmt != ''">
+				AND t.CHECK_AMT = #{checkAmt}
+			</if>
+			<if test="checkMthAmt != null and checkMthAmt != ''">
+				AND t.CHECK_MTH_AMT = #{checkMthAmt}
+			</if>
+			<if test="checkAccFlag != null and checkAccFlag != ''">
+				AND t.CHECK_ACC_FLAG = #{checkAccFlag}
+			</if>
+			<if test="workOrderId != null and workOrderId != ''">
+				AND t.WORK_ORDER_ID = #{workOrderId}
+			</if>
+			<if test="loanUse != null and loanUse != ''">
+				AND t.LOAN_USE = #{loanUse}
+			</if>
+			<if test="applyProv != null and applyProv != ''">
+				AND t.APPLY_PROV = #{applyProv}
+			</if>
+			<if test="applyArea != null and applyArea != ''">
+				AND t.APPLY_AREA = #{applyArea}
+			</if>
+			<if test="applyCity != null and applyCity != ''">
+				AND t.APPLY_CITY = #{applyCity}
+			</if>
+			<if test="sourceType != null and sourceType != ''">
+				AND t.SOURCE_TYPE = #{sourceType}
+			</if>
+			<if test="sourceUserType != null and sourceUserType != ''">
+				AND t.SOURCE_USER_TYPE = #{sourceUserType}
+			</if>
+			<if test="sourceOsType != null and sourceOsType != ''">
+				AND t.SOURCE_OS_TYPE = #{sourceOsType}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.loan.model.BLoLoanInfo">
+	insert into B_LO_LOAN_INFO
+	(
+		ID,
+		LOAN_NO,
+		CUST_NO,
+		CUST_NAME,
+		LOAN_AMT,
+		CONTR_AMT,
+		LOAN_TYP,
+		INST_NUM,
+		FST_PAY_AMT,
+		FST_REPAY_AMT,
+		FST_REPAY_DATE,
+		MTH_REPAY_DATE,
+		MTH_REPAY_AMT,
+		APPLY_DATE,
+		APRV_DATE,
+		REG_DATE,
+		DISTR_DATE,
+		FILE_NO,
+		STAT,
+		AFTER_STAT,
+		FIV_CLS,
+		PROPR_FLAG,
+		CHECK_FLAG,
+		CHECK_AMT,
+		CHECK_MTH_AMT,
+		CHECK_ACC_FLAG,
+		WORK_ORDER_ID,
+		LOAN_USE,
+		APPLY_PROV,
+		APPLY_AREA,
+		APPLY_CITY,
+		SOURCE_TYPE,
+		SOURCE_USER_TYPE,
+		SOURCE_OS_TYPE,
+		INST_DATE,
+		INST_USER_NO,
+		UPDT_DATE,
+		APPR_AMT,
+		IS_OUT_VISIT
+	)
+	values
+	(
+		#{id},
+		#{loanNo},
+		#{custNo},
+		#{custName},
+		#{loanAmt},
+		#{contrAmt},
+		#{loanTyp},
+		#{instNum},
+		#{fstPayAmt},
+		#{fstRepayAmt},
+		#{fstRepayDate},
+		#{mthRepayDate},
+		#{mthRepayAmt},
+		#{applyDate},
+		#{aprvDate},
+		#{regDate},
+		#{distrDate},
+		#{fileNo},
+		#{stat},
+		#{afterStat},
+		#{fivCls},
+		#{proprFlag},
+		#{checkFlag},
+		#{checkAmt},
+		#{checkMthAmt},
+		#{checkAccFlag},
+		#{workOrderId},
+		#{loanUse},
+		#{applyProv},
+		#{applyArea},
+		#{applyCity},
+		#{sourceType},
+		#{sourceUserType},
+		#{sourceOsType},
+		#{instDate},
+		#{instUserNo},
+		#{updtDate},
+		#{apprAMt},
+		#{isOutVisit}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE B_LO_LOAN_INFO
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="custName != null and custName != ''">
+				CUST_NAME = #{custName},
+			</if>
+			<if test="loanAmt != null and loanAmt != ''">
+				LOAN_AMT = #{loanAmt},
+			</if>
+			<if test="contrAmt != null and contrAmt != ''">
+				CONTR_AMT = #{contrAmt},
+			</if>
+			<if test="loanTyp != null and loanTyp !=''">
+				LOAN_TYP = #{loanTyp},
+			</if>
+			<if test="instNum != null and instNum != '' ">
+				INST_NUM = #{instNum},
+			</if>
+			<if test="fstPayAmt != null and fstPayAmt != ''">
+				FST_PAY_AMT = #{fstPayAmt},
+			</if>
+			<if test="fstRepayAmt != null and fstRepayAmt != '' ">
+				FST_REPAY_AMT = #{fstRepayAmt},
+			</if>
+			<if test="fstRepayDate != null and fstRepayDate != ''">
+				FST_REPAY_DATE = #{fstRepayDate},
+			</if>
+			<if test="mthRepayDate != null and mthRepayDate != ''">
+				MTH_REPAY_DATE = #{mthRepayDate},
+			</if>
+			<if test="mthRepayAmt != null and mthRepayAmt != ''">
+				MTH_REPAY_AMT = #{mthRepayAmt},
+			</if>
+			<if test="applyDate != null and applyDate !='' ">
+				APPLY_DATE = #{applyDate},
+			</if>
+			<if test="aprvDate != null and aprvDate != '' ">
+				APRV_DATE = #{aprvDate},
+			</if>
+			<if test="regDate != null and regDate != ''">
+				REG_DATE = #{regDate},
+			</if>
+			<if test="distrDate != null and distrDate != ''">
+				DISTR_DATE = #{distrDate},
+			</if>
+			<if test="fileNo != null and fileNo != ''">
+				FILE_NO = #{fileNo},
+			</if>
+			<if test="stat != null and stat != ''">
+				STAT = #{stat},
+			</if>
+			<if test="afterStat != null and afterStat != ''">
+				AFTER_STAT = #{afterStat},
+			</if>
+			<if test="fivCls != null and fivCls != ''">
+				FIV_CLS = #{fivCls},
+			</if>
+			<if test="proprFlag != null and proprFlag != ''">
+				PROPR_FLAG = #{proprFlag},
+			</if>
+			<if test="checkFlag != null and  checkFlag != '' ">
+				CHECK_FLAG = #{checkFlag},
+			</if>
+			<if test="checkAmt != null and checkAmt != ''">
+				CHECK_AMT = #{checkAmt},
+			</if>
+			<if test="checkMthAmt != null and checkMthAmt != ''">
+				CHECK_MTH_AMT = #{checkMthAmt},
+			</if>
+			<if test="checkAccFlag != null and checkAccFlag != ''">
+				CHECK_ACC_FLAG = #{checkAccFlag},
+			</if>
+			<if test="workOrderId != null and workOrderId != ''">
+				WORK_ORDER_ID = #{workOrderId},
+			</if>
+			<if test="loanUse != null and loanUse != ''">
+				LOAN_USE = #{loanUse},
+			</if>
+			<if test="applyProv != null and applyProv != ''">
+				APPLY_PROV = #{applyProv},
+			</if>
+			<if test="applyArea != null and applyArea != ''">
+				APPLY_AREA = #{applyArea},
+			</if>
+			<if test="applyCity != null and applyCity != ''">
+				APPLY_CITY = #{applyCity},
+			</if>
+			<if test="sourceType != null and sourceType !='' ">
+				SOURCE_TYPE = #{sourceType},
+			</if>
+			<if test="sourceUserType != null and sourceUserType !='' ">
+				SOURCE_USER_TYPE = #{sourceUserType},
+			</if>
+			<if test="sourceOsType != null and sourceOsType !='' ">
+				SOURCE_OS_TYPE = #{sourceOsType},
+			</if>
+			<if test="instDate != null and  instDate !='' ">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instUserNo != null and instUserNo !='' ">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="updtDate != null and updtDate !='' ">
+				UPDT_DATE = #{updtDate},
+			</if>
+			
+			<if test="apprAmt != null and apprAmt !='' ">
+				APPR_AMT = #{apprAmt},
+			</if>
+			<if test="isOutVisit!=null and isOutVisit!='' ">
+				IS_OUT_VISIT=#{isOutVisit}
+			</if>
+			<if test="rejectRemark!=null and rejectRemark!='' ">
+				REJECT_REMARK=#{rejectRemark}
+			</if>
+		</trim>
+		WHERE LOAN_NO=#{loanNo}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM B_LO_LOAN_INFO WHERE LOAN_NO=#{loanNo}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.loan.model.BLoLoanInfo">
+		SELECT
+			<include refid="column"/>
+		FROM B_LO_LOAN_INFO t
+		WHERE LOAN_NO=#{loanNo}
+	</select>
+</mapper>
+
+

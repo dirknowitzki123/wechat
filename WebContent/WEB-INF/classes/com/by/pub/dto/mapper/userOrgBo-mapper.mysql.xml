@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.pub.dto.mapper.UserOrgBoMapper">
+	
+	<select id="getListUserOrg" parameterType="java.util.Map" resultType="com.by.pub.model.UserOrgBO">
+		select o.ORG_CODE orgcode, o.ORG_NAME orgname, o.PARENT_ID pid,  'true' nocheck 
+		from a_sys_org o
+		union ALL
+		select u.LOGIN_NAME usercode, u.USER_NAME uname, o2.ORG_CODE pid, 'false' nocheck  
+		from a_sys_user u, a_sys_org o2, a_sys_user_org uo
+		where u.STATUS = '13900001'
+		and u.id = uo.USER_ID
+	  	and uo.ORG_ID = o2.ID
+		
+	</select>
+	
+	<select id="getListUserOrgNoUser" parameterType="java.util.Map" resultType="com.by.pub.model.UserOrgBO">
+		select o.ORG_CODE orgcode, o.ORG_NAME orgname, o.PARENT_ID pid,  'true' nocheck 
+		from a_sys_org o		
+	</select>
+	
+	
+</mapper>
+
+

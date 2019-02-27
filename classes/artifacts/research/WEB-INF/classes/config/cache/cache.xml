@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>     
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">     
+<beans>     
+	<!-- 引用ehCache的配置 -->     
+	<bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">     
+	   	<property name="configLocation">     
+			<value>classpath:config/cache/shiro.cache.xml</value>     
+	   	</property>     
+	</bean>     
+   
+	<!-- 定义ehCache的工厂，并设置所使用的Cache name -->     
+	<bean id="ehCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">     
+	   	<property name="cacheManager">     
+	  		<ref local="ehCacheManager"/>     
+	   	</property>    
+	   	<property name="cacheName">     
+      		<value>DEFAULT_CACHE</value>     
+   		</property> 
+	</bean>     
+   
+	<!-- find/create cache拦截器 -->     
+<!-- 	<bean id="cacheInterceptor" class="com.by.core.cache.MethodCacheInterceptor">      -->
+<!-- 	   	<property name="cache">      -->
+<!-- 	   		<ref local="ehCache" />      -->
+<!-- 	   	</property>      -->
+<!-- 	</bean>      -->
+	
+	<!-- flush cache拦截器       	
+	<bean id="cacheAfterAdvice" class="com.frame.cache.CacheAfterAdvice">     
+	   	<property name="cache">     
+	   		<ref local="ehCache" />     
+	   	</property>     
+	</bean>     -->
+  
+   	
+   	<!-- 查询时把结果加入缓存  -->
+<!-- 	<bean id="cachePointCutInterceptor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">      -->
+<!-- 	   	<property name="advice">      -->
+<!-- 	   		<ref local="cacheInterceptor"/>    -->
+<!-- 	   	</property>      -->
+<!-- 	   	<property name="patterns">      -->
+<!-- 		   	<list>      -->
+<!-- 		      	<value>com.by.frame.service.IShiroRealmService.*find.*</value>      -->
+<!-- 		   	</list>      -->
+<!-- 	  	 </property>      -->
+<!-- 	</bean>    -->
+	<!--  修改内容时删除缓存-->  
+	<!-- <bean id="cachePointCutAdvice" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">     
+	   	<property name="advice">     
+	   		<ref local="cacheAfterAdvice"/>     
+	   	</property>     
+	   	<property name="patterns">     
+		   	<list>     
+		      	<value>com.system.code.service.CodeService.*create.*</value>     
+		      	<value>com.system.code.service.CodeService.*update.*</value>     
+		      	<value>com.system.code.service.CodeService.*delete.*</value>   
+		      	<value>com.system.code.service.CodeService.*save.*</value>  
+		      	<value>com.by.frame.service.ILoginService.login.*</value>
+		   	</list>
+	   	</property>      
+	</bean>   -->
+	
+</beans>  

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by.system.mapper.ASysRegionalBelongMapper">
+	<sql id="column">
+		t.ID id,
+		t.PROV_NO provNo,
+		t.PROV_NAME provName,
+		t.CITY_NO cityNo,
+		t.CITY_NAME cityName,
+		t.AREA_NO areaNo,
+		t.AREA_NAME areaName,
+		t.INST_DATE instDate,
+		t.INST_USER_NO instUserNo,
+		t.UPDT_DATE updtDate
+	</sql>
+	<select id="get" parameterType="java.util.Map" resultType="com.by.system.model.ASysRegionalBelong">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_REGIONAL_BELONG t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="provNo != null and provNo != ''">
+				AND t.PROV_NO = #{provNo}
+			</if>
+			<if test="provName != null and provName != ''">
+				AND t.PROV_NAME = #{provName}
+			</if>
+			<if test="cityNo != null and cityNo != ''">
+				AND t.CITY_NO = #{cityNo}
+			</if>
+			<if test="cityName != null and cityName != ''">
+				AND t.CITY_NAME = #{cityName}
+			</if>
+			<if test="areaNo != null and areaNo != ''">
+				AND t.AREA_NO = #{areaNo}
+			</if>
+			<if test="areaName != null and areaName != ''">
+				AND t.AREA_NAME = #{areaName}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<select id="getList" parameterType="java.util.Map" resultType="com.by.system.model.ASysRegionalBelong">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_REGIONAL_BELONG t
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != null and id != ''">
+				AND t.ID = #{id}
+			</if>
+			<if test="provNo != null and provNo != ''">
+				AND t.PROV_NO = #{provNo}
+			</if>
+			<if test="provName != null and provName != ''">
+				AND t.PROV_NAME = #{provName}
+			</if>
+			<if test="cityNo != null and cityNo != ''">
+				AND t.CITY_NO = #{cityNo}
+			</if>
+			<if test="cityName != null and cityName != ''">
+				AND t.CITY_NAME = #{cityName}
+			</if>
+			<if test="areaNo != null and areaNo != ''">
+				AND t.AREA_NO = #{areaNo}
+			</if>
+			<if test="areaName != null and areaName != ''">
+				AND t.AREA_NAME = #{areaName}
+			</if>
+			<if test="instDate != null and instDate != ''">
+				AND t.INST_DATE = #{instDate}
+			</if>
+			<if test="instUserNo != null and instUserNo != ''">
+				AND t.INST_USER_NO = #{instUserNo}
+			</if>
+			<if test="updtDate != null and updtDate != ''">
+				AND t.UPDT_DATE = #{updtDate}
+			</if>
+		</trim>
+	</select>
+	<insert id="insert" parameterType="com.by.system.model.ASysRegionalBelong">
+	insert into A_SYS_REGIONAL_BELONG
+	(
+		ID,
+		PROV_NO,
+		PROV_NAME,
+		CITY_NO,
+		CITY_NAME,
+		AREA_NO,
+		AREA_NAME,
+		INST_DATE,
+		INST_USER_NO,
+		UPDT_DATE
+	)
+	values
+	(
+		#{id},
+		#{provNo},
+		#{provName},
+		#{cityNo},
+		#{cityName},
+		#{areaNo},
+		#{areaName},
+		#{instDate},
+		#{instUserNo},
+		#{updtDate}
+	)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+	UPDATE A_SYS_REGIONAL_BELONG
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="provNo != null">
+				PROV_NO = #{provNo},
+			</if>
+			<if test="provName != null">
+				PROV_NAME = #{provName},
+			</if>
+			<if test="cityNo != null">
+				CITY_NO = #{cityNo},
+			</if>
+			<if test="cityName != null">
+				CITY_NAME = #{cityName},
+			</if>
+			<if test="areaNo != null">
+				AREA_NO = #{areaNo},
+			</if>
+			<if test="areaName != null">
+				AREA_NAME = #{areaName},
+			</if>
+			<if test="instDate != null">
+				INST_DATE = #{instDate},
+			</if>
+			<if test="instUserNo != null">
+				INST_USER_NO = #{instUserNo},
+			</if>
+			<if test="updtDate != null">
+				UPDT_DATE = #{updtDate},
+			</if>
+		</trim>
+		WHERE ID=#{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM A_SYS_REGIONAL_BELONG WHERE ID=#{id}
+	</delete>
+	<select id="getByPrimaryKey" parameterType="java.lang.String" resultType="com.by.system.model.ASysRegionalBelong">
+		SELECT
+			<include refid="column"/>
+		FROM A_SYS_REGIONAL_BELONG t
+		WHERE ID=#{id}
+	</select>
+</mapper>
+
+
